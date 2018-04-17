@@ -9,10 +9,14 @@ body {
 }
 .row {
     max-width: 60em;
-    margin: 0 auto;
+    padding: 0 1em 0 1em;
+}
+.row-wide {
+    max-width: 80em;
+    padding: 0 1em 0 1em;
 }
 .center {
-    /* margin: 0 auto; */
+    margin: 0 auto;
 }
 header {
    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff6b6b+0,556270+100 */
@@ -24,6 +28,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff6b6b', end
     
     box-sizing: border-box;
     overflow: auto;
+}
+header.splash {
     min-height: 30em;
     height: 80vh;
 }
@@ -35,6 +41,7 @@ header img {
 }
 header > .row {
     padding-top: 6em;
+    padding-bottom: 6em;
 }
 header h1, header h2 {
     text-align: center;
@@ -49,15 +56,18 @@ header h1 {
 header h2 {
     opacity: 0.8;
 }
-nav {
+header nav {
     position: fixed;
     margin: 4em;
+    margin-left: 1em;
+    z-index: 99;
 }
-nav ul {
+header nav ul {
     list-style: none;
     margin: 0;
+    padding: 0;
 }
-nav a {
+header nav a {
     display: block;
     line-height: 200%;
     margin-bottom: 1em;
@@ -68,15 +78,18 @@ nav a {
     width: 100%;
     border-bottom: 5px solid #FFF;
 }
-nav a:hover, nav a.current {
+header nav a:hover, nav a:focus, nav a.current {
     color: #000;
     border-color: #000;
     background-position: left bottom;
     transition: 0.2s;
 }
+
+header nav a:focus {
+    background: rgba(0,0,0, 0.2);
+}
 main {
-    padding: 0 1em 0 1em;
-    padding-bottom: 20em;
+    box-sizing: border-box;
 }
 main h2 {
     display: inline-block;
@@ -100,6 +113,145 @@ main .introduction p {
     line-height: 150%;
 }
 footer {
+    margin-top: 20em;
     background: #FF6B6B;
     height: 20em;
+}
+.filters {
+    background: whitesmoke;
+    border-bottom: #CCC solid 0.1em;
+    padding: 1em;
+}
+.filters * {
+    border: 3px solid rgba(0,0,0, 0);
+    transition: 0.4s;
+}
+.filters *:focus {
+    border: 3px solid rgba(0,0,0, 0.5);
+}
+.filters input[type="search"] {
+    width: 100%;
+    padding: 0.5em;
+    font-size: 1.4em;
+    font-weight: 300;
+    border-right: 0;
+}
+.filters input[type="search"]:focus {
+    border: 3px solid rgba(0,0,0, 0.5);
+    width: 100%;
+    padding: 0.5em;
+    font-size: 1.4em;
+    font-weight: 300;
+    border-right: 0;
+}
+.filters button {
+    background: #FF6B6B;
+}
+.filters button:focus, .filters button:hover {
+    background: #FF6B6B88;
+}
+.thumbnail-row {
+    margin: 2em 0 2em 0;
+}
+.thumbnail {
+    position: relative;
+    margin: 0 1em 0 1em;
+    overflow: hidden;
+    /* width: 100%; */
+    /* height: 100%; */
+    min-height: 10em;
+    min-height: 10em;
+    flex: 1;
+}
+.thumbnail .image-wrap {
+    position: absolute;
+    background: rgba(0,0,0, 0.6);
+    transition: 0.2s;
+    width: 100%;
+    height: 100%;
+    left:0;
+    top:0;
+    right:0;
+    color: #fff;
+}
+.thumbnail .image-wrap:hover, .thumbnail .image-wrap:focus {
+    color: #000;
+    background: rgba(0,0,0, 0.2);
+}
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+}
+.thumbnail .caption {
+    display: inlie-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+.thumbnail .tags {
+    list-style: none;
+    margin: 1em 0 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    color: #fff;
+    text-transform: lowercase;
+}
+.thumbnail .tags li {
+    background: #FF6B6B;
+    padding: 0.4em;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.thumbnail .tags .year {
+    background: #556270;
+    text-transform: uppercase;
+}
+.thumbnail .tags li:first-child {
+    margin-left: 0;
+}
+.thumbnail h3 {
+    display: inline-block;
+    font-size: 2.75em;
+    margin: 0;
+    text-transform: uppercase;
+    border-bottom: 5px solid;
+    hyphens: auto;
+}
+.thumbnail p {
+    margin: 0;
+    padding: 0.5em 0 0 0;
+    font-size: 1em;
+    text-align: justify;
+    padding-right: 4em;
+    font-weight: bold;
+}
+
+@media (max-width: 50em) {
+    .thumbnail-row {
+        flex-direction: column;
+        margin: 0;
+    }
+    .thumbnail {
+        flex: 0;
+        height: 10em;
+        margin: 0;
+    }
+    .row {
+        padding: 0;
+    }
+    .thumbnail img {
+        max-height: 25em;
+    }
+}
+@media (max-width: 75em) {
+    header nav {
+        display: none;
+    }
 }
