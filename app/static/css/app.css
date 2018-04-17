@@ -15,22 +15,30 @@ body {
     /* margin: 0 auto; */
 }
 header {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d1ffd8+0,d1ffd8+58,b2ecfe+98 */
-background: #d1ffd8; /* Old browsers */
-background: -moz-linear-gradient(-45deg, #d1ffd8 0%, #d1ffd8 58%, #b2ecfe 98%); /* FF3.6-15 */
-background: -webkit-linear-gradient(-45deg, #d1ffd8 0%,#d1ffd8 58%,#b2ecfe 98%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(135deg, #d1ffd8 0%,#d1ffd8 58%,#b2ecfe 98%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1ffd8', endColorstr='#b2ecfe',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff6b6b+0,556270+100 */
+background: rgb(255,107,107); /* Old browsers */
+background: -moz-linear-gradient(-45deg, rgba(255,107,107,1) 0%, rgba(85,98,112,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, rgba(255,107,107,1) 0%,rgba(85,98,112,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, rgba(255,107,107,1) 0%,rgba(85,98,112,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff6b6b', endColorstr='#556270',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    
     box-sizing: border-box;
     overflow: auto;
     min-height: 30em;
+    height: 80vh;
+}
+header img {
+    display: block;
+    padding-bottom: 2em;
+    width: 200px;
+    margin: 0 auto;
 }
 header > .row {
-    padding-top: 10em;
+    padding-top: 6em;
 }
 header h1, header h2 {
     text-align: center;
-    color: #00000099;
+    color: #FFF;
 }
 header h1 {
     font-size: 4em;
@@ -54,15 +62,17 @@ nav a {
     line-height: 200%;
     margin-bottom: 1em;
     font-weight: bold;
-    color: #00000088;
+    color: #FFF;
     text-decoration: none;
     font-size: 1.3em;
     width: 100%;
-    border-bottom: 5px solid #6965E888;
+    border-bottom: 5px solid #FFF;
 }
 nav a:hover, nav a.current {
-    color: #6965E8;
-    border-color: #00000088;
+    color: #000;
+    border-color: #000;
+    background-position: left bottom;
+    transition: 0.2s;
 }
 main {
     padding: 0 1em 0 1em;
@@ -90,6 +100,6 @@ main .introduction p {
     line-height: 150%;
 }
 footer {
-    background: #B2ECFE;
+    background: #FF6B6B;
     height: 20em;
 }
