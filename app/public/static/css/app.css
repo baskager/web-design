@@ -28,7 +28,8 @@ background: -moz-linear-gradient(-45deg, rgba(255,107,107,1) 0%, rgba(85,98,112,
 background: -webkit-linear-gradient(-45deg, rgba(255,107,107,1) 0%,rgba(85,98,112,1) 100%); /* Chrome10-25,Safari5.1-6 */
 background: linear-gradient(135deg, rgba(255,107,107,1) 0%,rgba(85,98,112,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff6b6b', endColorstr='#556270',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    
+    background-image: url('../img/trianglify.svg');
+    background-size: cover;
     box-sizing: border-box;
     overflow: auto;
 }
@@ -141,7 +142,7 @@ footer {
     height: 90vh;
 }
 .filters {
-    padding: 1.4em;
+    padding: 1.25em;
     z-index: 98;
     width: 100%;
     height: 6em;
@@ -158,6 +159,9 @@ footer {
 /* .filters *:focus {
     border: 3px solid rgba(0,0,0, 0.5);
 } */
+.filters label[for="search"] {
+    visibility: hidden;
+}
 .filters input[type="search"] {
     border: 0;
     width: 100%;
