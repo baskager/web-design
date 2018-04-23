@@ -2,6 +2,9 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Raleway', sans-serif;
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 .flex {
     display: flex;
@@ -60,7 +63,7 @@ header .navButton .icon {
     font-size: 2em;
     color: #FF6B6B;
 }
-header nav {
+nav {
     position: fixed;
     z-index: 99;
     box-sizing: border-box;
@@ -71,7 +74,7 @@ header nav {
     margin: 0;
     width: 100%;
 }
-header nav a {
+nav a {
     display: block;
     line-height: 200%;
     font-weight: bold;
@@ -86,7 +89,7 @@ header nav a {
     height: 100%;
     transition: 0.2s;
 }
-header nav a:hover, nav a:focus, nav a.current {
+nav a:hover, nav a:focus, nav a.current {
     color: #FF6B6B;
     border: 0;
     border-bottom: 0.4em solid #FF6B6B;
@@ -95,13 +98,13 @@ header nav a:hover, nav a:focus, nav a.current {
 nav a:focus {
     background: rgba(0,0,0, 0.1);
 }   
-header nav ul {
+nav ul {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
 }
-header nav ul li {
+nav ul li {
     width: 100%;
 }
 
@@ -138,38 +141,52 @@ footer {
     height: 90vh;
 }
 .filters {
+    padding: 1.4em;
     z-index: 98;
-    height: 6em;
     width: 100%;
+    height: 6em;
     background: whitesmoke;
     border-bottom: #CCC solid 0.1em;
-    padding: 1em;
     box-sizing: border-box;
+    overflow: auto;
     position: fixed;
 }
-.filters * {
+/* .filters * {
     border: 3px solid rgba(0,0,0, 0);
     transition: 0.4s;
-}
-.filters *:focus {
+} */
+/* .filters *:focus {
     border: 3px solid rgba(0,0,0, 0.5);
-}
+} */
 .filters input[type="search"] {
+    border: 0;
     width: 100%;
+    display: block;
     padding: 0.5em;
     font-size: 1.4em;
     font-weight: 300;
     border-right: 0;
+    background: #58636e44;
+    box-sizing: border-box;
+    overflow: auto;
+    transition: 0.2s;
 }
 .filters input[type="search"]:focus {
-    border: 3px solid rgba(0,0,0, 0.5);
+    position: fixed;
+    margin: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 0.5em;
-    font-size: 1.4em;
-    font-weight: 300;
-    border-right: 0;
+    height: inherit;
+    font-size: 2em;
+    height: 3em;
+    background: #58636e;
+    color: white;
+    overflow: hidden;
 }
 .filters button {
+    display: none;
+    border: 0;
     background: #FF6B6B;
     font-size: 1.4em;
 }
@@ -177,15 +194,22 @@ footer {
     background: #FF6B6B88;
 }
 .thumbnail-row {
-    /* margin: 2em 0 2em 0; */
-    height: 80vh;
-    margin-top: 6em;
+    margin-top: 2em;
+    height: 60vh;
+    /* padding: 1em; */
+    transition: 1s;
+}
+.thumbnail-row:first-child {
+    margin-top: 8em; 
 }
 .thumbnail {
+    margin: 0 2em 0 2em;
     position: relative;
-    /* margin: 0 1em 0 1em; */
     overflow: hidden;
     flex: 1;
+}
+.thumbnail-row .thumbnail:first-child {
+    margin-right: 0;
 }
 .thumbnail .image-wrap {
     position: absolute;
@@ -265,8 +289,12 @@ footer {
 }
 @media (max-width: 50em) {
     .thumbnail-row {
+        margin-top: 0;
         flex-direction: column;
-        height: 90vh;
+        height: auto;
+    }
+    .thumbnail-row:first-child {
+        margin-top: 6em;
     }
     .thumbnail {
         /* flex: 0; */

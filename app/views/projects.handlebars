@@ -1,0 +1,52 @@
+<nav>
+    <ul>
+        <li><a href='/'>Home</a></li>
+        <li><a class='current' href='projects'>Projects</a></li>
+        <li><a href='#'>Contact</a></li>
+    </ul>
+</nav>
+<section class="filters">
+    <form class="row center flex" action="">
+        <input type="search" placeholder="search, for example: Javascript">
+        <button>Search</button>
+        {{!-- <fieldset>
+            <input type="checkbox" id="tag-check-js" value="js">
+            <label for="tag-check-js">Javascript</label>
+
+            <input type="checkbox" id="tag-check-api" value="api">
+            <label for="tag-check-js">API</label>
+            
+            <input type="checkbox" id="tag-check-design" value="design">
+            <label for="tag-check-design">Design</label>
+        </fieldset>  --}}
+    </form>
+</section>
+<main class="center">  
+    <section class="center flex thumbnail-row">
+        {{> thumbnail 
+        img='https://camo.githubusercontent.com/452b4bfbfc46fdf719e63f1a592ab01173c0a289/687474703a2f2f7777772e6b616765722e696f2f75706c6f6164732f6164722d6f766572766965772e706e67'
+        title='ADRmeta'
+        description='Facial similarity in portraits'
+        }}
+
+        {{> thumbnail 
+        img='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/1024px-JavaScript-logo.png'
+        title='Js-api-connect'
+        description='ES6 library for easy API handlings'
+        }}
+    </section>
+
+    <section class="center flex thumbnail-row">
+        {{> thumbnail 
+        img='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/1024px-JavaScript-logo.png'
+        title='Js-api-connect'
+        description='ES6 library for easy API handlings'
+        }}
+
+        {{> thumbnail 
+        img='https://camo.githubusercontent.com/452b4bfbfc46fdf719e63f1a592ab01173c0a289/687474703a2f2f7777772e6b616765722e696f2f75706c6f6164732f6164722d6f766572766965772e706e67'
+        title='ADRmeta'
+        description='Facial similarity in portraits'
+        }}
+    </section>
+</main>

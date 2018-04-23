@@ -2,7 +2,11 @@ const express = require('express'),
 app = express(),
 http = require('http').Server(app),
 debug = require('debug')('kager-server'),
+handlebars  = require('express-handlebars'),
 port = process.env.PORT || 3000;
+
+app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 require('dotenv').config();
 
@@ -10,8 +14,14 @@ require('dotenv').config();
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/index.html');
+    res.render('home');
 });
+
+app.get('/projects', function(req, res) {
+    res.render('projects');
+});
+
+
 
 
 http.listen(port, function(){
