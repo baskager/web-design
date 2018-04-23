@@ -171,6 +171,7 @@ footer {
 }
 .filters button {
     background: #FF6B6B;
+    font-size: 1.4em;
 }
 .filters button:focus, .filters button:hover {
     background: #FF6B6B88;
@@ -208,7 +209,7 @@ footer {
     height: 100%;
 }
 .thumbnail .caption {
-    display: inlie-block;
+    display: inline-block;
     position: absolute;
     bottom: 0;
     left: 0;
