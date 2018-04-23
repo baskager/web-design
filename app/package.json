@@ -1,0 +1,27 @@
+{
+  "name": "web-design-project",
+  "version": "1.0.0",
+  "description": "Personal website for Bas Kager for the web-design project on the minor 'web-development'",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baskager/web-design.git"
+  },
+  "author": "Bas Kager",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/baskager/web-design/issues"
+  },
+  "homepage": "https://github.com/baskager/web-design#readme",
+  "dependencies": {
+    "debug": "^3.1.0",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3"
+  }
+}
