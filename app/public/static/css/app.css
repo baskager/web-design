@@ -15,21 +15,17 @@ body>a:first-child {
     height: 0;
     overflow: hidden;
     text-decoration: underline;
-    z-index: 999;
+    z-index: -999;
     transition: box-shadow 0.2s, filter 0.2s;
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .0);
     filter: blur(5px);
     overflow: none;
-    box-sizing: border-box;
 }
 body>a:first-child:focus, body>a:first-child:active {
     color: #fff;
     left: 0;
     top: 0;
     overflow: auto;
-    font-weight: bold;
-    font-size: 1.4em;
-    padding-top: 0.4em;
     z-index: 999;
     /*Chapter 7.32 - Dim background*/
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .4);
