@@ -4,7 +4,7 @@ http = require('http').Server(app),
 debug = require('debug')('kager-server'),
 handlebars  = require('express-handlebars'),
 config = require("./config"),
-port = config.portgit ;
+port = config.port;
 
 app.engine('handlebars', handlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
