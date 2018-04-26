@@ -4,10 +4,17 @@ De volgende use cases zullen getest worden:
 - Ik wil de projecten kunnen bekijken waar Bas Kager aan gewerkt heeft
     - Als ik op een project klik dan komt hier meer informatie over tevoorschijn
 
+
 ## Vragen voor de gebruiker
 - Wat valt u in de eerste oogopslag op bij het zien van de pagina, welke elementen trekken uw aandacht en in welke volgorde?
 - Wat vindt u van de web-applicatie, wat werkt al fijn en wat kan verbeterd worden?
-- (Voor professionals) Voldoet de web-applicatie aan minimaal drie design principes, is design principe #11 toegepast?
+- Wat vindt u van de "skip to content" optie voor toetsenbord gebruikers?
+
+## Stappen
+- Navigeer naar de "Projects pagina"
+- Klik een van de projecten aan
+- Zoek naar een van de projecten
+
 
 ## Documentatie
 De resultaten van de test zulen worden opgeslagen in een testverslag.
