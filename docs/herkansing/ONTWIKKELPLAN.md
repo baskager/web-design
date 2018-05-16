@@ -21,4 +21,4 @@ Bepaalde pagina's van de website zijn nog niet klaar:
 - Asynchroon laden van Javascript en CSS bestanden
 - Above the fold optimalisaties ([critical](https://www.npmjs.com/package/critical))
 - Server side template rendering met handlebars-express
-- Implementeren van service worker
+- Implementeren service worker
