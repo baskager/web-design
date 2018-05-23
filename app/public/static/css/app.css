@@ -273,7 +273,7 @@ footer {
 .skill h3 {
     font-size: 2em;
     color: #000;
-    transition: 0.4s;
+    transition: 0.2s;
     transition-delay: 0.2s;
 }
 .skill .image-wrap {
