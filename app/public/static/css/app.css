@@ -1,10 +1,6 @@
 body {
     margin: 0;
-    padding: 3.5em 0;
     font-family: 'Raleway', sans-serif;
-    width: 100%;
-    height: 100%;
-    position: absolute;
 }
 body>a:first-child {
     left: -999px;
@@ -56,6 +52,9 @@ body>a:first-child:focus, body>a:first-child:active {
 .center {
     margin: 0 auto;
 }
+@keyframes animatedBackground {
+    to { background-position-x:100%; }
+}
 header {
    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff6b6b+0,556270+100 */
     background: rgb(255,107,107); /* Old browsers */
@@ -67,36 +66,55 @@ header {
     background-size: cover;
     background-attachment: fixed;
     box-sizing: border-box;
-    overflow: auto;
-    transition: 1s;
-    transition-delay: 0.4s;
+    overflow: hidden;
+    background-position: center;
+    /* animation-name: animatedBackground;
+    animation-duration: 40s;
+    animation-iteration-count:  infinite;
+    animation-direction: alternate; */
 }
 header.splash {
-    min-height: 30em;
-    height: 80vh;
+    min-height: 100vh;
+    /* margin-top: -3.5em; */
+    transition: 0.6s;
+}
+header.fade {
+    filter: blur(0.4em);
+}
+header.fade > .row {
+    transform: scale(1.2);
 }
 header img {
     display: block;
     padding-bottom: 2em;
     width: 200px;
     margin: 0 auto;
+    border-radius: 50%;
+    box-sizing: border-box;
+    overflow: none; 
+
 }
 header > .row {
     padding-top: 6em;
     padding-bottom: 6em;
+    transition: 12s;
 }
-header h1, header h2 {
+header h1, header h2, header h3 {
     text-align: center;
     color: #FFF;
+    font-weight: 400;
 }
 header h1 {
     font-size: 4em;
     padding: 0;
     margin: 0;
-    font-weight: 300;
 }
 header h2 {
     opacity: 0.8;
+    line-height: 160%;
+}
+header .skills {
+    /* background: white; */
 }
 header .navButton .icon {
     font-size: 2em;
@@ -241,6 +259,48 @@ footer {
 .filters button:focus, .filters button:hover {
     background: #FF6B6B88;
 }
+.skill-row {
+    margin-top: 2em;
+    list-style: none;
+}
+.skill {
+    margin: 0 1em 0 1em;
+    position: relative;
+    overflow: hidden;
+    transition: 0.2s;
+    flex: 1; 
+}
+.skill h3 {
+    font-size: 2em;
+    color: #000;
+    transition: 0.4s;
+    transition-delay: 0.2s;
+}
+.skill .image-wrap {
+    display: block;
+    height: 100%;
+    border-bottom: 0;
+    box-sizing: border-box;
+    background: whitesmoke;
+    transition: 0.2s;
+}
+.skill:hover, .skill:focus {
+    transform: scale(1.1);
+}
+.skill .image-wrap:hover, .skill .image-wrap:focus {
+    background: #000;
+}
+.skill .image-wrap:hover h3, .skill .image-wrap:focus h3 {
+    color: #FF6B6B;
+    /* transform: scale(1.1); */
+    font-weight: bold;
+}
+.skill .caption {
+    display: inline-block;
+    padding: 4em 1em 4em 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
 .thumbnail-row {
     padding: 0;
     margin-top: 2em;
@@ -352,10 +412,7 @@ footer {
 @media (max-width: 50em) {
     body {
         padding-top: 0; /* navigation was moved to the bottom */
-        padding-bottom: 6em; /* padding for navigation */
-    }
-    header.splash {
-        height: 75vh;
+        /* padding-bottom: 6em; padding for navigation */
     }
     nav {
         bottom: 0;
