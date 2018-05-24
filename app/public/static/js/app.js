@@ -53,24 +53,65 @@
         }
     }
 
-    const thumbnail = {
-        reset: function(thumbnailId) {
-
+    const render = {
+        resetThumbnail(thumbnailId) {
+            $(thumbnailId + ' h3').innerHTML = '';
+            $(thumbnailId + ' p').innerHTML = '';
+            $(thumbnailId + ' img').setAttribute('src', '');
+            $(thumbnailId + ' a').setAttribute('href', '');
         },
-        resetAll: function(){
-
-        },
-        build: function(thumbnailId, project, categoryName) {
+        thumbnail: function(thumbnailId, project, categoryName) {
             $(thumbnailId + ' h3').innerHTML = project.name;
             $(thumbnailId + ' p').innerHTML = project.shortDescription;
             $(thumbnailId + ' img').setAttribute('src', project.thumbnailUri);
             $(thumbnailId + ' a').setAttribute('href', '#projects/' + categoryName + '/' + project.slug);
             // Do something with tags
+        },
+        resetProject() {
+            $('#project h2').innerHTML = '';
+            $('#project img').setAttribute('src', '');
+            $('#project #process').innerHTML = '';
+        },
+        project: function(project, categoryName) {
+            $('#project h2').innerHTML = project.name;
+            $('#project img').setAttribute('src', project.thumbnailUri);
+            $('#project #process').innerHTML = project.longDescription;
+            if(project.demoUri) {
+                $('#project #demoUri').classList.remove('hide');
+                $('#project #demoUri').setAttribute('href', project.demoUri);
+            } else {
+                $('#project #demoUri').classList.add('hide');
+            }
+            if(project.repoUri) {
+                $('#project #repoUri').classList.remove('hide');
+                $('#project #repoUri').setAttribute('href', project.repoUri);
+            } else {
+                $('#project #repoUri').classList.add('hide');
+            }
+        },
+        randomSuggestion: function(currentCategory, categories) {
+            var filteredCategories = [];
+
+            for (var category in categories) {
+                if(category !== currentCategory) {
+                    filteredCategories.push(category);
+                }
+            }
+            var randomNum = Math.floor((Math.random()*filteredCategories.length));
+            var suggestion = filteredCategories[randomNum];
+            var suggestionUri = '#projects/' + suggestion;
+
+            $('.suggestion a').setAttribute('href', suggestionUri);
+            $('.suggestion a').innerHTML = 'Show me some ' + suggestion + ' projects';
         }
+
     }
 
     const modalDialog = {
         open: function(dialogName) {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            $(dialogName).scrollTop =0;
             $(dialogName).classList.add('open');
         },
         close: function(dialogName) {
@@ -106,38 +147,23 @@
         header.unfade();
     });
 
-    routie('projects/:projectListName/:projectSlug', function(projectListName, projectSlug) {
-        header.fade();
-        projects.get(function(projects){
-            modalDialog.close('#projectList');
-            modalDialog.open('#project');
-
-            var project = projects[projectListName].projects.filter(function(project) {
-                return project.slug == projectSlug;
-            })[0];
-            
-            if(project) {
-                $('b').innerHTML = project.name;
-            } else {
-                $('b').innerHTML = "I am terribly sorry but something went wrong, please try to reload the page.";
-            }
-
-        })
-    });
-
     routie('projects/:projectListName', function(projectListName) {
         header.fade();
         projects.get(function(projects){
             modalDialog.close('#project');
             modalDialog.open('#projectList');
+            render.resetThumbnail('#project1');
+            render.resetThumbnail('#project2');
+            $('#projectListContent h2').innerHTML = projectListName + ' projects';
+
 
             if(projects[projectListName]) {
-                $('blockquote').innerHTML = projects.programming.description;
-                for(let i = 0; i < projects.programming.projects.length; i ++) {
-                    var project = projects.programming.projects[i];
+                $('blockquote').innerHTML = projects[projectListName].description;
+                for(let i = 0; i < projects[projectListName].projects.length; i ++) {
+                    var project = projects[projectListName].projects[i];
                     var thumbnailId = '#project'+ (i+1);
                     
-                    thumbnail.build(thumbnailId, project, projectListName);
+                    render.thumbnail(thumbnailId, project, projectListName);
                 }
             } else {
                 $('blockquote').innerHTML = "I am terribly sorry but something went wrong, please try to reload the page.";
@@ -145,6 +171,29 @@
 
         })
 
+    });
+
+    routie('projects/:projectListName/:projectSlug', function(projectListName, projectSlug) {
+        header.fade();
+        projects.get(function(projects){
+            modalDialog.close('#projectList');
+            modalDialog.open('#project');
+            render.resetProject();
+            $('#closeProject').innerHTML = "Back to " + projectListName + " projects";
+            $('#closeProject').setAttribute('href', '#projects/' + projectListName);
+
+            var project = projects[projectListName].projects.filter(function(project) {
+                return project.slug == projectSlug;
+            })[0];
+        
+            if(project) {
+                render.project(project, projectListName);
+                render.randomSuggestion(projectListName, projects);
+            } else {
+                $('b').innerHTML = "I am terribly sorry but something went wrong, please try to reload the page.";
+            }
+
+        })
     });
 
     
