@@ -10,7 +10,6 @@ body {
     background-size: cover;
     background-attachment: fixed;
     box-sizing: border-box;
-    overflow: hidden;
     background-position: center;
 }
 body>a:first-child {
@@ -53,8 +52,9 @@ a {
     text-decoration: none;
     border-bottom: 0.2em solid;
 }
-a:hover {
+a:hover, a:focus {
     color: #58636e;
+    background: #FF6B6B44;
 }
 .btn {
     display: block;
@@ -138,14 +138,12 @@ header .navButton .icon {
 .modalDialog {
     position: absolute;
     width: 100%;
-    min-height: 100%;
-    overflow: auto;
+    height: auto;
 	font-family: Arial, Helvetica, sans-serif;
 	top: 0;
 	right: 0;
 	bottom: 0;
     left: 0;
-	background: rgba(0,0,0,0.2);
 	z-index: 99999;
     transition: 0.5s;   
     opacity: 0;
