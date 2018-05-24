@@ -1,0 +1,33 @@
+{
+    "programming": {
+        "name": "Programming",
+        "thumbnailTitle": "I can program",
+        "description": "The programming landscape continuously evolves. Luckily, I love learning new things. I like keeping my code clean, readable and fun. <br><br> I have listed two projects below that show my skill in this area. For both projects the source code is available on my <a href='https://github.com/baskager'>GitHub account</a>",
+        "projects": [
+            {
+                "name": "ADRmeta",
+                "slug": "adrmeta",
+                "shortDescription": "Facial similarity in portraits",
+                "longDescription": "no long description added yet",
+                "thumbnailUri": "https://camo.githubusercontent.com/452b4bfbfc46fdf719e63f1a592ab01173c0a289/687474703a2f2f7777772e6b616765722e696f2f75706c6f6164732f6164722d6f766572766965772e706e67",
+                "tags": ["javascript", "facial recognition", "api"],
+                "year": 2018
+            },
+            {
+                "name": "JS-API-CONNECT",
+                "slug": "js-api-connect",
+                "shortDescription": "ES6 library for easy API manipulation",
+                "longDescription": "no long description added yet",
+                "thumbnailUri": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/1024px-JavaScript-logo.png",
+                "tags": ["javascript", "library", "api"],
+                "year": 2018
+            }
+        ]
+    },
+    "design": {
+
+    },
+    "databases": {
+
+    }
+}
