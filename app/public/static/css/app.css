@@ -1,5 +1,7 @@
 body {
     margin: 0;
+    width: 100%;
+    height: 100%;
     font-family: 'Raleway', sans-serif;
     background: rgb(255,107,107); /* Old browsers */
     background: -moz-linear-gradient(-45deg, rgba(255,107,107,1) 0%, rgba(85,98,112,1) 100%); /* FF3.6-15 */
@@ -9,8 +11,10 @@ body {
     background-image: url('../img/trianglify.svg');
     background-size: cover;
     background-attachment: fixed;
-    box-sizing: border-box;
     background-position: center;
+}
+.disable-scroll {
+    overflow: hidden;
 }
 body>a:first-child {
     left: -999px;
@@ -90,10 +94,6 @@ a:hover, a:focus {
 header {
     color: #fff;
 }
-header.splash {
-    min-height: 100vh;
-    /* margin-top: -3.5em; */
-}
 header img {
     display: block;
     padding-bottom: 2em;
@@ -106,7 +106,6 @@ header img {
 }
 header > .row {
     padding-top: 6em;
-    padding-bottom: 6em;
     transition: 0.5s;
 }
 header.fade > .row {
@@ -137,8 +136,8 @@ header .navButton .icon {
 }
 .modalDialog {
     position: absolute;
+    height: 0;
     width: 100%;
-    height: auto;
 	font-family: Arial, Helvetica, sans-serif;
 	top: 0;
 	right: 0;
@@ -150,6 +149,8 @@ header .navButton .icon {
     pointer-events: none;
     margin: 0 auto;
     color: #fff;
+    box-sizing: border-box;
+    overflow: auto;
 }
 blockquote {
     background: #f9f9f9;
@@ -184,6 +185,7 @@ blockquote:after {
     vertical-align: -0.4em;
 }
 .modalDialog.open {
+    height: auto;
     opacity:1;
     pointer-events: auto;
     transition-delay: 0.4s;
