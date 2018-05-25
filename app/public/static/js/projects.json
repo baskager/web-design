@@ -1,4 +1,4 @@
-{
+    {
     "programming": {
         "name": "Programming",
         "slug": "programming",
@@ -9,7 +9,7 @@
                 "name": "ADRmeta",
                 "slug": "adrmeta",
                 "shortDescription": "Facial similarity in portraits",
-                "longDescription": "no long description added yet",
+                "longDescription": "<h3>Facial similarity in portraits</h3><img src='https://lh3.googleusercontent.com/7qzT0pbclLB7y3fdS1GxzMnV7m3gD3gWnhlquhFaJSn6gNOvMmTUAX3wVlTzhMXIs8kM9IH8AsjHNVTs8em3XQI6uMY'><img src='https://lh3.googleusercontent.com/NrCcfeY0r2F3M2hIQe5SLDRofR2tVzeOH18VjflOYGj88v4clb4v2H_VgCZR4nJhYsxxH9ATzfkL2tRqOWEK5-gPVEE'><blockquote>The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.</blockquote>",
                 "thumbnailUri": "https://camo.githubusercontent.com/452b4bfbfc46fdf719e63f1a592ab01173c0a289/687474703a2f2f7777772e6b616765722e696f2f75706c6f6164732f6164722d6f766572766965772e706e67",
                 "demoUri": "",
                 "repoUri": "",

@@ -195,11 +195,11 @@ blockquote:after {
     padding: 2em;
     /* background: whitesmoke; */
     padding-bottom: 6em;
-    transition: 0.5s;  
+    transition: 4s;  
     /* transition-delay: 0.4s; */
 }
 .modalDialog.open > div {
-    transition: 0.2s;
+    transition: 0.4s;
 }
 .modalDialog button {
     position: absolute; 
@@ -529,7 +529,7 @@ footer {
 .hide {
     display: none;
 }
-.projectDetail img {
+.projectDetail > img {
     width: 75%;
     height: 100%;
     margin: 0 auto;
@@ -593,8 +593,9 @@ footer {
     text-transform: uppercase;
 }
 article img {
-    max-width: 75%;
-    margin: 0 auto;
+    max-width: 50%;
+    /* margin: 0 auto; */
+    margin: 0 2em;
     border: 0.4em solid #00000044;
 }
 article h4 {
