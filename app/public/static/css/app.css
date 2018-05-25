@@ -397,7 +397,7 @@ footer {
     flex: 1; 
 }
 .skill h3 {
-    font-size: 1.8em;
+    font-size: 1.6em;
     color: #fff;
     transition: 0.2s;
     font-weight: bold;
@@ -567,6 +567,30 @@ footer {
     margin: 1em auto 0;
     text-align: center;
     max-width: 40em;
+}
+
+.projectDetail .tags {
+    list-style: none;
+    margin: 1em 0 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    color: #fff;
+    text-transform: lowercase;
+}
+.projectDetail .tags li {
+    background: #fff;
+    color: #FF6B6B;
+    padding: 1em;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    font-weight: bold;
+    font-size: 1.4em;
+    white-space: nowrap;
+}
+.projectDetail .tags .year {
+    background: #556270;
+    text-transform: uppercase;
 }
 article img {
     max-width: 75%;

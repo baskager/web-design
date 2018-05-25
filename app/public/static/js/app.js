@@ -71,6 +71,7 @@
             $('#project h2').innerHTML = '';
             $('#project img').setAttribute('src', '');
             $('#project #process').innerHTML = '';
+            $('#project #tags').innerHTML = '';
         },
         project: function(project, categoryName) {
             $('#project h2').innerHTML = project.name;
@@ -87,6 +88,12 @@
                 $('#project #repoUri').setAttribute('href', project.repoUri);
             } else {
                 $('#project #repoUri').classList.add('hide');
+            }
+            for(var tag of project.tags) {
+                var node = document.createElement("li");                 // Create a <li> node
+                var textnode = document.createTextNode(tag);         // Create a text node
+                node.appendChild(textnode);                              // Append the text to <li>
+                $("#tags").appendChild(node);     // Append <li> to <ul> with id="myList" 
             }
         },
         randomSuggestion: function(currentCategory, categories) {
