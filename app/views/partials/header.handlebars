@@ -1,15 +1,14 @@
- <header {{#if splash}} class='splash'{{/if}}>
-        {{#unless empty}}
-        <div class='row center'>
-            {{#if splash}}
-            <img src='http://pathwayactivities.co.uk/wp-content/uploads/2016/04/Profile_avatar_placeholder_large-circle.png'>
-            {{/if}}
-            {{#if title}}
-                <h1>{{title}}</h1>
-            {{/if}}
-            {{#if subtitle}}
-            <h2>{{subtitle}}</h2>
-            {{/if}}
+<header>
+    <div class="container grid">
+        <img class='offsetBackground' src='static/img/baskager.jpg' alt='Picture of Bas Kager'>
+        <div>
+            <h1>Bas Kager</h1>
+            <p>
+                A full-stack software engineer that loves to play with code, databases, hardware, linux, webservers and web design.
+                <br/>
+                <br/> Currently working at
+                <a href="http://hyberink.nl">Hyberink</a>, a hybrid publishing platform built on Node and the Phalcon PHP framework.
+            </p>
         </div>
-        {{/unless}}
-    </header>
+    </div>
+</header>

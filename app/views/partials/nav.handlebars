@@ -1,7 +1,15 @@
 <nav>
-    <ul>
-        <li><a href='/'>Home</a></li>
-        <li><a href='projects'>Projects</a></li>
-        <li><a href='#'>Contact</a></li>
-    </ul>
+    <div class="container grid">
+        <ul class="flex">
+            <li>
+                <a class="{{#if pageName compare='home' compareWith=pageName}}current{{/if}}" href="/">home</a>
+            </li>
+            <li>
+                <a href="/">projects</a>
+            </li>
+            <li>
+                <a href="/">contact</a>
+            </li>
+        </ul>
+    </div>
 </nav>
