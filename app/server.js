@@ -29,6 +29,13 @@ app.get("/styleguide", function(req, res) {
   res.render("styleguide");
 });
 
+app.get("/portfolio", function(req, res) {
+  res.render("project-overview", {
+    pageName: "portfolio",
+    data: null
+  });
+});
+
 app.get("/projects/:categorySlug", function(req, res) {
   res.render("category-detail", {
     data: null

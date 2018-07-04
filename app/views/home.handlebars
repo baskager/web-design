@@ -1,14 +1,16 @@
-{{> nav currentPage=pageName}} {{> header }}
+{{> nav currentPage=pageName}} {{> header-home }}
 <main>
     <section class='skills'>
-        <h2>My work</h2>
+        <div class='container'>
+            <h2>My work</h2>
+        </div>
 
         <ul class="center flex skill-row container">
             {{> skill-card title="programming projects" categorySlug="programming" }} {{> skill-card title="design projects" categorySlug="design"
             }} {{> skill-card title="database projects" categorySlug="database" }}
         </ul>
     </section>
-    <div class='flex cta-box'>
+    <div class='flex cta-box recessed'>
         <a class='btn' href='projects'>All projects</a>
     </div>
 </main>

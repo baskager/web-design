@@ -1,0 +1,24 @@
+{{> nav currentPage=pageName}} {{> header-small title="Portfolio" summary="Nanotechnology immersion along the information
+highway will close the loop on focusing solely on the bottom line." }}
+<div class='projectListContent' id='projectListContent'>
+    <h2></h2>
+    {{!--
+    <blockquote class='fancy'></blockquote> --}}
+    <section class="filters flex">
+        <input type="search" placeholder="search for projects" aria-placeholder="search for projects" />
+        <div class="container">
+            <h3>Filters</h3>
+            <div class='flex cta-box'>
+                <a class='btn eq' href='projects'>programming</a>
+                <a class='btn eq' href='projects'>design</a>
+                <a class='btn eq' href='projects'>database</a>
+                <a class='btn eq' href='projects'>all projects</a>
+            </div>
+        </div>
+    </section>
+    <ul class="center container flex thumbnail-row">
+        {{> thumbnail id="project1" url="" title="adrMeta" description="Facial similarity in portraits" img="https://camo.githubusercontent.com/452b4bfbfc46fdf719e63f1a592ab01173c0a289/687474703a2f2f7777772e6b616765722e696f2f75706c6f6164732f6164722d6f766572766965772e706e67"
+        }} {{> thumbnail id="project1" url="" title="adrMeta" description="Facial similarity in portraits" img="https://camo.githubusercontent.com/452b4bfbfc46fdf719e63f1a592ab01173c0a289/687474703a2f2f7777772e6b616765722e696f2f75706c6f6164732f6164722d6f766572766965772e706e67"
+        }}
+    </ul>
+</div>
