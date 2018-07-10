@@ -58,6 +58,12 @@ app.get("/projects/:categorySlug/:projectSlug", function(req, res) {
   });
 });
 
+app.get("/contact", function(req, res) {
+  res.render("contact", {
+    meta: meta
+  });
+});
+
 http.listen(port, function() {
   console.log("Server listening on port " + port);
 });
