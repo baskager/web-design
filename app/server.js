@@ -12,6 +12,10 @@ let handlebars = exphbs.create({
   defaultLayout: "main"
 });
 
+let meta = {
+  year: new Date().getFullYear()
+};
+
 app.engine("handlebars", handlebars.engine);
 app.set("view engine", "handlebars");
 
@@ -21,30 +25,36 @@ app.use(express.static("public"));
 app.get("/", function(req, res) {
   res.render("home", {
     pageName: "home",
-    data: null
+    meta: meta
   });
 });
 
 app.get("/styleguide", function(req, res) {
-  res.render("styleguide");
+  res.render("styleguide", {
+    pageName: "styleguide",
+    meta: meta
+  });
 });
 
 app.get("/portfolio", function(req, res) {
   res.render("project-overview", {
     pageName: "portfolio",
-    data: null
+    meta: meta
   });
 });
 
-app.get("/projects/:categorySlug", function(req, res) {
-  res.render("category-detail", {
-    data: null
+app.get("/portfolio/:categorySlug", function(req, res) {
+  let categorySlug = req.params.categorySlug;
+  res.render("project-overview", {
+    pageName: "portfolio",
+    meta: meta,
+    categorySlug: categorySlug
   });
 });
 
 app.get("/projects/:categorySlug/:projectSlug", function(req, res) {
   res.render("project-detail", {
-    data: null
+    meta: meta
   });
 });
 
