@@ -12,6 +12,16 @@ gulp.task("message", function() {
   return console.log("Gulp is running...");
 });
 
+// Move the fonts to the location the webserver expects
+gulp.task("fonts:copy", () => {
+  gulp.src(source + "/fonts/**/*").pipe(gulp.dest(destination + "/fonts"));
+});
+
+// Move the css to the location the webserver expects
+gulp.task("css:copy", () => {
+  gulp.src(source + "/css/**/*").pipe(gulp.dest(destination + "/css"));
+});
+
 // Move the images to the location the webserver expects
 gulp.task("img:copy", () => {
   gulp.src(source + "/img/**/*").pipe(gulp.dest(destination + "/img"));
@@ -36,12 +46,12 @@ gulp.task("js:minify", () => {
     .pipe(gulp.dest(destination + "/js"));
 });
 // Compile the sass to css and move the file to the location the webserver expects
-gulp.task("css:compile", () => {
-  gulp
-    .src(source + "/sass/main.scss")
-    .pipe(sass().on("error", sass.logError))
-    .pipe(gulp.dest(destination + "/css"));
-});
+// gulp.task("css:compile", () => {
+//   gulp
+//     .src(source + "/sass/main.scss")
+//     .pipe(sass().on("error", sass.logError))
+//     .pipe(gulp.dest(destination + "/css"));
+// });
 
 gulp.task("css:minify", () => {
   return gulp
@@ -50,11 +60,19 @@ gulp.task("css:minify", () => {
     .pipe(gulp.dest(destination + "/css/"));
 });
 
-gulp.task("default", ["message", "js:copy", "img:copy", "css:compile"]);
+gulp.task("default", [
+  "message",
+  "fonts:copy",
+  "js:copy",
+  "img:copy",
+  // "css:compile,"
+  "css:copy"
+]);
 gulp.task("build", [
   "message",
+  "fonts:copy",
   "img:compress",
-  "css:compile",
+  // "css:compile",
   "css:minify",
   "js:minify"
 ]);
