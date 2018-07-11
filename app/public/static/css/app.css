@@ -1,7 +1,7 @@
 body {
   margin: 0;
   width: 100%;
-  height: 100%;666
+  height: 100%;
 }
 h1 {
   font-size: 4rem;
@@ -115,7 +115,7 @@ header .container > div {
 }
 header .container > div > h1 {
   background: #ff4d61;
-  padding: 0.05em 0;
+  padding: 0.1em 0;
   padding-left: 1em;
   margin-bottom: 0;
   color: #fff;

@@ -55,7 +55,7 @@ gulp.task("js:minify", () => {
 
 gulp.task("css:minify", () => {
   return gulp
-    .src(destination + "/css/**/*")
+    .src(source + "/css/**/*")
     .pipe(cleanCSS({ compatibility: "ie8" }))
     .pipe(gulp.dest(destination + "/css/"));
 });
