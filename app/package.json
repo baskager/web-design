@@ -21,9 +21,16 @@
   },
   "homepage": "https://github.com/baskager/web-design#readme",
   "dependencies": {
-    "debug": "^3.1.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0"
+  },
+  "devDependencies": {
+    "debug": "^3.1.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.0"
   }
 }
