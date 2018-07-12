@@ -70,6 +70,22 @@ a:active {
   display: flex;
   flex-direction: row;
 }
+.flex.split {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.flex.split > section {
+  width: 45%;
+  margin-right: 2em;
+}
+.flex.split > section:first-child {
+  width: 65%;
+  margin-right: 2em;
+}
+.flex.split > section:nth-child(2) {
+  width: 25%;
+  margin-right: 2em;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -140,7 +156,7 @@ header.project .container > div > p {
 main {
   box-sizing: border-box;
   overflow: auto;
-  padding-bottom: 4em;
+  padding-bottom: 10em;
 }
 .featured {
   position: relative;
@@ -288,9 +304,6 @@ main {
   /* background: #ff4d6111; */
   padding-bottom: 6em;
 }
-.skills h2 {
-  text-align: center;
-}
 .skill-row {
   margin-top: 2em;
   list-style: none;
@@ -435,10 +448,11 @@ main .introduction p {
 }
 footer {
   background: #ff4d61;
-  height: 20em;
+  /* height: 20em; */
 }
 footer p {
   padding: 2em;
+  font-weight: bold;
 }
 footer p:first-child {
   text-align: center;
@@ -517,6 +531,12 @@ footer p:first-child {
 }
 .filters .cta-box {
   margin-top: 1em;
+}
+.projectDetail section {
+  margin-top: 2em;
+}
+.project-img img {
+  width: 100%;
 }
 .project-list {
   flex-wrap: wrap;
@@ -637,43 +657,33 @@ footer p:first-child {
 .projectDetail blockquote {
   margin-top: 2em;
 }
-.projectDetail .suggestion,
-.projectDetail .skills,
-.projectDetail .process {
-  box-sizing: border-box;
-  overflow: hidden;
-  padding: 4em;
-  margin-top: 2em;
-}
 .suggestion {
-  background: #000000;
+}
+.suggestion .btn {
+  display: block;
+  padding: 0.6em;
+  text-align: center;
+  margin: 0 auto;
+  width: 12em;
 }
 .projectDetail .process {
   color: #000;
   background: whitesmoke;
 }
-.projectDetail .skills {
-  background: #ff4d61;
+.projectDetail h2 {
+  /* margin-bottom: 0; */
 }
-
+.project-skills h2 {
+  margin-bottom: 0;
+}
+.project-skills h2:first-child {
+  margin-top: 0;
+}
 .projectDetail .tags {
-  list-style: none;
-  margin: 1em 0 0 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  color: #fff;
-  text-transform: lowercase;
 }
 .projectDetail .tags li {
-  background: #fff;
-  color: #ff4d61;
-  padding: 1em;
-  margin-left: 0.5em;
-  margin-top: 0.5em;
-  font-weight: bold;
-  font-size: 1.4em;
-  white-space: nowrap;
+  font-size: 1.2em;
+  line-height: 1.618em;
 }
 .projectDetail .tags .year {
   background: #556270;

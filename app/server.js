@@ -4,8 +4,8 @@ const express = require("express"),
   debug = require("debug")("kager-server"),
   exphbs = require("express-handlebars"),
   helpers = require("./lib/helpers"),
-  config = require("./config"),
-  port = config.port;
+  fs = require("fs");
+(config = require("./config")), (port = config.port);
 
 let handlebars = exphbs.create({
   helpers: helpers,
@@ -22,48 +22,61 @@ app.set("view engine", "handlebars");
 // Define directory from which static files are served
 app.use(express.static("public"));
 
-app.get("/", function(req, res) {
-  res.render("home", {
-    pageName: "home",
-    meta: meta
-  });
-});
+let projects;
+fs.readFile("projects.json", "utf8", function(err, data) {
+  if (err) throw err;
+  projects = JSON.parse(data);
 
-app.get("/styleguide", function(req, res) {
-  res.render("styleguide", {
-    pageName: "styleguide",
-    meta: meta
+  app.get("/", function(req, res) {
+    res.render("home", {
+      pageName: "home",
+      meta: meta
+    });
   });
-});
 
-app.get("/portfolio", function(req, res) {
-  res.render("project-overview", {
-    pageName: "portfolio",
-    meta: meta
+  app.get("/styleguide", function(req, res) {
+    res.render("styleguide", {
+      pageName: "styleguide",
+      meta: meta
+    });
   });
-});
 
-app.get("/portfolio/:categorySlug", function(req, res) {
-  let categorySlug = req.params.categorySlug;
-  res.render("project-overview", {
-    pageName: "portfolio",
-    meta: meta,
-    categorySlug: categorySlug
+  app.get("/portfolio", function(req, res) {
+    res.render("project-overview", {
+      pageName: "portfolio",
+      meta: meta,
+      categories: projects,
+      title: "Portfolio"
+    });
   });
-});
 
-app.get("/projects/:categorySlug/:projectSlug", function(req, res) {
-  res.render("project-detail", {
-    meta: meta
+  app.get("/portfolio/:categorySlug", function(req, res) {
+    let categorySlug = req.params.categorySlug;
+    let categories = [];
+    categories.push(projects[categorySlug]);
+
+    res.render("project-overview", {
+      pageName: "portfolio",
+      meta: meta,
+      categorySlug: categorySlug,
+      categories: categories,
+      title: categories[0].name + " portfolio"
+    });
   });
-});
 
-app.get("/contact", function(req, res) {
-  res.render("contact", {
-    meta: meta
+  app.get("/project/:categorySlug/:projectSlug", function(req, res) {
+    res.render("project-detail", {
+      meta: meta
+    });
   });
-});
 
-http.listen(port, function() {
-  console.log("Server listening on port " + port);
+  app.get("/contact", function(req, res) {
+    res.render("contact", {
+      meta: meta
+    });
+  });
+
+  http.listen(port, function() {
+    console.log("Server listening on port " + port);
+  });
 });

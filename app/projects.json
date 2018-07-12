@@ -1,0 +1,96 @@
+{
+  "programming": {
+    "name": "Programming",
+    "slug": "programming",
+    "thumbnailTitle": "I can program",
+    "description":
+      "The programming landscape continuously evolves. Luckily, I love learning new things. I like keeping my code clean, readable and fun. <br><br> I have listed two projects below that show my skill in this area. For both projects the source code is available on my <a target='_blank' href='https://github.com/baskager'>GitHub account</a>",
+    "projects": [
+      {
+        "name": "ADRmeta",
+        "slug": "adrmeta",
+        "shortDescription": "Facial similarity in portraits",
+        "longDescription":
+          "<h3>Facial similarity in portraits</h3><img src='https://lh3.googleusercontent.com/7qzT0pbclLB7y3fdS1GxzMnV7m3gD3gWnhlquhFaJSn6gNOvMmTUAX3wVlTzhMXIs8kM9IH8AsjHNVTs8em3XQI6uMY'><img src='https://lh3.googleusercontent.com/NrCcfeY0r2F3M2hIQe5SLDRofR2tVzeOH18VjflOYGj88v4clb4v2H_VgCZR4nJhYsxxH9ATzfkL2tRqOWEK5-gPVEE'><blockquote>The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.</blockquote>",
+        "thumbnailUri":
+          "https://camo.githubusercontent.com/452b4bfbfc46fdf719e63f1a592ab01173c0a289/687474703a2f2f7777772e6b616765722e696f2f75706c6f6164732f6164722d6f766572766965772e706e67",
+        "demoUri": "",
+        "repoUri": "",
+        "tags": ["javascript", "facial recognition", "api", "Ecmascript 6"],
+        "year": 2018,
+        "url": "/project/programming/adrmeta"
+      },
+      {
+        "name": "JS-API-CONNECT",
+        "slug": "js-api-connect",
+        "shortDescription": "ES6 library for easy API manipulation",
+        "longDescription": "no long description added yet",
+        "thumbnailUri":
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/1024px-JavaScript-logo.png",
+        "demoUri": false,
+        "repoUri": "",
+        "tags": ["javascript", "library", "api"],
+        "year": 2018,
+        "url": "/project/programming/adrmeta/js-api-connect"
+      }
+    ]
+  },
+  "design": {
+    "name": "Design",
+    "categoryUrlSlug": "design",
+    "thumbnailTitle": "I can design",
+    "description":
+      "Wow what a description <br><br> I have listed two projects below that show my skill in this area. For both projects the source code is available on my <a target='_blank' href='https://github.com/baskager'>GitHub account</a>",
+    "projects": [
+      {
+        "name": "CSS to the rescue",
+        "slug": "css-to-the-rescue",
+        "shortDescription": "Advanced CSS course",
+        "longDescription":
+          "<h3>Design process</h3><img src='https://camo.githubusercontent.com/5012036f4a3f5f2dac4f3ba153899ed0a34dad82/687474703a2f2f6b616765722e696f2f75706c6f6164732f6373737474722d322e706e67'> <H4>Research</h4><blockquote> <p>Users with mobility disabilities, including repetitive stress injuries, may not be able to use a mouse or trackpad. These people are able to access content through the use of a keyboard by pressing the \"tab\" or \"arrow\" keys, or through the use of alternative input devices such as single-switch input or mouth stick. As a result, the tab order should match the visual order, so keyboard-only users are able to logically navigate through site content.</p> <p>Long pages with lots of content should be broken up with anchor links (jump lists), allowing keyboard-only users to skip to relevant portions of the page without having to negotiate through other content. \"Skip to main content\" should be provided at the top of each page, so keyboard-only users won't have to tab through the page navigation in order to get the main content.</p> <p>For pages with local menus and multiple levels and sub-items, the menus should be configured so that all menu items can be accessed with the keyboard. Do not use elements that only activate when a user hovers over items with a mouse, as keyboard-only or screen readers users will not be able to activate them.</p> </blockquote>",
+        "thumbnailUri":
+          "https://camo.githubusercontent.com/92e7b4c3872686bc32c8b12d2cdaa1da4a53f33d/687474703a2f2f6b616765722e696f2f75706c6f6164732f6373737474722d312e706e67",
+        "demoUri": "https://baskager.github.io/cssttr/",
+        "repoUri": "https://github.com/baskager/web-design",
+        "tags": ["design", "css", "front-end"],
+        "year": 2018,
+        "url": "/project/design/css-to-the-rescue"
+      },
+      {
+        "name": "Exlusive Design",
+        "slug": "exclusive-design",
+        "shortDescription": "Advanced accessibility",
+        "longDescription":
+          "<h3>Design process</h3><img src='https://camo.githubusercontent.com/5012036f4a3f5f2dac4f3ba153899ed0a34dad82/687474703a2f2f6b616765722e696f2f75706c6f6164732f6373737474722d322e706e67'> <H4>Research</h4><blockquote> <p>Users with mobility disabilities, including repetitive stress injuries, may not be able to use a mouse or trackpad. These people are able to access content through the use of a keyboard by pressing the \"tab\" or \"arrow\" keys, or through the use of alternative input devices such as single-switch input or mouth stick. As a result, the tab order should match the visual order, so keyboard-only users are able to logically navigate through site content.</p> <p>Long pages with lots of content should be broken up with anchor links (jump lists), allowing keyboard-only users to skip to relevant portions of the page without having to negotiate through other content. \"Skip to main content\" should be provided at the top of each page, so keyboard-only users won't have to tab through the page navigation in order to get the main content.</p> <p>For pages with local menus and multiple levels and sub-items, the menus should be configured so that all menu items can be accessed with the keyboard. Do not use elements that only activate when a user hovers over items with a mouse, as keyboard-only or screen readers users will not be able to activate them.</p> </blockquote>",
+        "thumbnailUri": "/static/img/minor-site-screencap-big3.png",
+        "demoUri": "https://github.com/baskager/redesign-minor-web-dev",
+        "repoUri": "https://redesign-minor.kager.io/",
+        "tags": ["design", "accessibility", "front-end"],
+        "year": 2018,
+        "url": "/project/design/exclusive-design"
+      }
+    ]
+  },
+  "database": {
+    "name": "Database",
+    "categoryUrlSlug": "database",
+    "thumbnailTitle": "I like databases",
+    "description":
+      "Wow what a description <br><br> I have listed two databases below that I've worked with. For both projects the source code is available on my <a target='_blank' href='https://github.com/baskager'>GitHub account</a>",
+    "projects": [
+      {
+        "name": "ArangoDB",
+        "slug": "arangodb",
+        "shortDescription": "Key-value and graph database",
+        "longDescription": "No description added yet",
+        "thumbnailUri":
+          "https://yt3.ggpht.com/a-/AJLlDp3UfT6VRQPHFgY_AkPkYJRbjQYJDyQDE597uQ=s900-mo-c-c0xffffffff-rj-k-no",
+        "demoUri": false,
+        "repoUri": false,
+        "tags": ["arango", "database", "key-value", "graph"],
+        "year": 2018,
+        "url": "/project/database/arango"
+      }
+    ]
+  }
+}
