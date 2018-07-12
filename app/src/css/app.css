@@ -392,6 +392,9 @@ nav ul {
   grid-column: 6 / span 9;
   /* border-bottom: 0.4em solid #00000022; */
 }
+nav li {
+  background: white;
+}
 nav a {
   font-size: 1.2rem;
   background: #fff;
