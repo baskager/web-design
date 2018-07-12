@@ -1,0 +1,16 @@
+{
+  "short_name": "Kager.io",
+  "name": "Personal website for Bas Kager",
+  "icons": [
+    {
+      "src": "/static/img/icon.png",
+      "type": "image/png",
+      "sizes": "200x200"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#fff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#ff4d61"
+}
