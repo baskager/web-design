@@ -713,27 +713,35 @@ article h4 {
   }
 }
 @media (max-width: 75em) {
-  .thumbnail-row {
-    height: 40vh;
-  }
 }
 @media (max-width: 50em) {
+  nav {
+    bottom: 0;
+    top: auto;
+    background: #fff;
+    border-top: 0.2em solid #00000044;
+  }
+  nav .grid {
+    display: block;
+  }
+  nav .grid ul {
+    margin: 0;
+    padding: 0;
+    justify-content: space-around;
+  }
   .filters input[type="search"] {
     width: 90%;
     margin: 1em 5% 0 5%;
   }
-  .thumbnail-row {
-    margin-top: 0;
-    flex-direction: column;
-    height: auto;
-  }
   /* .thumbnail-row:first-child {
         margin-top: 6em;
     } */
-  .thumbnail {
+  .project-list .thumbnail {
     /* flex: 0; */
-    /* height: 10em; */
+    height: 15em;
     margin: 2em 0 0 0;
+    width: 100%;
+    min-width: 100%;
   }
   .row,
   .row-wide {
