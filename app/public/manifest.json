@@ -3,9 +3,14 @@
   "name": "Personal website for Bas Kager",
   "icons": [
     {
-      "src": "/static/img/icon.png",
+      "src": "/static/img/icon-192.png",
       "type": "image/png",
-      "sizes": "200x200"
+      "sizes": "192x192"
+    },
+    {
+      "src": "/static/img/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": "/",
