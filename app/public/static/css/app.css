@@ -20,6 +20,7 @@ p {
   line-height: 1.618em;
 }
 .offsetBackground {
+  animation: 0.4s ease-out 0s 1 offsetBackgroundAnimation;
   box-shadow: -15px -15px 0px 0px #ff4d6177;
   transition: all 0.3s ease-in-out 0.2s;
   transform: none;
@@ -114,6 +115,7 @@ header .container > div {
   grid-row: 1;
 }
 header .container > div > h1 {
+  animation: 0.4s ease-out 0s 1 slideInFromRight;
   background: #ff4d61;
   padding: 0.1em 0;
   padding-left: 1em;
@@ -216,6 +218,7 @@ main {
   box-shadow: 0px 0px 0px 0px #0085b677;
 }
 .skill-chart .bar .progress {
+  animation: 1s ease-out 0s 1 fillProgress;
   display: block;
   box-sizing: border-box;
   background: #0085b6;
@@ -512,16 +515,20 @@ footer p:first-child {
 .filters .cta-box {
   margin-top: 1em;
 }
-.thumbnail-row {
+.project-list {
+  flex-wrap: wrap;
+  justify-content: space-between;
   padding: 0;
-  margin-top: 2em;
-  height: 40vh;
-  /* padding: 1em; */
-  transition: 1s;
-  list-style: none;
 }
-.thumbnail-row.oneResult {
-  width: 50%;
+.project-list .thumbnail {
+  width: calc(50% - 4em);
+  min-width: calc(50% - 4em);
+  margin-right: 4em;
+  margin-bottom: 4em;
+  height: 40vh;
+}
+.project-list .thumbnail:nth-child(even) {
+  margin-right: 0;
 }
 /* .thumbnail-row:first-child {
     margin-top: 8em; 
@@ -530,7 +537,6 @@ footer p:first-child {
   opacity: 1;
   transition: 0.4s;
   background: whitesmoke;
-  margin: 0 2em 0 2em;
   position: relative;
   overflow: hidden;
   flex: 1;
@@ -682,6 +688,26 @@ article h4 {
 }
 .clBoth {
   clear: both;
+}
+@keyframes offsetBackgroundAnimation {
+  0% {
+    box-shadow: 0px 0px 0px 0px #ff4d6177;
+  }
+}
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(2%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fillProgress {
+  0% {
+    width: 30%;
+  }
 }
 @media (max-width: 75em) {
   .thumbnail-row {
