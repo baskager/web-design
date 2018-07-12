@@ -76,3 +76,11 @@ gulp.task("build", [
   "css:minify",
   "js:minify"
 ]);
+
+gulp.task("watch", () => {
+  gulp.watch("src/js/**/*.js", ["js:copy"]);
+  gulp.watch("src/css/**/*.css", ["css:copy"]);
+  gulp.watch("src/img/**/*", ["img:copy"]);
+  gulp.watch("src/fonts/**/*", ["fonts:copy"]);
+  // gulp.watch("src/scss/**/*.scss", ["css:compile"]);
+});
