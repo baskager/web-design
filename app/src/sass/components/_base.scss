@@ -89,3 +89,59 @@ a:focus {
 .center {
   margin: 0 auto;
 }
+main {
+  box-sizing: border-box;
+  overflow: auto;
+  padding-bottom: 10em;
+}
+.cta-box {
+  box-sizing: border-box;
+  overflow: none;
+}
+.cta-box.small {
+  width: 50%;
+  margin: 0 auto;
+}
+.cta-box.recessed {
+  margin-top: -2.2em;
+}
+.cta-box .eq {
+  flex-basis: 0;
+  flex-grow: 1;
+  margin: 0.4em 4%;
+  text-align: center;
+}
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  color: black;
+  padding: 2em;
+  overflow: hidden;
+  line-height: 130%;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 300;
+  box-sizing: border-box;
+}
+blockquote.fancy:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+.hide {
+  display: none;
+}
+.clBoth {
+  clear: both;
+}

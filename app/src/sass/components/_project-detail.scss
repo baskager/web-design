@@ -1,0 +1,44 @@
+.projectDetail > img {
+  width: 75%;
+  height: 100%;
+  margin: 0 auto;
+  display: block;
+  border: 0.4em solid #ffffff44;
+  max-height: 60vh;
+  filter: brightness(100%);
+}
+.projectDetail blockquote {
+  margin-top: 2em;
+}
+.suggestion {
+}
+.suggestion .btn {
+  display: block;
+  padding: 0.6em;
+  text-align: center;
+  margin: 0 auto;
+  width: 12em;
+}
+.projectDetail .process {
+  color: #000;
+  background: whitesmoke;
+}
+.projectDetail h2 {
+  /* margin-bottom: 0; */
+}
+.project-skills h2 {
+  margin-bottom: 0;
+}
+.project-skills h2:first-child {
+  margin-top: 0;
+}
+.projectDetail .tags {
+}
+.projectDetail .tags li {
+  font-size: 1.2em;
+  line-height: 1.618em;
+}
+.projectDetail .tags .year {
+  background: #556270;
+  text-transform: uppercase;
+}

@@ -1,0 +1,52 @@
+nav {
+  position: fixed;
+  z-index: 9999999;
+  width: 100%;
+  top: 0;
+}
+nav ul {
+  list-style-type: none;
+  grid-column: 6 / span 9;
+  /* border-bottom: 0.4em solid #00000022; */
+}
+nav li {
+  background: white;
+}
+nav a {
+  font-size: 1.2rem;
+  background: #fff;
+  color: black;
+  font-weight: 700;
+  display: block;
+  padding: 1em;
+  border: 0;
+}
+nav .current {
+  border-bottom: 0.25em solid #0085b6;
+  color: #0085b6;
+}
+nav a:hover,
+nav a:focus {
+  color: #0085b6;
+  background: #fff;
+}
+nav a:focus {
+  background: #0085b6;
+  color: #fff;
+}
+@media (max-width: 50em) {
+  nav {
+    bottom: 0;
+    top: auto;
+    background: #fff;
+    border-top: 0.2em solid #00000044;
+  }
+  nav .grid {
+    display: block;
+  }
+  nav .grid ul {
+    margin: 0;
+    padding: 0;
+    justify-content: space-around;
+  }
+}

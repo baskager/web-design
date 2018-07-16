@@ -1,0 +1,20 @@
+@keyframes offsetBackgroundAnimation {
+  0% {
+    box-shadow: 0px 0px 0px 0px #ff4d6177;
+  }
+}
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(2%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fillProgress {
+  0% {
+    width: 30%;
+  }
+}

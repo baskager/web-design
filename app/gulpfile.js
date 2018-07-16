@@ -18,9 +18,9 @@ gulp.task("fonts:copy", () => {
 });
 
 // Move the css to the location the webserver expects
-gulp.task("css:copy", () => {
-  gulp.src(source + "/css/**/*").pipe(gulp.dest(destination + "/css"));
-});
+// gulp.task("css:copy", () => {
+//   gulp.src(source + "/css/**/*").pipe(gulp.dest(destination + "/css"));
+// });
 
 // Move the images to the location the webserver expects
 gulp.task("img:copy", () => {
@@ -46,16 +46,16 @@ gulp.task("js:minify", () => {
     .pipe(gulp.dest(destination + "/js"));
 });
 // Compile the sass to css and move the file to the location the webserver expects
-// gulp.task("css:compile", () => {
-//   gulp
-//     .src(source + "/sass/main.scss")
-//     .pipe(sass().on("error", sass.logError))
-//     .pipe(gulp.dest(destination + "/css"));
-// });
+gulp.task("css:compile", () => {
+  gulp
+    .src(source + "/sass/main.scss")
+    .pipe(sass().on("error", sass.logError))
+    .pipe(gulp.dest(destination + "/css"));
+});
 
 gulp.task("css:minify", () => {
   return gulp
-    .src(source + "/css/**/*")
+    .src(destination + "/css/**/*")
     .pipe(cleanCSS({ compatibility: "ie8" }))
     .pipe(gulp.dest(destination + "/css/"));
 });
@@ -65,22 +65,17 @@ gulp.task("default", [
   "fonts:copy",
   "js:copy",
   "img:copy",
-  // "css:compile,"
-  "css:copy"
+  "css:compile"
 ]);
 gulp.task("build", [
   "message",
   "fonts:copy",
   "img:compress",
-  // "css:compile",
+  "css:compile",
   "css:minify",
   "js:minify"
 ]);
 
 gulp.task("watch", () => {
-  gulp.watch("src/js/**/*.js", ["js:copy"]);
-  gulp.watch("src/css/**/*.css", ["css:copy"]);
-  gulp.watch("src/img/**/*", ["img:copy"]);
-  gulp.watch("src/fonts/**/*", ["fonts:copy"]);
-  // gulp.watch("src/scss/**/*.scss", ["css:compile"]);
+  gulp.watch(source + "/**/*", ["default"]);
 });
