@@ -66,12 +66,14 @@ fs.readFile("projects.json", "utf8", function(err, data) {
 
   app.get("/project/:categorySlug/:projectSlug", function(req, res) {
     res.render("project-detail", {
+      pageName: "portfolio",
       meta: meta
     });
   });
 
   app.get("/contact", function(req, res) {
     res.render("contact", {
+      pageName: "contact",
       meta: meta
     });
   });
