@@ -1,0 +1,19 @@
+.btn {
+  display: inline-block;
+  margin: 0 auto;
+  background: $btn-cta-background;
+  border-radius: 2em;
+  color: $btn-cta-foreground;
+  border: 0;
+  padding: 0.8em 0.8em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: 0.15s;
+  cursor: pointer;
+}
+.btn:hover,
+.btn:focus {
+  background: $btn-cta-hover-background;
+  color: $btn-cta-hover-foreground;
+  transform: scale(1.1);
+}

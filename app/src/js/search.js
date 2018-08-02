@@ -9,7 +9,7 @@
   var input = document.querySelector("#search");
   var mainContainer = document.querySelector("#main");
   var thumbnails = document.querySelectorAll(".thumbnail");
-  var thumbnailRows = document.querySelectorAll(".thumbnail-row");
+  var list = document.querySelectorAll(".project-list");
 
   input.addEventListener("focus", function(event) {
     for (var i = 0; i <= thumbnails.length - 1; i++) {
@@ -24,8 +24,8 @@
       main.removeChild(searchResults[i]);
     }
 
-    for (var i = 0; i <= thumbnailRows.length - 1; i++) {
-      thumbnailRows[i].classList.remove("hide");
+    for (var i = 0; i <= thumbnails.length - 1; i++) {
+      thumbnails[i].classList.remove("hide");
     }
 
     for (var i = 0; i <= thumbnails.length - 1; i++) {
@@ -42,9 +42,9 @@
       var title = thumbnail.querySelector("#title").innerText.toUpperCase();
       // var tags = thumbnail.querySelectorAll('#tags');
 
-      for (var a = 0; a <= tags.length - 1; a++) {
-        console.log(tags[a].innerText);
-      }
+      // for (var a = 0; a <= tags.length - 1; a++) {
+      //   console.log(tags[a].innerText);
+      // }
 
       if (title.indexOf(filter) > -1 || title.indexOf(filter) > -1) {
         thumbnail.classList.remove("hide");
@@ -55,9 +55,9 @@
       // thumbnailRows[i].classList.add("hide");
     }
     if (results === 1) {
-      thumbnailRows[0].classList.add("oneResult");
+      list[0].classList.add("oneResult");
     } else {
-      thumbnailRows[0].classList.remove("oneResult");
+      list[0].classList.remove("oneResult");
     }
     // var newRow = document.createElement("section");
     // newRow.classList.add("center", "flex", "thumbnail-row", "searchResult", "oneResult");

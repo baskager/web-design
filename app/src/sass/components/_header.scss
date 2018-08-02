@@ -1,5 +1,5 @@
 header {
-  margin-top: 5em;
+  margin-top: 4em;
   position: relative;
   overflow: auto;
   margin-bottom: 1em;
@@ -16,6 +16,7 @@ header.project .container {
   margin-bottom: 2em;
 }
 header .container > img {
+  margin-top: 1em;
   box-sizing: border-box;
   overflow: none;
   width: 100%;

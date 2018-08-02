@@ -67,25 +67,6 @@ a:focus {
 a:focus {
   background: #0085b644; }
 
-.btn {
-  display: inline-block;
-  margin: 0 auto;
-  background: #0085b6;
-  border-radius: 2em;
-  color: #fff;
-  border: 0;
-  padding: 0.4em 0.8em;
-  font-size: 1.2rem;
-  font-weight: 700;
-  transition: 0.2s;
-  cursor: pointer; }
-
-.btn:hover,
-.btn:focus {
-  background: #0bb4c1;
-  color: #fff;
-  transform: scale(1.1); }
-
 .flex {
   display: flex;
   flex-direction: row; }
@@ -169,8 +150,27 @@ blockquote:after {
 .clBoth {
   clear: both; }
 
+.btn {
+  display: inline-block;
+  margin: 0 auto;
+  background: #0085b6;
+  border-radius: 2em;
+  color: #fff;
+  border: 0;
+  padding: 0.8em 0.8em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: 0.15s;
+  cursor: pointer; }
+
+.btn:hover,
+.btn:focus {
+  background: #0bb4c1;
+  color: #fff;
+  transform: scale(1.1); }
+
 header {
-  margin-top: 5em;
+  margin-top: 4em;
   position: relative;
   overflow: auto;
   margin-bottom: 1em; }
@@ -187,6 +187,7 @@ header.project .container {
   margin-bottom: 2em; }
 
 header .container > img {
+  margin-top: 1em;
   box-sizing: border-box;
   overflow: none;
   width: 100%;
@@ -228,6 +229,9 @@ header.project .container > div > p {
   flex: 1;
   margin: 0 4em;
   min-width: 24em; }
+
+.about section h2 {
+  margin-top: 0.4em; }
 
 .story p {
   padding: 0 0.4em;
@@ -316,11 +320,15 @@ nav {
   position: fixed;
   z-index: 9999999;
   width: 100%;
-  top: 0; }
+  top: 0;
+  background: white;
+  border-bottom: 0.25em solid #e1e1e1;
+  height: 4em; }
 
 nav ul {
   list-style-type: none;
   grid-column: 6 / span 9;
+  margin: 0;
   /* border-bottom: 0.4em solid #00000022; */ }
 
 nav li {
@@ -333,7 +341,9 @@ nav a {
   font-weight: 700;
   display: block;
   padding: 1em;
-  border: 0; }
+  border: 0;
+  border-bottom: 0.25em solid #e1e1e1;
+  height: 1.35em; }
 
 nav .current {
   border-bottom: 0.25em solid #0085b6;
@@ -369,6 +379,13 @@ nav a:focus {
   0% {
     opacity: 0;
     transform: translateX(2%); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
   100% {
     opacity: 1;
     transform: translateX(0); } }
@@ -468,14 +485,16 @@ footer p:first-child {
 .project-list {
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 0; }
+  padding: 0;
+  align-items: flex-start; }
 
 .project-list .thumbnail {
   width: calc(50% - 4em);
   min-width: calc(50% - 4em);
   margin-right: 4em;
   margin-bottom: 4em;
-  height: 40vh; }
+  height: 40vh;
+  align-self: flex-start; }
 
 .project-list .thumbnail:nth-child(even) {
   margin-right: 0; }
@@ -543,7 +562,8 @@ footer p:first-child {
   background: whitesmoke;
   position: relative;
   overflow: hidden;
-  flex: 1; }
+  flex: 1;
+  animation: 0.2s ease-out 0s 1 fadeIn; }
 
 .thumbnail.faded {
   opacity: 0.5; }

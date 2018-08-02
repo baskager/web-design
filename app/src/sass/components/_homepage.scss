@@ -7,6 +7,9 @@
   margin: 0 4em;
   min-width: 24em;
 }
+.about section h2 {
+  margin-top: 0.4em;
+}
 .story p {
   padding: 0 0.4em;
   margin-top: 0;
@@ -19,7 +22,7 @@
 .skill-chart .bar {
   position: relative;
   display: block;
-  background: #e1e1e1;
+  background: $shadow-color;
   transition: 0.2s;
   font-weight: bold;
   font-size: 1.2em;

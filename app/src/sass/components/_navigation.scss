@@ -3,10 +3,14 @@ nav {
   z-index: 9999999;
   width: 100%;
   top: 0;
+  background: white;
+  border-bottom: 0.25em solid $shadow-color;
+  height: 4em;
 }
 nav ul {
   list-style-type: none;
   grid-column: 6 / span 9;
+  margin: 0;
   /* border-bottom: 0.4em solid #00000022; */
 }
 nav li {
@@ -20,18 +24,20 @@ nav a {
   display: block;
   padding: 1em;
   border: 0;
+  border-bottom: 0.25em solid $shadow-color;
+  height: 1.35em;
 }
 nav .current {
-  border-bottom: 0.25em solid #0085b6;
-  color: #0085b6;
+  border-bottom: 0.25em solid $accent-color;
+  color: $accent-color;
 }
 nav a:hover,
 nav a:focus {
-  color: #0085b6;
+  color: $accent-color;
   background: #fff;
 }
 nav a:focus {
-  background: #0085b6;
+  background: $accent-color;
   color: #fff;
 }
 @media (max-width: 50em) {
