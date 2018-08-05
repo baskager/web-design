@@ -14,59 +14,43 @@
   input.addEventListener("focus", function(event) {
     for (var i = 0; i <= thumbnails.length - 1; i++) {
       thumbnails[i].classList.add("faded");
+      thumbnails[i].classList.add("show");
     }
   });
 
   input.addEventListener("blur", function(event) {
-    var searchResults = document.querySelectorAll(".searchResult");
-
-    for (var i = 0; i <= searchResults.length - 1; i++) {
-      main.removeChild(searchResults[i]);
-    }
-
-    for (var i = 0; i <= thumbnails.length - 1; i++) {
-      thumbnails[i].classList.remove("hide");
-    }
-
     for (var i = 0; i <= thumbnails.length - 1; i++) {
       thumbnails[i].classList.remove("faded");
     }
   });
 
   input.addEventListener("input", function(event) {
-    filter = input.value.toUpperCase();
-    results = 0;
+    for (var i = 0; i <= thumbnails.length - 1; i++) {
+      thumbnails[i].classList.add("faded");
+      thumbnails[i].classList.add("show");
+    }
+
+    var filter = input.value.toLowerCase();
+    var results = 0;
+    var lastTitle = "";
 
     for (var i = 0; i <= thumbnails.length - 1; i++) {
       var thumbnail = thumbnails[i];
-      var title = thumbnail.querySelector("#title").innerText.toUpperCase();
-      // var tags = thumbnail.querySelectorAll('#tags');
-
-      // for (var a = 0; a <= tags.length - 1; a++) {
-      //   console.log(tags[a].innerText);
-      // }
+      var title = thumbnail.querySelector("#title").innerText.toLowerCase();
 
       if (title.indexOf(filter) > -1 || title.indexOf(filter) > -1) {
         thumbnail.classList.remove("hide");
+        lastIndex = i;
         results++;
       } else {
         thumbnail.classList.add("hide");
       }
-      // thumbnailRows[i].classList.add("hide");
     }
+
     if (results === 1) {
-      list[0].classList.add("oneResult");
+      thumbnails[lastIndex].classList.remove("faded");
     } else {
-      list[0].classList.remove("oneResult");
+      thumbnails[lastIndex].classList.add("faded");
     }
-    // var newRow = document.createElement("section");
-    // newRow.classList.add("center", "flex", "thumbnail-row", "searchResult", "oneResult");
-
-    // var clone = thumbnails[1].cloneNode(true);
-    // clone.classList.remove("faded");
-
-    // newRow.appendChild(clone);
-
-    // mainContainer.appendChild(newRow);
   });
 })();
