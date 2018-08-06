@@ -30,7 +30,7 @@ header .container > div {
 }
 header .container > div > h1 {
   animation: 0.4s ease-out 0s 1 slideInFromRight;
-  background: #ff4d61;
+  background: $primary-color;
   padding: 0.1em 0;
   padding-left: 1em;
   margin-bottom: 0;

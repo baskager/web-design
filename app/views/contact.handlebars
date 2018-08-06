@@ -1,6 +1,13 @@
 {{> nav currentPage=pageName}} {{> header-small title="Contact" summary="This page is not finished yet" }}
 <main>
-    <section class="container">
-        <h2>This page is not finished yet, sorry!</h2>
+    <section class="container-small contact">
+        <form>
+            <fieldset class="flex">
+                <input placeholder="What is your name?" name="name" type="text" />
+                <textarea placeholder="That's a lovely name. You can write your message here :)" name="message"></textarea>
+                <input placeholder="Just need your email adress and you’re all set!" name="email" type="email" />
+            </fieldset>
+            <button class="btn">send message</button>
+        </form>
     </section>
 </main> {{> footer }}
