@@ -31,7 +31,7 @@
         "repoUri": "",
         "tags": ["javascript", "library", "api"],
         "year": 2018,
-        "url": "/project/programming/adrmeta/js-api-connect"
+        "url": "/project/programming/js-api-connect"
       }
     ]
   },
@@ -57,7 +57,7 @@
         "url": "/project/design/css-to-the-rescue"
       },
       {
-        "name": "Exlusive Design",
+        "name": "Exclusive Design",
         "slug": "exclusive-design",
         "shortDescription": "Advanced accessibility",
         "longDescription":
