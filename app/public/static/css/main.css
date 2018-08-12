@@ -55,6 +55,11 @@ p {
   max-width: 80rem;
   width: 95%; }
 
+.container-small {
+  margin: 0 auto;
+  max-width: 40rem;
+  width: 95%; }
+
 a {
   color: #0085b6;
   text-decoration: none;
@@ -418,7 +423,8 @@ form {
     border: 1px solid #0085b677;
     font-family: inherit;
     font-size: 1.2rem;
-    line-height: 1.618em; }
+    line-height: 1.618em;
+    width: 90%; }
   form ::placeholder {
     color: #000;
     opacity: 1; }
