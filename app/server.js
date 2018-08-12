@@ -4,8 +4,18 @@ const express = require("express"),
   debug = require("debug")("kager-server"),
   exphbs = require("express-handlebars"),
   helpers = require("./lib/helpers"),
-  fs = require("fs");
-(config = require("./config")), (port = config.port);
+  fs = require("fs"),
+  bodyParser = require("body-parser"),
+  config = require("./config"),
+  port = config.port || 3000,
+  urlencodedParser = bodyParser.urlencoded({ extended: false }),
+  querystring = require("querystring"),
+  components = require("./components")(config),
+  validator = new components.Validator();
+
+const contactFormMap = new components.FormMapper(
+  "views/partials/forms/contact.handlebars"
+);
 
 let handlebars = exphbs.create({
   helpers: helpers,
@@ -78,7 +88,65 @@ fs.readFile("projects.json", "utf8", function(err, data) {
     });
   });
 
+  app.post("/contact/send", urlencodedParser, function(req, res) {
+    let params = {};
+    let errors = [];
+
+    contactFormMap
+      .get()
+      .then(map => {
+        validator.validateInputs(map, req.body);
+      })
+      .catch(error => {
+        // redirectWithError();
+        console.dir(error);
+      });
+
+    for (param in req.body) {
+      let value = req.body[param];
+
+      if (value !== "") params[param] = this.addslashes(value);
+    }
+
+    if (params.name && params.message && params.email) {
+      // console.dir(req.body);
+      let status = {};
+      status.title = "You made it!";
+      status.message =
+        "Your message has been delivered safely and you can expect a reply shortly.";
+
+      res.render("contact-landing", {
+        pageName: "contact",
+        meta: meta,
+        status: status
+      });
+    } else {
+      res.writeHead(301, {
+        Location: encodeURI(
+          "/contact?error=& \
+          name=" +
+            req.body.name +
+            "& \
+          message=" +
+            req.body.message +
+            "& \
+          email=" +
+            req.body.email
+        )
+      });
+      res.end();
+    }
+
+    // let query = querystring.stringify(params);
+
+    // console.dir(query);
+  });
+
   http.listen(port, function() {
     console.log("Server listening on port http://localhost:" + port);
   });
 });
+
+addslashes = str => {
+  return (str + "").replace(/[\\"']/g, "\\$&").replace(/\u0000/g, "\\0");
+};

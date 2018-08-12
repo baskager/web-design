@@ -1,0 +1,12 @@
+<form method="POST" action="/contact/send" v-name="contact" v-version="0.1" v-cache="true">
+    {{#if error}}
+    <p>{{error.message}}</p>
+    {{/if}}
+    <fieldset class="flex">
+        <input placeholder="What is your name?" name="name" type="text" v-min="2" v-max="64" v-map="true" />
+        <textarea placeholder="That 's a lovely name. You can write your message here :)" name="message" v-min="8" v-max="512" v-map="true"></textarea>
+        <input placeholder="Just need your email adress and you’re all set!" name="email" type="email" v-min="6" v-max="128" v-map="true"
+        />
+    </fieldset>
+    <button class="btn">send message</button>
+</form>
