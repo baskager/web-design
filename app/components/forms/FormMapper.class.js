@@ -43,6 +43,7 @@ module.exports = function(config, cache) {
             .then(map => {
               if (map.isCache) {
                 cache.add(this.constructor.name, this.templateFile, map);
+                cache.saveToFile();
               }
               resolve(map);
             })

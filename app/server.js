@@ -15,6 +15,10 @@ const express = require("express"),
 const contactFormMap = new components.FormMapper(
   "views/partials/forms/contact.handlebars"
 );
+// Cache the contact form on server (re)start
+// contactFormMap.get().then(map => {
+//   console.info("Contact form validation map saved to cache");
+// });
 
 let handlebars = exphbs.create({
   helpers: {
@@ -101,7 +105,6 @@ fs.readFile("projects.json", "utf8", function(err, data) {
      * AJAX requests and a landing page on non-AJAX requests
     */
   app.post("/contact", urlencodedParser, function(req, res) {
-    console.log("incoming request");
     // Get the form mapping for the contact form (contains validation rules)
     contactFormMap
       .get()
@@ -140,7 +143,3 @@ fs.readFile("projects.json", "utf8", function(err, data) {
     console.log("Server listening on port http://localhost:" + port);
   });
 });
-
-addslashes = str => {
-  return (str + "").replace(/[\\"']/g, "\\$&").replace(/\u0000/g, "\\0");
-};

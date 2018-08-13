@@ -2,8 +2,20 @@ const fs = require("fs");
 module.exports = function(config) {
   class Cache {
     constructor() {
-      let cacheFromFile = this.loadFromFile("main.json");
-      this.components = {};
+      let cacheFromFile = this.readFromFile();
+      if (cacheFromFile) {
+        console.info(
+          " " +
+            Object.keys(cacheFromFile).length +
+            " components are cached, initialising cache..."
+        );
+        this.components = cacheFromFile;
+      } else {
+        console.info(
+          "No cache is available, starting server with empty cache..."
+        );
+        this.components = {};
+      }
     }
 
     get(componentName, id) {
@@ -12,17 +24,39 @@ module.exports = function(config) {
         this.components[componentName][id]
       ) {
         return this.components[componentName][id];
-      }
+      } else return null;
     }
 
     getAll() {
       return this.components;
     }
+    /*
+     * Date: 12-08-2018
+     * Author: Bas Kager
+     * 
+     * Reads cache from a file
+    */
+    readFromFile(fileName = config.defaultFile) {
+      const path = config.location + fileName;
+      console.info("Reading cache from: " + path);
+      if (fs.existsSync(path)) {
+        return JSON.parse(fs.readFileSync(path, "utf8"));
+      } else return null;
+    }
+    /*
+     * Date: 12-08-2018
+     * Author: Bas Kager
+     * 
+     * Saves cache to a file
+    */
+    saveToFile(fileName = config.defaultFile) {
+      const path = config.location + fileName;
+      console.info("Writing cache to: " + path);
 
-    loadFromFile(fileName) {}
-
-    saveToFile(fileName) {
-      console.log();
+      fs.writeFile(path, JSON.stringify(this.components), "utf8", err => {
+        if (err) throw err;
+        console.info("Cache written to: " + path);
+      });
     }
     /*
      * Date: 12-08-2018

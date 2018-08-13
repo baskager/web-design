@@ -5,7 +5,8 @@ module.exports = {
   },
   validator: {},
   cache: {
-    location: "/cache",
+    location: "cache/",
+    defaultFile: "default.json",
     save: true
   }
 };
