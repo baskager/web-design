@@ -3,7 +3,6 @@ const express = require("express"),
   http = require("http").Server(app),
   debug = require("debug")("kager-server"),
   exphbs = require("express-handlebars"),
-  helpers = require("./lib/helpers"),
   fs = require("fs"),
   bodyParser = require("body-parser"),
   config = require("./config"),
@@ -18,7 +17,14 @@ const contactFormMap = new components.FormMapper(
 );
 
 let handlebars = exphbs.create({
-  helpers: helpers,
+  helpers: {
+    equal: function(a, b, options) {
+      if (a === b) {
+        return options.fn(this);
+      }
+      return options.inverse(this);
+    }
+  },
   defaultLayout: "main"
 });
 
@@ -87,59 +93,47 @@ fs.readFile("projects.json", "utf8", function(err, data) {
       meta: meta
     });
   });
-
-  app.post("/contact/send", urlencodedParser, function(req, res) {
-    let params = {};
-    let errors = [];
-
+  /*
+     * Date: 13-08-2018
+     * Author: Bas Kager
+     * 
+     * Receiving endpoint for contact form data. Returns JSON on 
+     * AJAX requests and a landing page on non-AJAX requests
+    */
+  app.post("/contact", urlencodedParser, function(req, res) {
+    console.log("incoming request");
+    // Get the form mapping for the contact form (contains validation rules)
     contactFormMap
       .get()
       .then(map => {
-        validator.validateInputs(map, req.body);
+        // Compare the request body with the validation rules on the inputs
+        let validatedData = validator.validateInputs(map, req.body);
+        // Check if the incoming request is an XMLHTTP Request
+        if (req.xhr) {
+          res.setHeader("Content-Type", "application/json");
+          res.send(JSON.stringify(validatedData));
+        } else {
+          res.render("contact", {
+            pageName: "contact",
+            meta: meta,
+            validatedData: validatedData
+          });
+        }
       })
       .catch(error => {
-        // redirectWithError();
-        console.dir(error);
+        // Check if the incoming request is an XMLHTTP Request
+        if (req.xhr) {
+          res.status(500);
+          res.setHeader("Content-Type", "application/json");
+          res.send(JSON.stringify(error));
+        } else {
+          res.render("contact", {
+            pageName: "contact",
+            meta: meta,
+            error: error
+          });
+        }
       });
-
-    for (param in req.body) {
-      let value = req.body[param];
-
-      if (value !== "") params[param] = this.addslashes(value);
-    }
-
-    if (params.name && params.message && params.email) {
-      // console.dir(req.body);
-      let status = {};
-      status.title = "You made it!";
-      status.message =
-        "Your message has been delivered safely and you can expect a reply shortly.";
-
-      res.render("contact-landing", {
-        pageName: "contact",
-        meta: meta,
-        status: status
-      });
-    } else {
-      res.writeHead(301, {
-        Location: encodeURI(
-          "/contact?error=& \
-          name=" +
-            req.body.name +
-            "& \
-          message=" +
-            req.body.message +
-            "& \
-          email=" +
-            req.body.email
-        )
-      });
-      res.end();
-    }
-
-    // let query = querystring.stringify(params);
-
-    // console.dir(query);
   });
 
   http.listen(port, function() {

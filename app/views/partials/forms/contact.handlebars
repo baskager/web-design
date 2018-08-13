@@ -1,6 +1,12 @@
-<form method="POST" action="/contact/send" v-name="contact" v-version="0.1" v-cache="true">
-    {{#if error}}
-    <p>{{error.message}}</p>
+<form method="POST" action="/contact" v-name="contact" v-version="0.1" v-cache="true">
+    {{#if validatedData.isError}}
+    <div class="errors">
+        <h3>The following errors occured</h3>
+        <ul>
+            {{#each validatedData.inputs}} {{#each errors}}
+            <li>{{this}}</li> {{/each}} {{/each}}
+        </ul>
+    </div>
     {{/if}}
     <fieldset class="flex">
         <input placeholder="What is your name?" name="name" type="text" v-min="2" v-max="64" v-map="true" />

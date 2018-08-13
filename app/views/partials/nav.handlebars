@@ -2,14 +2,14 @@
     <div class="container grid">
         <ul class="flex">
             <li>
-                <a class="{{#if pageName compare='home' compareWith=pageName}}current{{/if}}" href="/">home</a>
+                <a class="{{#equal pageName 'home'}}current{{/equal}}" href="/">home</a>
             </li>
             <li>
-                <a class="{{#if pageName compare='portfolio' compareWith=pageName}}current{{/if}}" href="/portfolio">portfolio</a>
+                <a class="{{#equal pageName 'portfolio'}}current{{/equal}}" href="/portfolio">portfolio</a>
             </li>
 
             <li>
-                <a class="{{#if pageName compare='contact' compareWith=pageName}}current{{/if}}" href="/contact">contact</a>
+                <a class="{{#equal pageName 'contact'}}current{{/equal}}" href="/contact">contact</a>
             </li>
         </ul>
     </div>
