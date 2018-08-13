@@ -12,59 +12,72 @@ module.exports = function(config, cache) {
   class Validator {
     constructor() {}
 
-    _isEmpty(value, returnData) {
+    _isEmpty(value, map, returnData) {
       if (validator.isEmpty(value)) {
-        returnData[param].errors.push("Input for '" + param + "' was empty");
-        returnData[param].valid = false;
+        returnData.inputs[map.name].errors.push(
+          "Input for '" + map.name + "' was empty"
+        );
+        returnData.isError = true;
       }
     }
 
-    _isEmail(value, returnData) {
+    _isEmail(value, map, returnData) {
       if (!validator.isEmail(value)) {
-        returnData[param].errors.push(
+        returnData.inputs[map.name].errors.push(
           "'" + value + "' is not an email address"
         );
+        returnData.isError = true;
       }
     }
 
     _isMin(value, map, returnData) {
       if (value.length < map.min) {
-        returnData[param].errors.push(
-          "Input for the field '" + param + "' is too short"
+        returnData.inputs[map.name].errors.push(
+          "Input for the field '" + map.name + "' is too short"
         );
+        returnData.isError = true;
       }
     }
 
     _isMax(value, map, returnData) {
       if (value.length > map.max) {
-        returnData[param].errors.push(
-          "Input for the field '" + param + "' is too long"
+        returnData.inputs[map.name].errors.push(
+          "Input for the field '" + map.name + "' is too long"
         );
+        returnData.isError = true;
       }
     }
 
     _performChecks(value, mapEntry, returnData) {
-      this._isEmpty(value, returnData);
-      if (mapEntry.type === "email") this._isEmail(value, returnData);
-      if (mapEntry.min) this._isMin(value, mapEntry, returnData);
-      if (mapEntry.max) this._isMax(value, mapEntry, returnData);
+      this._isEmpty(value, mapEntry, returnData);
+      // If the field was not empty, check for further errors
+      if (!returnData.isError) {
+        if (mapEntry.type === "email")
+          this._isEmail(value, mapEntry, returnData);
+        if (mapEntry.min) this._isMin(value, mapEntry, returnData);
+        if (mapEntry.max) this._isMax(value, mapEntry, returnData);
+      }
     }
 
     validateInputs(map, params) {
       let returnData = {};
+      returnData.isError = false;
+      returnData.inputs = {};
 
-      for (param in params) {
-        returnData[param] = {};
+      for (let param in params) {
+        returnData.inputs[param] = {};
         let value = validator.escape(params[param]);
-
         let mapEntry = map.inputs[param];
-        returnData[param].errors = [];
 
-        this._performChecks(value, mapEntry, returnData);
+        if (mapEntry) {
+          returnData.inputs[param].validated = true;
+          returnData.inputs[param].errors = [];
+          this._performChecks(value, mapEntry, returnData);
+        } else returnData.inputs[param].validated = false;
 
-        returnData[param].value = value;
+        returnData.inputs[param].value = value;
       }
-      console.dir(returnData);
+      return returnData;
     }
   } // END OF CLASS
 
