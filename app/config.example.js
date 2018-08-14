@@ -1,5 +1,5 @@
 module.exports = {
-  port: 1995,
+  port: 3000,
   formMapper: {
     prefix: "v-"
   },
