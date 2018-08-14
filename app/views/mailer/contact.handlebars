@@ -355,7 +355,7 @@
                 <div class="content">
 
                     <!-- START CENTERED WHITE CONTAINER -->
-                    <span class="preheader">New message from: {{data.inputs.name.value}}</span>
+                    <span class="preheader">New message from: {{validatedData.inputs.name.value}}</span>
                     <table class="main">
 
                         <!-- START MAIN CONTENT AREA -->
@@ -365,12 +365,12 @@
                                     <tr>
                                         <td>
                                             <p>A new message was sent by:
-                                                <b>{{data.inputs.name.value}}</b>,
+                                                <b>{{validatedData.inputs.name.value}}</b>,
                                                 <br> with the email address:
-                                                <b>{{data.inputs.email.value}}</b>
+                                                <b>{{validatedData.inputs.email.value}}</b>
                                             </p>
 
-                                            <p class="message">{{data.inputs.message.value}}</p>
+                                            <p class="message">{{validatedData.inputs.message.value}}</p>
                                         </td>
                                     </tr>
                                 </table>

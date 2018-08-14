@@ -70,12 +70,13 @@ module.exports = function(config, cache) {
      * 
      * Compiles a handlebars template with the specified context data to raw HTML
     */
-    _compileTemplate(templateName, data) {
+    _compileTemplate(templateName, context) {
       return new Promise((resolve, reject) => {
         let filePath = "views/mailer/" + templateName + ".handlebars";
 
+        console.dir(context);
         this.handlebars
-          .render(filePath, { data: data })
+          .render(filePath, context)
           .then(html => {
             resolve(html);
           })
