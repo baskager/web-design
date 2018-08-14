@@ -1,6 +1,6 @@
 nodemailer = require("nodemailer");
 module.exports = function(config, cache) {
-  class Cache {
+  class Mailer {
     constructor(handlebars) {
       this.transporter = nodemailer.createTransport(config.smtp);
       this.handlebars = handlebars;
@@ -51,5 +51,5 @@ module.exports = function(config, cache) {
     }
   } // END OF CLASS
 
-  return Cache;
+  return Mailer;
 }; // END OF FUNCTION
