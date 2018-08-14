@@ -4,6 +4,7 @@ module.exports = function(config) {
   return {
     FormMapper: require("./forms/FormMapper.class")(config.formMapper, cache),
     Validator: require("./forms/Validator.class")(config.validator, cache),
+    Mailer: require("./mailer/Mailer.class")(config.mailer, cache),
     cache: cache
   };
 };

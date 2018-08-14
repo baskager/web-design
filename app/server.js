@@ -15,12 +15,8 @@ const express = require("express"),
 const contactFormMap = new components.FormMapper(
   "views/partials/forms/contact.handlebars"
 );
-// Cache the contact form on server (re)start
-// contactFormMap.get().then(map => {
-//   console.info("Contact form validation map saved to cache");
-// });
 
-let handlebars = exphbs.create({
+const handlebars = exphbs.create({
   helpers: {
     equal: function(a, b, options) {
       if (a === b) {
@@ -32,7 +28,9 @@ let handlebars = exphbs.create({
   defaultLayout: "main"
 });
 
-let meta = {
+const mailer = new components.Mailer(handlebars);
+
+const meta = {
   year: new Date().getFullYear()
 };
 
@@ -97,6 +95,21 @@ fs.readFile("projects.json", "utf8", function(err, data) {
       meta: meta
     });
   });
+
+  renderContactAfterFormSubmission = (req, res, data, error) => {
+    if (req.xhr) {
+      res.setHeader("Content-Type", "application/json");
+      data.error = error;
+      res.send(JSON.stringify(data));
+    } else {
+      res.render("contact", {
+        pageName: "contact",
+        meta: meta,
+        validatedData: data,
+        error: error
+      });
+    }
+  };
   /*
      * Date: 13-08-2018
      * Author: Bas Kager
@@ -111,35 +124,40 @@ fs.readFile("projects.json", "utf8", function(err, data) {
       .then(map => {
         // Compare the request body with the validation rules on the inputs
         let validatedData = validator.validateInputs(map, req.body);
-        // Check if the incoming request is an XMLHTTP Request
-        if (req.xhr) {
-          res.setHeader("Content-Type", "application/json");
-          res.send(JSON.stringify(validatedData));
-        } else {
-          res.render("contact", {
-            pageName: "contact",
-            meta: meta,
-            validatedData: validatedData
-          });
-        }
+        // Send the email if all validations were passed
+        if (!validatedData.isError) {
+          mailer
+            .send({
+              mailoptions: {
+                to: config.mailer.contactAdress,
+                from: validatedData.inputs.email.value,
+                subject: "New message from " + validatedData.inputs.name.value
+              },
+              data: validatedData,
+              template: "contact"
+            })
+            .then(result => {
+              renderContactAfterFormSubmission(req, res, validatedData);
+            })
+            .catch(error => {
+              console.dir(error);
+              // Re-render contact page if an error occurs and pass the error object along
+              renderContactAfterFormSubmission(req, res, validatedData, error);
+            });
+          // Re-render contact page with data if inputs did not pass validations
+        } else renderContactAfterFormSubmission(req, res, validatedData);
       })
       .catch(error => {
-        // Check if the incoming request is an XMLHTTP Request
-        if (req.xhr) {
-          res.status(500);
-          res.setHeader("Content-Type", "application/json");
-          res.send(JSON.stringify(error));
-        } else {
-          res.render("contact", {
-            pageName: "contact",
-            meta: meta,
-            error: error
-          });
-        }
+        console.dir(error);
+        // Re-render contact page if an error occurs and pass the error object along
+        renderContactAfterFormSubmission(req, res, null, error);
       });
   });
 
-  http.listen(port, function() {
-    console.log("Server listening on port http://localhost:" + port);
+  mailer.verify().then(success => {
+    console.info("SMTP SUCCESS: configuration verified");
+    http.listen(port, function() {
+      console.log("Server listening on port http://localhost:" + port);
+    });
   });
 });
