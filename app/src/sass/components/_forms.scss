@@ -10,7 +10,7 @@ form {
     padding: 1em;
     animation: 0.4s ease-out 0s 1 offsetBackgroundAnimation;
     box-shadow: -5px -5px 0px 0px $accent-color-alpha;
-    transition: all 0.3s ease-in-out 0.2s;
+    transition: box-shadow 0.3s ease-in-out 0.2s;
     transform: none;
     opacity: 1;
     border: 1px solid $accent-color-alpha;
@@ -25,10 +25,12 @@ form {
   }
   textarea {
     resize: vertical;
-    transition: none;
     min-height: 10em;
   }
   button {
     margin-left: 1em;
+  }
+  .valid {
+    box-shadow: -5px -5px 0px 0px $success-color !important;
   }
 }

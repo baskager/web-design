@@ -9,10 +9,15 @@
   font-weight: 700;
   transition: 0.15s;
   cursor: pointer;
-}
-.btn:hover,
-.btn:focus {
-  background: $btn-cta-hover-background;
-  color: $btn-cta-hover-foreground;
-  transform: scale(1.1);
+  s &:hover:enabled,
+  &focus:enabled {
+    background: $btn-cta-hover-background;
+    color: $btn-cta-hover-foreground;
+    transform: scale(1.1);
+  }
+  &:disabled {
+    background: $btn-cta-disabled-background;
+    color: $btn-cta-disabled-foreground;
+    cursor: not-allowed;
+  }
 }
