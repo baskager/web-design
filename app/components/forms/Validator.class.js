@@ -18,7 +18,8 @@ module.exports = function(config, cache) {
           "Input for '" + map.name + "' was empty"
         );
         returnData.isError = true;
-      }
+        return true;
+      } else return false;
     }
 
     _isEmail(value, map, returnData) {
@@ -49,9 +50,9 @@ module.exports = function(config, cache) {
     }
 
     _performChecks(value, mapEntry, returnData) {
-      this._isEmpty(value, mapEntry, returnData);
+      let isEmpty = this._isEmpty(value, mapEntry, returnData);
       // If the field was not empty, check for further errors
-      if (!returnData.isError) {
+      if (!isEmpty) {
         if (mapEntry.type === "email")
           this._isEmail(value, mapEntry, returnData);
         if (mapEntry.min) this._isMin(value, mapEntry, returnData);

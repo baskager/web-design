@@ -98,10 +98,10 @@ module.exports = function(config, cache) {
     _mapInputs(inputs) {
       let returnData = {};
       for (let input of inputs) {
-        let inputName = input.getAttribute("name");
-        let type = input.getAttribute("type");
-        let min = input.getAttribute(prefix + "min");
-        let max = input.getAttribute(prefix + "max");
+        let inputName = input.name;
+        let type = input.type;
+        let min = input.minLength;
+        let max = input.maxLength;
         let placeholder = input.getAttribute("placeholder");
 
         // Example: A textarea does not have a type attribute.
