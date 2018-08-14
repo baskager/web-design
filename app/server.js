@@ -133,10 +133,13 @@ fs.readFile("projects.json", "utf8", function(err, data) {
                 from: validatedData.inputs.email.value,
                 subject: "New message from " + validatedData.inputs.name.value
               },
-              data: validatedData,
-              template: "contact"
+              template: {
+                name: "contact",
+                context: { validatedData }
+              }
             })
             .then(result => {
+              console.dir(result);
               renderContactAfterFormSubmission(req, res, validatedData);
             })
             .catch(error => {
