@@ -163,10 +163,12 @@ blockquote:after {
   font-weight: 700;
   transition: 0.15s;
   cursor: pointer; }
-  s .btn:hover:enabled, .btnfocus:enabled {
+  .btn:hover:enabled, .btn:focus:enabled {
     background: #0bb4c1;
     color: #fff;
     transform: scale(1.1); }
+  .btn::-moz-focus-inner {
+    border: 0; }
   .btn:disabled {
     background: #dbdbdb;
     color: #acacac;
@@ -418,8 +420,7 @@ form {
     margin: 1em;
     padding: 1em;
     animation: 0.4s ease-out 0s 1 offsetBackgroundAnimation;
-    box-shadow: -5px -5px 0px 0px #0085b677;
-    transition: box-shadow 0.3s ease-in-out 0.2s;
+    transition: box-shadow 0.3s, transform 0.2s;
     transform: none;
     opacity: 1;
     border: 1px solid #0085b677;
@@ -427,6 +428,11 @@ form {
     font-size: 1.2rem;
     line-height: 1.618em;
     width: 90%; }
+    form input[type="text"]:focus,
+    form input[type="email"]:focus,
+    form textarea:focus {
+      transform: scale(1.04);
+      box-shadow: -5px -5px 0px 0px #0085b677; }
   form ::placeholder {
     color: #000;
     opacity: 1; }
@@ -437,6 +443,8 @@ form {
     margin-left: 1em; }
   form .valid {
     box-shadow: -5px -5px 0px 0px #b4ffb4 !important; }
+  form .invalid {
+    box-shadow: -5px -5px 0px 0px #ffb482 !important; }
 
 .about {
   flex-wrap: wrap;

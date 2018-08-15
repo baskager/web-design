@@ -11,24 +11,12 @@
   var inputs = form.querySelectorAll("[" + prefix + "map='true']");
   var button = form.querySelector("button");
   var errors = [];
-  //   button.innerText = "Continue";
-  //   messageInput.style.display = "none";
-  //   emailInput.style.display = "none";
   // Hide the button
   button.disabled = true;
-  //   button.style.marginTop = "5em";
-
-  console.dir(inputs);
 
   for (var i = 0; i <= inputs.length - 1; i++) {
     console.dir(i);
     inputs[i].addEventListener("input", function(e) {
-      if (validateInput(this)) {
-        this.classList.add("valid");
-      } else {
-        this.classList.remove("valid");
-      }
-
       if (validateAll()) {
         button.disabled = false;
         button.addEventListener("click", function(e) {
@@ -71,6 +59,27 @@
     for (var i = 0; i <= inputs.length - 1; i++) {
       var input = inputs[i];
       valid = validateInput(input, options);
+
+      if (!valid && input.value.length !== 0) {
+        input.classList.add("invalid");
+      } else input.classList.remove("invalid");
+
+      if (valid) {
+        input.classList.add("valid");
+      } else input.classList.remove("valid");
+
+      if (input.name === "name" && valid) {
+        inputs[1].placeholder =
+          input.value + " is a lovely name, please write your message here";
+      }
+      if (input.name === "name" && !valid) inputs[1].placeholder = "Message";
+
+      if (input.name === "message" && valid) {
+        inputs[2].placeholder =
+          "Great stuff! Just need your e-mail address now";
+      }
+      if (input.name === "message" && !valid)
+        inputs[2].placeholder = "Email address";
     }
     return valid;
   };
