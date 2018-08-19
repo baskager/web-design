@@ -1,8 +1,33 @@
-.contact form fieldset {
-  flex-direction: column;
-  border: 0;
-}
-.contact form {
-  max-width: 40em;
-  margin: 0 auto;
+.contact {
+  form {
+    max-width: 40em;
+    margin: 0 auto;
+    z-index: 1;
+    position: relative;
+  }
+  form fieldset {
+    flex-direction: column;
+    border: 0;
+  }
+
+  .loading-info {
+    width: 75%;
+    padding: 2em;
+    opacity: 0;
+    position: absolute;
+    transition: 0.8s;
+    transition-delay: 0.2s;
+    box-shadow: 0 0 0 1600px rgba(0, 0, 0, 0.25); /* dark around it */
+    box-sizing: border-box;
+    top: 5%;
+    left: 12.5%;
+    z-index: -1;
+    background: rgba(255, 255, 255, 1);
+    text-align: center;
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 20%;
+    }
+  }
 }

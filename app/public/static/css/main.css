@@ -413,7 +413,9 @@ footer p:first-child {
 form {
   box-sizing: border-box;
   overflow: auto;
-  padding-bottom: 2em; }
+  padding-bottom: 2em;
+  transition: opacity 1s;
+  transition-delay: 0.2s; }
   form input[type="text"],
   form input[type="email"],
   form textarea {
@@ -439,7 +441,7 @@ form {
   form textarea {
     resize: vertical;
     min-height: 10em; }
-  form button {
+  form button.submit {
     margin-left: 1em; }
   form .valid {
     box-shadow: -5px -5px 0px 0px #b4ffb4 !important; }
@@ -684,10 +686,32 @@ form {
   background: #556270;
   text-transform: uppercase; }
 
+.contact form {
+  max-width: 40em;
+  margin: 0 auto;
+  z-index: 1;
+  position: relative; }
+
 .contact form fieldset {
   flex-direction: column;
   border: 0; }
 
-.contact form {
-  max-width: 40em;
-  margin: 0 auto; }
+.contact .loading-info {
+  width: 75%;
+  padding: 2em;
+  opacity: 0;
+  position: absolute;
+  transition: 0.8s;
+  transition-delay: 0.2s;
+  box-shadow: 0 0 0 1600px rgba(0, 0, 0, 0.25);
+  /* dark around it */
+  box-sizing: border-box;
+  top: 5%;
+  left: 12.5%;
+  z-index: -1;
+  background: white;
+  text-align: center; }
+  .contact .loading-info img {
+    display: block;
+    margin: 0 auto;
+    width: 20%; }

@@ -2,6 +2,8 @@ form {
   box-sizing: border-box;
   overflow: auto;
   padding-bottom: 2em;
+  transition: opacity 1s;
+  transition-delay: 0.2s;
 
   input[type="text"],
   input[type="email"],
@@ -31,7 +33,7 @@ form {
     resize: vertical;
     min-height: 10em;
   }
-  button {
+  button.submit {
     margin-left: 1em;
   }
   .valid {

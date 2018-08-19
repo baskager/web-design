@@ -97,10 +97,18 @@ fs.readFile("projects.json", "utf8", function(err, data) {
   });
 
   renderContactAfterFormSubmission = (req, res, data, error) => {
-    if (req.xhr) {
+    let xhr = req.headers.xhr === "true";
+    let status = 200;
+    if (xhr) {
       res.setHeader("Content-Type", "application/json");
       data.error = error;
-      res.send(JSON.stringify(data));
+
+      // console.dir(error);
+
+      if (error) status = 500;
+      if (data.isValidationError) status = 400;
+
+      res.status(status).send(JSON.stringify(data));
     } else {
       res.render("contact", {
         pageName: "contact",
@@ -125,7 +133,7 @@ fs.readFile("projects.json", "utf8", function(err, data) {
         // Compare the request body with the validation rules on the inputs
         let validatedData = validator.validateInputs(map, req.body);
         // Send the email if all validations were passed
-        if (!validatedData.isError) {
+        if (!validatedData.isValidationError) {
           mailer
             .send({
               mailoptions: {
@@ -142,23 +150,27 @@ fs.readFile("projects.json", "utf8", function(err, data) {
               console.dir(result);
               renderContactAfterFormSubmission(req, res, validatedData);
             })
-            .catch(error => {
-              console.dir(error);
+            .catch(mailerError => {
+              let error = {};
+              error.type = "mailer";
+              error.info = mailerError;
               // Re-render contact page if an error occurs and pass the error object along
               renderContactAfterFormSubmission(req, res, validatedData, error);
             });
           // Re-render contact page with data if inputs did not pass validations
         } else renderContactAfterFormSubmission(req, res, validatedData);
       })
-      .catch(error => {
-        console.dir(error);
+      .catch(mapError => {
+        let error = {};
+        error.type = "validation_map_init";
+        error.info = mapError;
         // Re-render contact page if an error occurs and pass the error object along
-        renderContactAfterFormSubmission(req, res, null, error);
+        renderContactAfterFormSubmission(req, res, {}, error);
       });
   });
-
   mailer.verify().then(success => {
     console.info("SMTP SUCCESS: configuration verified");
+    console.log("Starting server for environment: " + config.environment);
     http.listen(port, function() {
       console.log("Server listening on port http://localhost:" + port);
     });

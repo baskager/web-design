@@ -17,7 +17,7 @@ module.exports = function(config, cache) {
         returnData.inputs[map.name].errors.push(
           "Input for '" + map.name + "' was empty"
         );
-        returnData.isError = true;
+        returnData.isValidationError = true;
         return true;
       } else return false;
     }
@@ -27,7 +27,7 @@ module.exports = function(config, cache) {
         returnData.inputs[map.name].errors.push(
           "'" + value + "' is not an email address"
         );
-        returnData.isError = true;
+        returnData.isValidationError = true;
       }
     }
 
@@ -36,7 +36,7 @@ module.exports = function(config, cache) {
         returnData.inputs[map.name].errors.push(
           "Input for the field '" + map.name + "' is too short"
         );
-        returnData.isError = true;
+        returnData.isValidationError = true;
       }
     }
 
@@ -45,7 +45,7 @@ module.exports = function(config, cache) {
         returnData.inputs[map.name].errors.push(
           "Input for the field '" + map.name + "' is too long"
         );
-        returnData.isError = true;
+        returnData.isValidationError = true;
       }
     }
 
@@ -62,7 +62,7 @@ module.exports = function(config, cache) {
 
     validateInputs(map, params) {
       let returnData = {};
-      returnData.isError = false;
+      returnData.isValidationError = false;
       returnData.inputs = {};
 
       for (let param in params) {

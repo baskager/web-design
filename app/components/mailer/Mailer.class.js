@@ -1,5 +1,5 @@
 nodemailer = require("nodemailer");
-module.exports = function(config, cache) {
+module.exports = function(config, cache, environment) {
   /*
      * Date: 14-08-2018
      * Author: Bas Kager
@@ -20,6 +20,10 @@ module.exports = function(config, cache) {
     */
     verify() {
       return new Promise((resolve, reject) => {
+        if (environment === "development") {
+          console.log("On development environment, skipping SMTP check");
+          resolve(true);
+        }
         // verify connection configuration
         this.transporter.verify(function(error, success) {
           if (error) reject(error);
