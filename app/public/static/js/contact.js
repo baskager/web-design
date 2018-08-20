@@ -246,7 +246,6 @@
       *   - There is a bug in the validation mapper, retrying won't help.
       */
       if (status === 400) {
-        console.log(retries);
         screen.setMessage("error", "The server could not verify your inputs");
         app.retries = app.retryAmount + 1;
         retries = app.retryAmount + 1;
