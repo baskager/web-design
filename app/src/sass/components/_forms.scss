@@ -4,11 +4,15 @@ form {
   padding-bottom: 2em;
   transition: opacity 1s;
   transition-delay: 0.2s;
+  padding: 0 0.4em 0.4em;
 
   input[type="text"],
   input[type="email"],
   textarea {
-    margin: 1em;
+    display: block;
+    box-sizing: border-box;
+    overflow: auto;
+    margin: 0.8em 0 0.8em;
     padding: 1em;
     animation: 0.4s ease-out 0s 1 offsetBackgroundAnimation;
     transition: box-shadow 0.3s, transform 0.2s;
@@ -18,7 +22,7 @@ form {
     font-family: inherit;
     font-size: 1.2rem;
     line-height: 1.618em;
-    width: 90%;
+    width: 100%;
 
     &:focus {
       transform: scale(1.04);
@@ -34,7 +38,7 @@ form {
     min-height: 10em;
   }
   button.submit {
-    margin-left: 1em;
+    margin-left: 0.4em;
   }
   .valid {
     box-shadow: -5px -5px 0px 0px $success-color !important;

@@ -21,8 +21,13 @@
             <p id="message"></p>
         </div>
     </div>
-    {{#if validatedData.isError}}
-    <div class="errors">
+    {{#equal validatedData.isValidationError false}}
+    <div class="status success">
+        <h3>Your message was sent successfully</h3>
+        <p>I will reply as soon as possible. Have a nice day!</p>
+    </div>
+    {{/equal}} {{#if validatedData.isValidationError}}
+    <div class="status error">
         <h3>The following errors occured</h3>
         <ul>
             {{#each validatedData.inputs}} {{#each errors}}
@@ -37,7 +42,7 @@
             required/>
         <textarea placeholder="Message" name="message" minlength="16" maxlength="512" v-map="true" required>{{validatedData.inputs.message.value}}</textarea>
         <input placeholder="Email address" name="email" type="email" minlength="6" maxlength="128" v-map="true" value="{{validatedData.inputs.email.value}}"
-            required/>
+        />
     </fieldset>
     <button class="btn submit">send message</button>
 </form>

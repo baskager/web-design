@@ -60,6 +60,13 @@ p {
   max-width: 40rem;
   width: 95%; }
 
+ul {
+  list-style-image: url("/static/img/bullet-pink.svg"); }
+  ul li {
+    padding-left: 0.4em;
+    line-height: 1.618em;
+    font-size: 1.2rem; }
+
 a {
   color: #0085b6;
   text-decoration: none;
@@ -237,6 +244,7 @@ nav {
 
 nav ul {
   list-style-type: none;
+  list-style-image: none;
   grid-column: 6 / span 9;
   margin: 0;
   /* border-bottom: 0.4em solid #00000022; */ }
@@ -415,11 +423,15 @@ form {
   overflow: auto;
   padding-bottom: 2em;
   transition: opacity 1s;
-  transition-delay: 0.2s; }
+  transition-delay: 0.2s;
+  padding: 0 0.4em 0.4em; }
   form input[type="text"],
   form input[type="email"],
   form textarea {
-    margin: 1em;
+    display: block;
+    box-sizing: border-box;
+    overflow: auto;
+    margin: 0.8em 0 0.8em;
     padding: 1em;
     animation: 0.4s ease-out 0s 1 offsetBackgroundAnimation;
     transition: box-shadow 0.3s, transform 0.2s;
@@ -429,7 +441,7 @@ form {
     font-family: inherit;
     font-size: 1.2rem;
     line-height: 1.618em;
-    width: 90%; }
+    width: 100%; }
     form input[type="text"]:focus,
     form input[type="email"]:focus,
     form textarea:focus {
@@ -442,7 +454,7 @@ form {
     resize: vertical;
     min-height: 10em; }
   form button.submit {
-    margin-left: 1em; }
+    margin-left: 0.4em; }
   form .valid {
     box-shadow: -5px -5px 0px 0px #b4ffb4 !important; }
   form .invalid {
@@ -690,11 +702,31 @@ form {
   max-width: 40em;
   margin: 0 auto;
   z-index: 1;
-  position: relative; }
+  position: relative;
+  overflow: auto; }
 
 .contact form fieldset {
+  display: block;
+  box-sizing: border-box;
+  overflow: auto;
   flex-direction: column;
-  border: 0; }
+  border: 0;
+  margin: 0;
+  padding: 0 1em;
+  width: 100%; }
+
+.contact .status {
+  width: calc(100%, -8em);
+  display: block;
+  box-sizing: border-box;
+  overflow: auto;
+  border-bottom: 0.4em solid;
+  animation: 1s ease-out 0s 1 fadeIn;
+  margin: 0 1em 1em; }
+  .contact .status.error {
+    border-color: #ff7575; }
+  .contact .status.success {
+    border-color: #b4ffb4; }
 
 .contact .loading-info {
   width: 75%;

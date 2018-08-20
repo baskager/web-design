@@ -4,10 +4,34 @@
     margin: 0 auto;
     z-index: 1;
     position: relative;
+    overflow: auto;
   }
   form fieldset {
+    display: block;
+    box-sizing: border-box;
+    overflow: auto;
     flex-direction: column;
     border: 0;
+    margin: 0;
+    padding: 0 1em;
+    width: 100%;
+  }
+
+  .status {
+    width: calc(100%, -8em);
+    display: block;
+    box-sizing: border-box;
+    overflow: auto;
+    border-bottom: 0.4em solid;
+    animation: 1s ease-out 0s 1 fadeIn;
+    margin: 0 1em 1em;
+
+    &.error {
+      border-color: $error-color;
+    }
+    &.success {
+      border-color: $success-color;
+    }
   }
 
   .loading-info {

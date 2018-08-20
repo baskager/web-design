@@ -316,7 +316,8 @@
    * @param {boolean} value - The value to be set
    */
   setDisabledAll = function(value) {
-    if (value === null || value === undefined) value = false;
+    // If no parameter was supplied, set disabled to true
+    if (value === null || value === undefined) value = true;
 
     for (var i = 0; i <= inputs.length - 1; i++) {
       var input = inputs[i];
