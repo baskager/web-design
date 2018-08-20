@@ -13,11 +13,13 @@
   var errorScreen = document.querySelector("#error");
   var inputs = form.querySelectorAll("[" + prefix + "map='true']");
   var button = form.querySelector("button");
+  var closeScreenButtons = form.querySelectorAll(".close");
+
   var app = {
     linkedInUrl: "http://linkedin.com/in/sebastiaan-kager",
     contactEndpoint: "/contact",
     retryCountdowntime: 10,
-    retryAmount: 3,
+    retryAmount: 2,
     retries: 0
   };
   // Hide the button
@@ -55,6 +57,21 @@
       el.style.opacity = 0;
     },
     /**
+     * Hides all screens
+     *
+     * @since: 15-08-2018
+     * @author: Bas Kager
+     */
+    hideAll: function() {
+      var screens = form.querySelectorAll(".loading-info");
+      for (var i = 0; i < screens.length; i++) {
+        var el = screens[i];
+
+        el.style.zIndex = -1;
+        el.style.opacity = 0;
+      }
+    },
+    /**
      * Sets the message in a screen, clears older messages in the screen.
      *
      * @since: 16-08-2018
@@ -90,7 +107,7 @@
       el.querySelector("#message").innerHTML += "";
     }
   };
-  // Validate inputs while the user iws typing
+  // Validate inputs while the user is typing
   for (var i = 0; i <= inputs.length - 1; i++) {
     inputs[i].addEventListener("input", function(e) {
       validateAll();
@@ -104,7 +121,7 @@
     var message = inputs[1].value;
     var email = inputs[2].value;
 
-    submit(name, message, email);
+    submit(name, message, email, false);
   });
   /**
    * Recursive function which creates and handles a XMLHTTP request with the form data.
@@ -124,14 +141,14 @@
    * @param {string} email - The input contents of the 'email' field
    * @param {boolean} isSuccess - Wether an earlier request was successful or not
    */
-  submit = function(name, message, email, isSuccess = false) {
+  submit = function(name, message, email, isSuccess) {
     // Disable all inputs
     setDisabledAll();
     form.style.zIndex = 0;
-    screen.hide("error");
-    screen.show("load");
 
     var xhr = new XMLHttpRequest();
+    screen.hide("error");
+    screen.show("load");
 
     xhr.open("POST", app.contactEndpoint, true);
 
@@ -146,12 +163,13 @@
         if (app.lastStatus) app.lastResponse = JSON.parse(this.responseText);
         else app.lastResponse = null;
 
-        _renderStatus(app.lastStatus, app.lastResponse);
+        app.retries++;
+        _renderStatus(app.lastStatus, app.lastResponse, app.retries);
 
-        if (app.lastStatus === 200) isSuccess = true;
-        else {
+        if (app.lastStatus === 200) {
+          isSuccess = true;
+        } else {
           var timeLeft = app.retryCountdowntime;
-          app.retries++;
 
           if (app.retries <= app.retryAmount) {
             var retryTimer = setInterval(function() {
@@ -160,9 +178,12 @@
                 app.lastStatus,
                 app.lastResponse,
                 app.retries,
-                timeLeft + 1
+                timeLeft
               );
-
+              if (timeLeft === 1) {
+                screen.hide("error");
+                screen.show("load");
+              }
               if (timeLeft <= 0) {
                 clearInterval(retryTimer);
                 submit(name, message, email, isSuccess);
@@ -181,9 +202,9 @@
    * @since: 19-08-2018
    * @author: Bas Kager
    * @param {int} status - The status code returned by the request
-   * @param {object} status - The response object
-   * @param {object} retries - *optional* the number of retried requests
-   * @param {object} timeLeft - *optional* the amount of seconds left untill the next retry
+   * @param {object} response - The response object
+   * @param {int} retries - *optional* the number of retried requests
+   * @param {int} timeLeft - *optional* the amount of seconds left untill the next retry
    */
   _renderStatus = function(status, response, retries, timeLeft) {
     //Call a function when the state changes
@@ -192,14 +213,17 @@
       screen.hide("error");
       screen.show("success");
     } else {
-      console.log("not 200");
       screen.hide("load");
       // The server could not initialize the validation mappings
-      if (response.error && response.error.type === "validation_map_init") {
+      if (
+        response &&
+        response.error &&
+        response.error.type === "validation_map_init"
+      ) {
         screen.setMessage("error", "The server could not process your data.");
       }
       // The mail service responded with an error
-      if (response.error && response.error.type == "mailer") {
+      if (response && response.error && response.error.type === "mailer") {
         screen.setMessage("error", "An error occured while sending the email.");
       }
       /* 
@@ -222,14 +246,16 @@
       *   - There is a bug in the validation mapper, retrying won't help.
       */
       if (status === 400) {
+        console.log(retries);
         screen.setMessage("error", "The server could not verify your inputs");
-        retries = app.retryAmount;
+        app.retries = app.retryAmount + 1;
+        retries = app.retryAmount + 1;
       }
       /* 
       * Notify the client that the action will be retried.
       * Apologize after two retries and offer an alternative (linkedIn)
       */
-      if (retries <= app.retryAmount - 1) {
+      if (retries <= app.retryAmount) {
         screen.addMessage(
           "error",
           "<br> Retrying again in " +
@@ -239,6 +265,7 @@
             "</b>"
         );
       } else {
+        enableCloseScreenButton();
         screen.addMessage(
           "error",
           "<br><br> Please feel free to contact me on my <a target='_blank' href='" +
@@ -283,18 +310,65 @@
     return re.test(String(input.value).toLowerCase());
   };
   /**
-   * Checks if the input value is an email address
+   * Sets the disabled attribute on all inputs of the form
    *
    * @since: 15-08-2018
    * @author: Bas Kager
    * @param {boolean} value - The value to be set
    */
-  setDisabledAll = function(value = true) {
+  setDisabledAll = function(value) {
+    if (value === null || value === undefined) value = false;
+
     for (var i = 0; i <= inputs.length - 1; i++) {
       var input = inputs[i];
       input.disabled = value;
     }
     button.disabled = value;
+  };
+
+  /**
+   * Enables the close button on screens that contain one
+   *
+   * @since: 20-08-2018
+   * @author: Bas Kager
+   */
+  enableCloseScreenButton = function() {
+    for (var i = 0; i < closeScreenButtons.length; i++) {
+      closeScreenButtons[i].addEventListener("click", function(event) {
+        event.preventDefault();
+        setDisabledAll(false);
+        screen.hideAll();
+        app.retries = 0;
+        disableCloseScreenButton();
+      });
+      closeScreenButtons[i].style.display = "block";
+    }
+  };
+  /**
+   * disabled the close button on screens that contain one
+   *
+   * @since: 20-08-2018
+   * @author: Bas Kager
+   */
+  disableCloseScreenButton = function() {
+    for (var i = 0; i < closeScreenButtons.length; i++) {
+      closeScreenButtons[i].style.display = "none";
+    }
+  };
+
+  /**
+   * Clears all inputs
+   *
+   * @since: 15-08-2018
+   * @author: Bas Kager
+   */
+  clearInputs = function() {
+    for (var i = 0; i <= inputs.length - 1; i++) {
+      var input = inputs[i];
+      input.value = "";
+    }
+    // Reset the validations
+    validateAll();
   };
   /**
    * Validates a single input element
@@ -351,10 +425,9 @@
         inputs[2].placeholder = "Email address";
     }
 
-    if (valid) {
-      button.disabled = false;
-      // button.addEventListener("click", _buttonValidEvent(event));
-    }
+    if (valid) button.disabled = false;
+    else button.disabled = true;
+
     return valid;
   };
   /* 

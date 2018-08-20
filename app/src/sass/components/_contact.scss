@@ -29,5 +29,15 @@
       margin: 0 auto;
       width: 20%;
     }
+    p:last-child {
+      margin-bottom: 0;
+    }
+    .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 1em;
+      display: none;
+    }
   }
 }

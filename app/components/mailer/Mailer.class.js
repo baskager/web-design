@@ -58,14 +58,18 @@ module.exports = function(config, cache, environment) {
         this._compileTemplate(
           mailconfig.template.name,
           mailconfig.template.context
-        ).then(html => {
-          mailoptions.html = html;
+        )
+          .then(html => {
+            mailoptions.html = html;
 
-          this.transporter.sendMail(mailoptions, function(error, info) {
-            if (error) reject(error);
-            else resolve(info);
+            this.transporter.sendMail(mailoptions, function(error, info) {
+              if (error) reject(error);
+              else resolve(info);
+            });
+          })
+          .catch(error => {
+            reject(error);
           });
-        });
       });
     }
     /*
