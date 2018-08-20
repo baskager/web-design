@@ -8,8 +8,9 @@ h1 {
   font-weight: 400;
 }
 h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 400;
+  margin: 0.4em 0;
 }
 h3 {
   font-size: 1.5rem;
@@ -135,4 +136,11 @@ blockquote:after {
 }
 .clBoth {
   clear: both;
+}
+
+@media (max-width: $breakpoint-small) {
+  body {
+    padding: 0.4em;
+    box-sizing: border-box;
+  }
 }

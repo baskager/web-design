@@ -16,6 +16,7 @@ nav ul {
 }
 nav li {
   background: white;
+  padding: 0;
 }
 nav a {
   font-size: 1.2rem;
@@ -41,7 +42,7 @@ nav a:focus {
   background: $accent-color;
   color: #fff;
 }
-@media (max-width: 50em) {
+@media (max-width: $breakpoint-small) {
   nav {
     bottom: 0;
     top: auto;

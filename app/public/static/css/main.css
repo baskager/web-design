@@ -32,8 +32,9 @@ h1 {
   font-weight: 400; }
 
 h2 {
-  font-size: 3rem;
-  font-weight: 400; }
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin: 0.4em 0; }
 
 h3 {
   font-size: 1.5rem;
@@ -159,6 +160,11 @@ blockquote:after {
 .clBoth {
   clear: both; }
 
+@media (max-width: 50em) {
+  body {
+    padding: 0.4em;
+    box-sizing: border-box; } }
+
 .btn {
   display: inline-block;
   background: #0085b6;
@@ -170,10 +176,12 @@ blockquote:after {
   font-weight: 700;
   transition: 0.15s;
   cursor: pointer; }
-  .btn:hover:enabled, .btn:focus:enabled {
+  .btn:hover, .btn:focus {
     background: #0bb4c1;
     color: #fff;
     transform: scale(1.1); }
+  .btn:disabled:hover {
+    transform: none; }
   .btn::-moz-focus-inner {
     border: 0; }
   .btn:disabled {
@@ -212,6 +220,7 @@ header .container > div {
   grid-row: 1; }
 
 header .container > div > h1 {
+  box-sizing: border-box;
   animation: 0.4s ease-out 0s 1 slideInFromRight;
   background: #ff4d61;
   padding: 0.1em 0;
@@ -233,6 +242,37 @@ header.project .container > div > p {
   font-weight: 700;
   margin: 2em 0; }
 
+@media (max-width: 50em) {
+  header {
+    margin-top: 0; }
+  header .container > img {
+    box-sizing: border-box;
+    overflow: none;
+    width: 100%;
+    grid-column: 2 / span 8;
+    grid-row: 1;
+    background: #ff4d6177; }
+  header .container > div {
+    grid-column: 1 / span 12;
+    grid-row: 2; }
+  header .container > div > h1 {
+    position: absolute;
+    right: 0.6em;
+    margin: -1em 0;
+    display: inline-block;
+    padding: 0.1em 0.2em;
+    text-align: center; }
+  header .container > div > p {
+    padding: 0 0.4em;
+    box-sizing: border-box;
+    width: 95%;
+    color: #555;
+    margin-left: 5%;
+    margin-top: 2.5em;
+    animation: 0.4s ease-out 0s 1 slideInFromRight; }
+  header .btn {
+    margin-left: 0; } }
+
 nav {
   position: fixed;
   z-index: 9999999;
@@ -250,7 +290,8 @@ nav ul {
   /* border-bottom: 0.4em solid #00000022; */ }
 
 nav li {
-  background: white; }
+  background: white;
+  padding: 0; }
 
 nav a {
   font-size: 1.2rem;
@@ -554,6 +595,11 @@ form {
 .skill-chart .bar:focus-within .tip {
   opacity: 1;
   padding-top: 1em; }
+
+@media (max-width: 50em) {
+  .about section {
+    margin: 0;
+    animation: 0.4s ease-out 0s 1 fadeIn; } }
 
 .filters {
   position: relative;

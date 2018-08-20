@@ -29,6 +29,7 @@ header .container > div {
   grid-row: 1;
 }
 header .container > div > h1 {
+  box-sizing: border-box;
   animation: 0.4s ease-out 0s 1 slideInFromRight;
   background: $primary-color;
   padding: 0.1em 0;
@@ -50,4 +51,42 @@ header.project .container > div > p {
   color: white;
   font-weight: 700;
   margin: 2em 0;
+}
+@media (max-width: $breakpoint-small) {
+  header {
+    margin-top: 0;
+  }
+  header .container > img {
+    box-sizing: border-box;
+    overflow: none;
+    width: 100%;
+    grid-column: 2 / span 8;
+    grid-row: 1;
+    background: #ff4d6177;
+  }
+  header .container > div {
+    grid-column: 1 / span 12;
+    grid-row: 2;
+  }
+  header .container > div > h1 {
+    position: absolute;
+    right: 0.6em;
+    margin: -1em 0;
+    display: inline-block;
+    // width: 100%;
+    padding: 0.1em 0.2em;
+    text-align: center;
+  }
+  header .container > div > p {
+    padding: 0 0.4em;
+    box-sizing: border-box;
+    width: 95%;
+    color: #555;
+    margin-left: 5%;
+    margin-top: 2.5em;
+    animation: 0.4s ease-out 0s 1 slideInFromRight;
+  }
+  header .btn {
+    margin-left: 0;
+  }
 }

@@ -9,11 +9,14 @@
   font-weight: 700;
   transition: 0.15s;
   cursor: pointer;
-  &:hover:enabled,
-  &:focus:enabled {
+  &:hover,
+  &:focus {
     background: $btn-cta-hover-background;
     color: $btn-cta-hover-foreground;
     transform: scale(1.1);
+  }
+  &:disabled:hover {
+    transform: none;
   }
   &::-moz-focus-inner {
     border: 0;
