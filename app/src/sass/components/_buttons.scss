@@ -27,3 +27,26 @@
     cursor: not-allowed;
   }
 }
+.cta-box {
+  box-sizing: border-box;
+  overflow: none;
+}
+.cta-box.small {
+  width: 50%;
+  margin: 0 auto;
+}
+.cta-box.recessed {
+  margin-top: -2.2em;
+}
+.cta-box .eq {
+  flex-grow: 1;
+  margin: 0.4em 2%;
+  text-align: center;
+}
+
+@media (max-width: $breakpoint-small) {
+  .btn {
+    margin: 0 0.4em;
+    padding: 1.4em;
+  }
+}
