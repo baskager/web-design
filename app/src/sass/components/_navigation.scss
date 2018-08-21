@@ -1,4 +1,4 @@
-nav {
+nav.main {
   position: fixed;
   z-index: 9999999;
   width: 100%;
@@ -6,55 +6,105 @@ nav {
   background: white;
   border-bottom: 0.25em solid $shadow-color;
   height: 4em;
+
+  .container {
+    display: grid;
+  }
+
+  ul {
+    display: flex;
+    grid-column: 7 / span 5;
+    /* border-bottom: 0.4em solid #00000022; */
+    li {
+      background: white;
+      padding: 0;
+      a {
+        font-size: 1.2rem;
+        background: #fff;
+        color: black;
+        font-weight: 700;
+        display: block;
+        padding: 1em;
+        border: 0;
+        border-bottom: 0.25em solid $shadow-color;
+        height: 1.35em;
+        &:hover,
+        &:focus {
+          color: $accent-color;
+          background: #fff;
+        }
+        &:focus {
+          background: $accent-color;
+          color: #fff;
+        }
+      }
+    }
+  }
 }
-nav ul {
-  list-style-type: none;
-  list-style-image: none;
-  grid-column: 6 / span 9;
-  margin: 0;
-  /* border-bottom: 0.4em solid #00000022; */
+nav.footer {
+  margin-top: 0.4em;
+  width: 100%;
+  text-align: center;
+  ul {
+    display: flex;
+    width: 100%;
+    margin-bottom: 0.4em;
+    justify-content: center;
+    li {
+      margin: 0 0.6em;
+      box-sizing: border-box;
+      a {
+        width: 100%;
+        color: #fff;
+        padding: 0.6em;
+        &:hover,
+        &:focus {
+          background: $accent-color;
+          color: #fff;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+        &.current {
+          border-bottom: 0.25em solid $accent-color;
+          color: #fff;
+        }
+      }
+    }
+  }
 }
-nav li {
-  background: white;
-  padding: 0;
-}
-nav a {
-  font-size: 1.2rem;
-  background: #fff;
-  color: black;
-  font-weight: 700;
-  display: block;
-  padding: 1em;
-  border: 0;
-  border-bottom: 0.25em solid $shadow-color;
-  height: 1.35em;
-}
-nav .current {
-  border-bottom: 0.25em solid $accent-color;
-  color: $accent-color;
-}
-nav a:hover,
-nav a:focus {
-  color: $accent-color;
-  background: #fff;
-}
-nav a:focus {
-  background: $accent-color;
-  color: #fff;
+nav {
+  ul {
+    list-style-type: none;
+    list-style-image: none;
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+    li a.current {
+      border-bottom: 0.25em solid $accent-color;
+      color: $accent-color;
+    }
+  }
 }
 @media (max-width: $breakpoint-small) {
-  nav {
+  nav.main {
     bottom: 0;
     top: auto;
     background: #fff;
     border-top: 0.2em solid #00000044;
+    .grid {
+      display: block;
+    }
+    .grid ul {
+      margin: 0;
+      padding: 0;
+      justify-content: space-around;
+    }
   }
-  nav .grid {
-    display: block;
+  nav.footer li {
+    display: none;
   }
-  nav .grid ul {
-    margin: 0;
-    padding: 0;
-    justify-content: space-around;
+  nav.footer li.linkedin {
+    display: inline-block;
   }
 }

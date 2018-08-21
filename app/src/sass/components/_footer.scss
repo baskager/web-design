@@ -1,11 +1,17 @@
 footer {
   background: #ff4d61;
+  padding: 10em;
   /* height: 20em; */
 }
 footer p {
-  padding: 2em;
+  color: #fff;
   font-weight: bold;
 }
 footer p:first-child {
   text-align: center;
+}
+@media (max-width: $breakpoint-small) {
+  footer {
+    padding: 6em 2em 10em;
+  }
 }
