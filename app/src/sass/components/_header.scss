@@ -30,10 +30,11 @@ header {
   }
   .container {
     margin-top: 1em;
-
-    .btn {
+    .btn.first {
       margin-left: 20%;
-      margin-bottom: 0.2em;
+    }
+    .btn {
+      margin: 0 0.2em 0.2em;
     }
 
     > img {
@@ -84,7 +85,7 @@ header {
     margin-top: 0;
 
     .container {
-      .btn {
+      .btn.first {
         margin-left: 0;
       }
       > img {

@@ -217,9 +217,10 @@ header {
     box-sizing: border-box; }
   header .container {
     margin-top: 1em; }
+    header .container .btn.first {
+      margin-left: 20%; }
     header .container .btn {
-      margin-left: 20%;
-      margin-bottom: 0.2em; }
+      margin: 0 0.2em 0.2em; }
     header .container > img {
       margin-top: 1em;
       box-sizing: border-box;
@@ -254,7 +255,7 @@ header {
         display: inline-block;
         padding: 0.1em 0.2em;
         text-align: center; }
-    header .container .btn {
+    header .container .btn.first {
       margin-left: 0; }
     header .container > img {
       box-sizing: border-box;
