@@ -19,7 +19,7 @@ will close the loop on focusing solely on the bottom line." }}
         </section>
         <ul class="center container flex project-list">
             {{#each categories}} {{#each projects}} {{> thumbnail id=slug categorySlug=categoryUrlSlug url=url title=name description=shortDescription
-            img=thumbnailUri }} {{/each}} {{else}}
+            img=thumbnailImage }} {{/each}} {{else}}
             <p class="empty">No content</p>
             {{/each}}
         </ul>

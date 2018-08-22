@@ -22,6 +22,7 @@ p {
 }
 .offsetBackground {
   animation: 0.4s ease-out 0s 1 slideInFromRightWithOffset;
+  margin-left: 15px;
   box-shadow: -15px -15px 0px 0px $primary-color-alpha;
   transition: all 0.3s ease-in-out 0.2s;
   transform: none;
@@ -107,7 +108,7 @@ blockquote:after {
 
 @media (max-width: $breakpoint-small) {
   body {
-    padding: 0.4em;
+    // padding: 0.4em;
     box-sizing: border-box;
   }
 }

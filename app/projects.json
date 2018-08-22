@@ -2,71 +2,112 @@
   "programming": {
     "name": "Programming",
     "slug": "programming",
-    "thumbnailTitle": "I can program",
-    "description":
-      "The programming landscape continuously evolves. Luckily, I love learning new things. I like keeping my code clean, readable and fun. <br><br> I have listed two projects below that show my skill in this area. For both projects the source code is available on my <a target='_blank' href='https://github.com/baskager'>GitHub account</a>",
     "projects": [
       {
         "name": "ADRmeta",
         "slug": "adrmeta",
+        "type": "project",
         "shortDescription": "Facial similarity in portraits",
-        "longDescription":
-          "<h3>Facial similarity in portraits</h3><img src='https://lh3.googleusercontent.com/7qzT0pbclLB7y3fdS1GxzMnV7m3gD3gWnhlquhFaJSn6gNOvMmTUAX3wVlTzhMXIs8kM9IH8AsjHNVTs8em3XQI6uMY'><img src='https://lh3.googleusercontent.com/NrCcfeY0r2F3M2hIQe5SLDRofR2tVzeOH18VjflOYGj88v4clb4v2H_VgCZR4nJhYsxxH9ATzfkL2tRqOWEK5-gPVEE'><blockquote>The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.</blockquote>",
-        "thumbnailUri":
-          "https://camo.githubusercontent.com/452b4bfbfc46fdf719e63f1a592ab01173c0a289/687474703a2f2f7777772e6b616765722e696f2f75706c6f6164732f6164722d6f766572766965772e706e67",
-        "demoUri": "",
-        "repoUri": "",
-        "tags": ["javascript", "facial recognition", "api", "Ecmascript 6"],
+        "backgroundImage": "/static/img/adrmeta-screencap.png",
+        "thumbnailImage": "/static/img/adrmeta-screencap.png",
+        "period": "March",
         "year": 2018,
+        "summary": "A web app that fetches portraits from various archives in Amsterdam and attempts to connect these portraits by using facial recognition. This project was built in one week to show the Public Library of Amsterdam what could be done with the massive amounts of data collected by the Adamlink project.",
+        "missionImage": "/static/img/adrmeta-screencap.png",
+        "mission": "How can combining massive amounts of archive data be made useful?",
+        "skills": [
+          "Microsoft Azure Face API",
+          "SparQL",
+          "Javascript localstorage"
+        ],
+        "repoUri": "https://github.com/baskager/ADRmeta",
+        "tags": ["javascript", "facial recognition", "api", "Ecmascript 6"],
         "url": "/project/programming/adrmeta"
       },
       {
         "name": "JS-API-CONNECT",
         "slug": "js-api-connect",
         "shortDescription": "ES6 library for easy API manipulation",
-        "longDescription": "no long description added yet",
-        "thumbnailUri":
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/1024px-JavaScript-logo.png",
-        "demoUri": false,
-        "repoUri": "",
-        "tags": ["javascript", "library", "api"],
+        "backgroundColor": "#efda50",
+        "thumbnailImage": "/static/img/javascript-logo.png",
+        "period": "February",
         "year": 2018,
+        "summary": "An easy-to-use microlibrary for connecting with REST API's in JavaScript using ES6 modules and classes",
+        "missionImage": "/static/img/javascript-logo.png",
+        "mission": "Make connecting with REST api's more easier and more manageable",
+        "skills": ["EcmaScript6 modules", "EcmaScript6 classes"],
+        "longDescription": "no long description added yet",
+        "repoUri": "https://github.com/baskager/js-api-connect",
+        "tags": ["javascript", "library", "api"],
         "url": "/project/programming/js-api-connect"
       }
     ]
   },
   "design": {
-    "name": "Design",
+    "name": " Design",
     "categoryUrlSlug": "design",
-    "thumbnailTitle": "I can design",
-    "description":
-      "Wow what a description <br><br> I have listed two projects below that show my skill in this area. For both projects the source code is available on my <a target='_blank' href='https://github.com/baskager'>GitHub account</a>",
     "projects": [
+      {
+        "name": "kager.io",
+        "slug": "kager-dot-io",
+        "thumbnailImage": "/static/img/kager-thumb.png",
+        "backgroundImage": "/static/img/kager-screencap.png",
+        "shortDescription": "Complete site from scratch",
+        "period": "April - August",
+        "year": 2018,
+        "summary": "Building sites is something I did long before programming. But building my own site was probably the most difficult. I am a perfectionist and I did not feel confident enough with my design skills.<br><br> I've made a few concepts over the last few years, but none made it to production. Now, finally. After finishing the Web Development minor at the Amsterdam University of Applied sciences, Eureka!",
+        "missionImage": "/static/img/kager-screencap.png",
+        "mission": "How can we design a website in such a way that it is pleasurable for people who need accessbibility features, without changing the experience.",
+        "skills": [
+          "Accessibility",
+          "Front-end design process",
+          "Making styleguides"
+        ],
+        "demoUri": "https://kager.io",
+        "repoUri": "https://github.com/baskager/web-design",
+        "tags": ["design", "accessibility", "front-end"],
+        "url": "/project/design/kager-dot-io"
+      },
       {
         "name": "CSS to the rescue",
         "slug": "css-to-the-rescue",
         "shortDescription": "Advanced CSS course",
-        "longDescription":
-          "<h3>Design process</h3><img src='https://camo.githubusercontent.com/5012036f4a3f5f2dac4f3ba153899ed0a34dad82/687474703a2f2f6b616765722e696f2f75706c6f6164732f6373737474722d322e706e67'> <H4>Research</h4><blockquote> <p>Users with mobility disabilities, including repetitive stress injuries, may not be able to use a mouse or trackpad. These people are able to access content through the use of a keyboard by pressing the \"tab\" or \"arrow\" keys, or through the use of alternative input devices such as single-switch input or mouth stick. As a result, the tab order should match the visual order, so keyboard-only users are able to logically navigate through site content.</p> <p>Long pages with lots of content should be broken up with anchor links (jump lists), allowing keyboard-only users to skip to relevant portions of the page without having to negotiate through other content. \"Skip to main content\" should be provided at the top of each page, so keyboard-only users won't have to tab through the page navigation in order to get the main content.</p> <p>For pages with local menus and multiple levels and sub-items, the menus should be configured so that all menu items can be accessed with the keyboard. Do not use elements that only activate when a user hovers over items with a mouse, as keyboard-only or screen readers users will not be able to activate them.</p> </blockquote>",
-        "thumbnailUri":
-          "https://camo.githubusercontent.com/92e7b4c3872686bc32c8b12d2cdaa1da4a53f33d/687474703a2f2f6b616765722e696f2f75706c6f6164732f6373737474722d312e706e67",
+        "backgroundImage": "/static/img/cssttr-screencap.png",
+        "thumbnailImage": "/static/img/cssttr-screencap.png",
+        "period": "February",
+        "year": 2018,
+        "summary": "The first CSS project in the web-development minor. Challenging students to think outside the box with the latest CSS features but also laying a foundation with best-practices and design principles.",
+        "missionImage": "/static/img/cssttr-screencap.png",
+        "mission": "Illustrate how one can use the latest css selectors, no classes alowed. Design multiple website elements to get an understanding of the latest CSS capabilities.",
+        "skills": [
+          "New CSS selectors",
+          "CSS best practices",
+          "Design principles"
+        ],
         "demoUri": "https://baskager.github.io/cssttr/",
         "repoUri": "https://github.com/baskager/web-design",
         "tags": ["design", "css", "front-end"],
-        "year": 2018,
         "url": "/project/design/css-to-the-rescue"
       },
       {
         "name": "Exclusive Design",
         "slug": "exclusive-design",
+        "thumbnailImage": "/static/img/minor-site-screencap-big3.png",
+        "backgroundImage": "/static/img/minor-site-screencap-big3.png",
         "shortDescription": "Advanced accessibility",
-        "longDescription":
-          "<h3>Design process</h3><img src='https://camo.githubusercontent.com/5012036f4a3f5f2dac4f3ba153899ed0a34dad82/687474703a2f2f6b616765722e696f2f75706c6f6164732f6373737474722d322e706e67'> <H4>Research</h4><blockquote> <p>Users with mobility disabilities, including repetitive stress injuries, may not be able to use a mouse or trackpad. These people are able to access content through the use of a keyboard by pressing the \"tab\" or \"arrow\" keys, or through the use of alternative input devices such as single-switch input or mouth stick. As a result, the tab order should match the visual order, so keyboard-only users are able to logically navigate through site content.</p> <p>Long pages with lots of content should be broken up with anchor links (jump lists), allowing keyboard-only users to skip to relevant portions of the page without having to negotiate through other content. \"Skip to main content\" should be provided at the top of each page, so keyboard-only users won't have to tab through the page navigation in order to get the main content.</p> <p>For pages with local menus and multiple levels and sub-items, the menus should be configured so that all menu items can be accessed with the keyboard. Do not use elements that only activate when a user hovers over items with a mouse, as keyboard-only or screen readers users will not be able to activate them.</p> </blockquote>",
-        "thumbnailUri": "/static/img/minor-site-screencap-big3.png",
-        "demoUri": "https://github.com/baskager/redesign-minor-web-dev",
-        "repoUri": "https://redesign-minor.kager.io/",
-        "tags": ["design", "accessibility", "front-end"],
+        "period": "May - June",
         "year": 2018,
+        "summary": "The final and  qualifying project of the minor Web Development at The University of Applied Sciences Amsterdam. Won the 2018 Golden Dot Award for Responsible Design for its accessibility experiments.",
+        "missionImage": "/static/img/minor-site-screencap-complete.png",
+        "mission": "How can we design a website in such a way that it is pleasurable for people who need accessbibility features, without changing the experience.",
+        "skills": [
+          "Accessibility",
+          "Front-end design process",
+          "Making styleguides"
+        ],
+        "demoUri": "https://redesign-minor.kager.io/",
+        "repoUri": "https://github.com/baskager/redesign-minor-web-dev",
+        "tags": ["design", "accessibility", "front-end"],
         "url": "/project/design/exclusive-design"
       }
     ]
@@ -75,21 +116,29 @@
     "name": "Database",
     "categoryUrlSlug": "database",
     "thumbnailTitle": "I like databases",
-    "description":
-      "Wow what a description <br><br> I have listed two databases below that I've worked with. For both projects the source code is available on my <a target='_blank' href='https://github.com/baskager'>GitHub account</a>",
+    "description": "Wow what a description <br><br> I have listed two databases below that I've worked with. For both projects the source code is available on my <a target='_blank' href='https://github.com/baskager'>GitHub account</a>",
     "projects": [
       {
-        "name": "ArangoDB",
-        "slug": "arangodb",
-        "shortDescription": "Key-value and graph database",
+        "name": "Remind",
+        "slug": "remind",
+        "shortDescription": "Reminder app powered by a messenger bot",
         "longDescription": "No description added yet",
-        "thumbnailUri":
-          "https://yt3.ggpht.com/a-/AJLlDp3UfT6VRQPHFgY_AkPkYJRbjQYJDyQDE597uQ=s900-mo-c-c0xffffffff-rj-k-no",
-        "demoUri": false,
-        "repoUri": false,
-        "tags": ["arango", "database", "key-value", "graph"],
+        "backgroundColor": "#FF4D61",
+        "thumbnailImage": "/static/img/remind-diagram.jpg",
+        "period": "In development - ",
         "year": 2018,
-        "url": "/project/database/arango"
+        "summary": "A simple web app where friends and family can send me reminders through a messenger bot.",
+        "missionImage": "/static/img/remind-diagram.jpg",
+        "mission": "I am a very forgetfull person and this web app should help me remind things. Whenever I should be reminded of something, my friends and fanily can send a quick message and it will be stored on remind.kager.io",
+        "skills": [
+          "ArangoDB",
+          "Facebook Messenger API",
+          "Javascript web sockets "
+        ],
+        "repoUri": "https://github.com/baskager/real-time-web-project",
+        "demoUri": false,
+        "tags": ["arango", "database", "key-value", "graph"],
+        "url": "/project/database/remind"
       }
     ]
   }

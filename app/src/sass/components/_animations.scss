@@ -13,6 +13,16 @@
     transform: translateX(0);
   }
 }
+@keyframes slideInBackgroundFromRight {
+  0% {
+    background-position: calc(50% - 2em) 50%;
+    filter: opacity(0.9);
+  }
+  100% {
+    background-position: center;
+    filter: opacity(1);
+  }
+}
 @keyframes slideInFromRightWithOffset {
   0% {
     opacity: 0;

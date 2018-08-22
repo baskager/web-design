@@ -1,4 +1,5 @@
 header {
+  animation: 0.4s ease-out 0s 1 slideInBackgroundFromRight;
   &.home {
     .container div {
       grid-column: 4 / span 7;
@@ -8,14 +9,21 @@ header {
       }
     }
   }
-  &.project .container {
-    margin-bottom: 2em;
-    > div > p {
-      padding-left: 2em;
-      width: 80%;
-      color: white;
-      font-weight: 700;
-      margin: 2em 0;
+  &.project {
+    .container {
+      margin-bottom: 2em;
+      > div > p {
+        margin-top: 0;
+        padding-left: 2em;
+        width: 80%;
+        color: white;
+        font-weight: 700;
+        // margin: 0.4em 0;
+        i {
+          font-weight: 400;
+          line-height: 2.4em;
+        }
+      }
     }
   }
   margin-top: 4em;
@@ -68,6 +76,7 @@ header {
 }
 @media (max-width: $breakpoint-small) {
   header {
+    margin-top: 0;
     &.home {
       .container div {
         grid-column: 1 / span 12;
@@ -82,8 +91,15 @@ header {
         }
       }
     }
-    margin-top: 0;
-
+    &.project .container {
+      > div {
+        margin: auto;
+        > p {
+          width: 100%;
+          padding-left: 1em;
+        }
+      }
+    }
     .container {
       .btn.first {
         margin-left: 0;

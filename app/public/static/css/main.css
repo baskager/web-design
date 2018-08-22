@@ -46,6 +46,7 @@ p {
 
 .offsetBackground {
   animation: 0.4s ease-out 0s 1 slideInFromRightWithOffset;
+  margin-left: 15px;
   box-shadow: -15px -15px 0px 0px #ff4d6177;
   transition: all 0.3s ease-in-out 0.2s;
   transform: none;
@@ -129,7 +130,6 @@ blockquote:after {
 
 @media (max-width: 50em) {
   body {
-    padding: 0.4em;
     box-sizing: border-box; } }
 
 .btn {
@@ -197,6 +197,7 @@ blockquote:after {
     padding: 1.4em; } }
 
 header {
+  animation: 0.4s ease-out 0s 1 slideInBackgroundFromRight;
   margin-top: 4em;
   position: relative;
   overflow: auto;
@@ -209,11 +210,14 @@ header {
   header.project .container {
     margin-bottom: 2em; }
     header.project .container > div > p {
+      margin-top: 0;
       padding-left: 2em;
       width: 80%;
       color: white;
-      font-weight: 700;
-      margin: 2em 0; }
+      font-weight: 700; }
+      header.project .container > div > p i {
+        font-weight: 400;
+        line-height: 2.4em; }
   header .wrap {
     background: rgba(20, 0, 0, 0.75);
     overflow: auto;
@@ -258,6 +262,11 @@ header {
         display: inline-block;
         padding: 0.1em 0.2em;
         text-align: center; }
+    header.project .container > div {
+      margin: auto; }
+      header.project .container > div > p {
+        width: 100%;
+        padding-left: 1em; }
     header .container .btn.first {
       margin-left: 0; }
     header .container > img {
@@ -378,6 +387,14 @@ nav ul {
   100% {
     opacity: 1;
     transform: translateX(0); } }
+
+@keyframes slideInBackgroundFromRight {
+  0% {
+    background-position: calc(50% - 2em) 50%;
+    filter: opacity(0.9); }
+  100% {
+    background-position: center;
+    filter: opacity(1); } }
 
 @keyframes slideInFromRightWithOffset {
   0% {
@@ -547,6 +564,7 @@ form {
     resize: vertical;
     min-height: 10em; }
   form button.submit {
+    margin-top: 1em;
     margin-left: 0.4em; }
   form .valid {
     box-shadow: -5px -5px 0px 0px #b4ffb4 !important; }
@@ -730,9 +748,6 @@ form {
 .filters .cta-box .btn {
   width: 50%; }
 
-.projectDetail section {
-  margin-top: 2em; }
-
 .project-img img {
   width: 100%; }
 
@@ -790,14 +805,25 @@ form {
 .projectDetail .cta-box .btn {
   width: 50%; }
 
-.projectDetail .splitTwo section {
+.projectDetail section {
+  margin-top: 1em; }
+  .projectDetail section h2 {
+    margin-top: 0; }
+
+.projectDetail .splitTwo section:first-child {
   margin-right: 2em; }
 
 .projectDetail .project-img {
-  flex-basis: 3; }
+  flex: 2; }
+  .projectDetail .project-img img {
+    display: block;
+    max-height: 30em;
+    width: auto;
+    margin: 0 auto; }
 
 .projectDetail .project-skills {
-  flex-basis: 2; }
+  flex: 1;
+  animation: 0.4s ease-out 0s 1 fadeIn; }
 
 .projectDetail .suggestion {
   margin-top: 5em; }
@@ -808,10 +834,14 @@ form {
     width: 12em; }
 
 @media (max-width: 70em) {
+  .projectDetail .project-img {
+    flex: 1.5; }
   .projectDetail .cta-box {
     width: 75%; } }
 
 @media (max-width: 50em) {
+  .projectDetail .splitTwo section:first-child {
+    margin-right: 0; }
   .projectDetail .splitTwo {
     flex-direction: column; }
   .projectDetail .cta-box {
@@ -822,7 +852,8 @@ form {
   margin: 0 auto;
   z-index: 1;
   position: relative;
-  overflow: auto; }
+  overflow: auto;
+  padding-bottom: 4em; }
 
 .contact form fieldset {
   display: block;

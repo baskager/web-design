@@ -1,11 +1,9 @@
-{{> nav currentPage=pageName}} {{> header-project title="Exclusive Design" img="/static/img/minor-site-screencap-big3.png"
-summary="The final qualifying project of the minor Web Development at The University of Applied Sciences Amsterdam. Won the
-2018 Golden Dot Award for Responsible Design for its accessibility experiments." }}
+{{> nav currentPage=pageName}} {{> header-project project=project }}
 <main>
     <div class='projectDetail container'>
         <div class='flex cta-box'>
-            <a class='btn cta eq' href='https://redesign-minor.kager.io'>live demo</a>
-            <a class='btn cta eq' href='https://github.com/baskager/redesign-minor-web-dev'>github repository</a>
+            {{#if project.demoUri}}<a class='btn cta eq' href='{{project.demoUri}}'>live demo</a>{{/if}} {{#if project.repoUri}}<a
+                class='btn cta eq' href='{{project.repoUri}}'>github repository </a>{{/if}}
         </div>
 
         {{!--
@@ -15,19 +13,18 @@ summary="The final qualifying project of the minor Web Development at The Univer
         </section>
         <div class="flex splitTwo">
             <section class='project-img'>
-                <img src="/static/img/minor-site-screencap-complete.png" alt="" />
+                <img src="{{project.missionImage}}" alt="" />
             </section>
             <section class='project-skills'>
                 <h2>The mission</h2>
                 <p>
-                    How can we design a website in such a way that it is pleasurable for people who need accessbibility features, without changing
-                    the experience.
+                    {{project.mission}}
                 </p>
                 <h2>Acquired skills</h2>
                 <ul id="tags" class='tags'>
-                    <li>Accessibility</li>
-                    <li>Front-end design process</li>
-                    <li>Making styleguides</li>
+                    {{#each project.skills}}
+                    <li>{{this}}</li>
+                    {{/each}}
                 </ul>
             </section>
         </div>

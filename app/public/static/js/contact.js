@@ -397,11 +397,12 @@
    * @author: Bas Kager
    */
   validateAll = function() {
-    var valid = true;
     // Loop trough all the inputs and validate them one by one
     for (var i = 0; i <= inputs.length - 1; i++) {
+      console.log(i);
       var input = inputs[i];
-      valid = validateInput(input);
+
+      var valid = validateInput(input);
 
       if (!valid && input.value.length !== 0) {
         input.classList.add("invalid");
@@ -423,10 +424,13 @@
       }
       if (input.name === "message" && !valid)
         inputs[2].placeholder = "Email address";
+
+      inputs[i].valid = valid;
     }
 
-    if (valid) button.disabled = false;
-    else button.disabled = true;
+    if (inputs[0].valid && inputs[1].valid && inputs[2].valid) {
+      button.disabled = false;
+    } else button.disabled = true;
 
     return valid;
   };

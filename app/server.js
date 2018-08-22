@@ -40,26 +40,34 @@ app.set("view engine", "handlebars");
 // Define directory from which static files are served
 app.use(express.static("public"));
 
-let projects;
-fs.readFile("projects.json", "utf8", function(err, data) {
+fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
   if (err) throw err;
-  projects = JSON.parse(data);
+  projects = JSON.parse(projectsJSON);
 
-  app.get("/", function(req, res) {
+  let paths = {
+    home: "/",
+    styleguide: "/styleguide",
+    portfolio: "/portfolio",
+    portfolioCategory: "/portfolio/:categorySlug",
+    projectDetail: "/project/:categorySlug/:projectSlug",
+    contact: "/contact"
+  };
+
+  app.get(paths.home, function(req, res) {
     res.render("home", {
       pageName: "home",
       meta: meta
     });
   });
 
-  app.get("/styleguide", function(req, res) {
-    res.render("styleguide", {
-      pageName: "styleguide",
-      meta: meta
-    });
-  });
+  // app.get("/styleguide", function(req, res) {
+  //   res.render("styleguide", {
+  //     pageName: "styleguide",
+  //     meta: meta
+  //   });
+  // });
 
-  app.get("/portfolio", function(req, res) {
+  app.get(paths.portfolio, function(req, res) {
     res.render("project-overview", {
       pageName: "portfolio",
       meta: meta,
@@ -68,7 +76,7 @@ fs.readFile("projects.json", "utf8", function(err, data) {
     });
   });
 
-  app.get("/portfolio/:categorySlug", function(req, res) {
+  app.get(paths.portfolioCategory, function(req, res) {
     let categorySlug = req.params.categorySlug;
     let categories = [];
     categories.push(projects[categorySlug]);
@@ -82,14 +90,28 @@ fs.readFile("projects.json", "utf8", function(err, data) {
     });
   });
 
-  app.get("/project/:categorySlug/:projectSlug", function(req, res) {
-    res.render("project-detail", {
-      pageName: "portfolio",
-      meta: meta
-    });
+  app.get(paths.projectDetail, function(req, res) {
+    let categorySlug = req.params.categorySlug;
+    let projectSlug = req.params.projectSlug;
+
+    let category = projects[categorySlug];
+    let result = null;
+
+    for (project of category.projects) {
+      if (project.slug === projectSlug) {
+        result = project;
+      }
+    }
+    if (result) {
+      res.render("project-detail", {
+        pageName: "portfolio",
+        meta: meta,
+        project: result
+      });
+    } else res.redirect(paths.portfolio);
   });
 
-  app.get("/contact", function(req, res) {
+  app.get(paths.contact, function(req, res) {
     res.render("contact", {
       pageName: "contact",
       meta: meta

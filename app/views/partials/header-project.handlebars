@@ -1,10 +1,11 @@
-<header class="project" style="background: url({{img}}); background-position: center;">
+<header class="project" style="background-image: url({{project.backgroundImage}}); background: {{project.backgroundColor}}; background-position: center;">
     <div class="wrap">
         <div class="container grid">
             <div>
-                <h1 class="offsetBackground">{{title}}</h1>
+                <h1 class="offsetBackground">{{project.name}}</h1>
                 <p>
-                    {{{summary}}}
+                    <i>{{project.period}} {{project.year}}</i>
+                    <br>{{{project.summary}}}
                 </p>
 
             </div>
