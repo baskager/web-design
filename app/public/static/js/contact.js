@@ -399,7 +399,6 @@
   validateAll = function() {
     // Loop trough all the inputs and validate them one by one
     for (var i = 0; i <= inputs.length - 1; i++) {
-      console.log(i);
       var input = inputs[i];
 
       var valid = validateInput(input);
