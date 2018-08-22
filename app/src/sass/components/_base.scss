@@ -61,22 +61,6 @@ a:focus {
   display: flex;
   flex-direction: row;
 }
-.flex.split {
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.flex.split > section {
-  width: 45%;
-  margin-right: 2em;
-}
-.flex.split > section:first-child {
-  width: 65%;
-  margin-right: 2em;
-}
-.flex.split > section:nth-child(2) {
-  width: 25%;
-  margin-right: 2em;
-}
 .grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -87,7 +71,7 @@ a:focus {
 main {
   box-sizing: border-box;
   overflow: auto;
-  padding-bottom: 10em;
+  padding-bottom: 6em;
 }
 blockquote {
   background: #f9f9f9;

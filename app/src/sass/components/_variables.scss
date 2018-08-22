@@ -1,6 +1,7 @@
 $background-color: #fff;
 $dark-overlay-color: background(0, 0, 0, 0.8);
 $primary-color: #ff4d61;
+$primary-active-color: #f67c8a;
 $primary-color-alpha: #ff4d6177;
 $accent-color: #0085b6;
 $accent-color-alpha: #0085b677;
@@ -15,12 +16,22 @@ $link-color: $accent-color;
 $link-hover-color: #58636e;
 $link-focus-background: #0085b644;
 
+$btn-background: #000;
+$btn-foreground: #fff;
+
 $btn-cta-background: $accent-color;
 $btn-cta-foreground: #fff;
 $btn-cta-disabled-background: #dbdbdb;
 $btn-cta-disabled-foreground: rgb(172, 172, 172);
 $btn-cta-hover-background: $accent-active-color;
 $btn-cta-hover-foreground: #fff;
+
+$btn-secondary-background: $primary-color;
+$btn-secondary-foreground: #fff;
+$btn-secondary-disabled-background: #dbdbdb;
+$btn-secondary-disabled-foreground: rgb(172, 172, 172);
+$btn-secondary-hover-background: $primary-active-color;
+$btn-secondary-hover-foreground: #fff;
 
 $breakpoint-small: 50em;
 $breakpoint-medium: 70em;

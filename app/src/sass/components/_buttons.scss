@@ -1,33 +1,61 @@
 .btn {
   display: inline-block;
-  background: $btn-cta-background;
+  background: $btn-background;
+  color: $btn-foreground;
   border-radius: 2em;
-  color: $btn-cta-foreground;
   border: 0;
   padding: 0.8em 0.8em;
   font-size: 1.2rem;
   font-weight: 700;
   transition: 0.15s;
   cursor: pointer;
-  &:hover,
-  &:focus {
-    background: $btn-cta-hover-background;
-    color: $btn-cta-hover-foreground;
-    transform: scale(1.1);
+
+  &.cta {
+    background: $btn-cta-background;
+    color: $btn-cta-foreground;
+
+    &:hover,
+    &:focus {
+      background: $btn-cta-hover-background;
+      color: $btn-cta-hover-foreground;
+      transform: scale(1.1);
+    }
+    &:disabled:hover {
+      transform: none;
+    }
+    &::-moz-focus-inner {
+      border: 0;
+    }
+    &:disabled {
+      background: $btn-cta-disabled-background;
+      color: $btn-cta-disabled-foreground;
+      cursor: not-allowed;
+    }
   }
-  &:disabled:hover {
-    transform: none;
-  }
-  &::-moz-focus-inner {
-    border: 0;
-  }
-  &:disabled {
-    background: $btn-cta-disabled-background;
-    color: $btn-cta-disabled-foreground;
-    cursor: not-allowed;
+  &.secondary {
+    background: $btn-secondary-background;
+    color: $btn-secondary-foreground;
+    &:hover,
+    &:focus {
+      background: $btn-secondary-hover-background;
+      color: $btn-secondary-hover-foreground;
+      transform: scale(1.1);
+    }
+    &:disabled:hover {
+      transform: none;
+    }
+    &::-moz-focus-inner {
+      border: 0;
+    }
+    &:disabled {
+      background: $btn-secondary-disabled-background;
+      color: $btn-secondary-disabled-foreground;
+      cursor: not-allowed;
+    }
   }
 }
 .cta-box {
+  transition: 0.25s;
   box-sizing: border-box;
   overflow: none;
 }
@@ -40,6 +68,7 @@
 }
 .cta-box .eq {
   flex-grow: 1;
+
   margin: 0.4em 2%;
   text-align: center;
 }
