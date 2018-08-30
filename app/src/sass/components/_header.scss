@@ -4,6 +4,7 @@ header {
     .container div {
       grid-column: 4 / span 7;
       > h1 {
+        margin-top: 0.6em;
         display: inline-block;
         animation: 0.4s ease-out 0s 1 slideInFromRight;
       }
@@ -37,7 +38,7 @@ header {
     box-sizing: border-box;
   }
   .container {
-    margin-top: 1em;
+    margin-top: 3em;
     .btn.first {
       margin-left: 20%;
     }
@@ -62,8 +63,10 @@ header {
         box-sizing: border-box;
         background: $primary-color;
         padding: 0.1em 0.4em;
+        hyphens: auto;
         padding-left: 1em;
         margin-bottom: 0;
+        margin-top: 0;
         color: #fff;
       }
 
@@ -82,12 +85,15 @@ header {
         grid-column: 1 / span 12;
         > h1 {
           position: absolute;
-          right: 0.6em;
-          margin: -1em 0;
+          right: 0.4em;
+          margin: -0.6em 0;
           display: inline-block;
           // width: 100%;
           padding: 0.1em 0.2em;
           text-align: center;
+        }
+        > p {
+          padding-top: 0.4em;
         }
       }
     }
@@ -101,6 +107,7 @@ header {
       }
     }
     .container {
+      margin-top: 2em;
       .btn.first {
         margin-left: 0;
       }
@@ -116,7 +123,6 @@ header {
       > div {
         grid-column: 1 / span 12;
         grid-row: 2;
-        margin-left: 5%;
         h1 {
           padding-left: 0.4em;
         }
