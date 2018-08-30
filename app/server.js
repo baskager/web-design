@@ -86,7 +86,8 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
       meta: meta,
       categorySlug: categorySlug,
       categories: categories,
-      title: categories[0].name + " portfolio"
+      title: "Portfolio",
+      subtitle: categories[0].name + " projects"
     });
   });
 

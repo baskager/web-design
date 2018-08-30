@@ -16,6 +16,12 @@ h3 {
   font-size: 1.5rem;
   font-weight: 700;
 }
+h3.subtitle {
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  color: $subtitle-color;
+}
 p {
   font-size: 1.2rem;
   line-height: 1.618em;

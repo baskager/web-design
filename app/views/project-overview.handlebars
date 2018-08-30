@@ -17,6 +17,9 @@ will close the loop on focusing solely on the bottom line." }}
                 </div>
             </div>
         </section>
+        {{#if subtitle}}
+        <h3 class="subtitle">{{subtitle}}</h3>
+        {{/if}}
         <ul class="center container flex project-list">
             {{#each categories}} {{#each projects}} {{> thumbnail id=slug categorySlug=categoryUrlSlug url=url title=name description=shortDescription
             img=thumbnailImage }} {{/each}} {{else}}

@@ -40,6 +40,12 @@ h3 {
   font-size: 1.5rem;
   font-weight: 700; }
 
+h3.subtitle {
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  color: #7e7e7e; }
+
 p {
   font-size: 1.2rem;
   line-height: 1.618em; }
@@ -205,6 +211,7 @@ header {
   header.home .container div {
     grid-column: 4 / span 7; }
     header.home .container div > h1 {
+      margin-top: 0.6em;
       display: inline-block;
       animation: 0.4s ease-out 0s 1 slideInFromRight; }
   header.project .container {
@@ -223,7 +230,7 @@ header {
     overflow: auto;
     box-sizing: border-box; }
   header .container {
-    margin-top: 1em; }
+    margin-top: 3em; }
     header .container .btn.first {
       margin-left: 20%; }
     header .container .btn {
@@ -243,8 +250,10 @@ header {
         box-sizing: border-box;
         background: #ff4d61;
         padding: 0.1em 0.4em;
+        hyphens: auto;
         padding-left: 1em;
         margin-bottom: 0;
+        margin-top: 0;
         color: #fff; }
       header .container > div > p {
         padding-left: 20%;
@@ -257,38 +266,41 @@ header {
       grid-column: 1 / span 12; }
       header.home .container div > h1 {
         position: absolute;
-        right: 0.6em;
-        margin: -1em 0;
+        right: 0.4em;
+        margin: -0.6em 0;
         display: inline-block;
         padding: 0.1em 0.2em;
         text-align: center; }
+      header.home .container div > p {
+        padding-top: 0.4em; }
     header.project .container > div {
       margin: auto; }
       header.project .container > div > p {
         width: 100%;
         padding-left: 1em; }
-    header .container .btn.first {
-      margin-left: 0; }
-    header .container > img {
-      box-sizing: border-box;
-      overflow: none;
-      width: 100%;
-      grid-column: 2 / span 8;
-      grid-row: 1;
-      background: #ff4d6177; }
-    header .container > div {
-      grid-column: 1 / span 12;
-      grid-row: 2;
-      margin-left: 5%; }
-      header .container > div h1 {
-        padding-left: 0.4em; }
-      header .container > div > p {
-        padding: 0 0.4em;
+    header .container {
+      margin-top: 2em; }
+      header .container .btn.first {
+        margin-left: 0; }
+      header .container > img {
         box-sizing: border-box;
-        width: 95%;
-        color: #555;
-        margin-top: 2.5em;
-        animation: 0.4s ease-out 0s 1 slideInFromRight; } }
+        overflow: none;
+        width: 100%;
+        grid-column: 2 / span 8;
+        grid-row: 1;
+        background: #ff4d6177; }
+      header .container > div {
+        grid-column: 1 / span 12;
+        grid-row: 2; }
+        header .container > div h1 {
+          padding-left: 0.4em; }
+        header .container > div > p {
+          padding: 0 0.4em;
+          box-sizing: border-box;
+          width: 95%;
+          color: #555;
+          margin-top: 2.5em;
+          animation: 0.4s ease-out 0s 1 slideInFromRight; } }
 
 nav.main {
   position: fixed;
