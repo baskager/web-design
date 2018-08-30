@@ -748,9 +748,6 @@ form {
 .filters .cta-box .btn {
   width: 50%; }
 
-.project-img img {
-  width: 100%; }
-
 .project-list {
   flex-wrap: wrap;
   justify-content: space-around;
@@ -840,6 +837,8 @@ form {
     width: 75%; } }
 
 @media (max-width: 50em) {
+  .projectDetail .project-img img {
+    width: 100%; }
   .projectDetail .splitTwo section:first-child {
     margin-right: 0; }
   .projectDetail .splitTwo {

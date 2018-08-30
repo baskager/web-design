@@ -51,6 +51,11 @@
 }
 @media (max-width: $breakpoint-small) {
   .projectDetail {
+    .project-img {
+      img {
+        width: 100%;
+      }
+    }
     .splitTwo section:first-child {
       margin-right: 0;
     }
