@@ -161,7 +161,11 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
             .send({
               mailoptions: {
                 to: config.mailer.contactAdress,
-                from: validatedData.inputs.email.value,
+                from:
+                  validatedData.inputs.name.value +
+                  " <" +
+                  validatedData.inputs.email.value +
+                  ">",
                 subject: "New message from " + validatedData.inputs.name.value
               },
               template: {
