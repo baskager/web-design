@@ -67,7 +67,7 @@ module.exports = function(config, cache) {
 
       for (let param in params) {
         returnData.inputs[param] = {};
-        let value = validator.escape(params[param]);
+        let value = params[param];
         let mapEntry = map.inputs[param];
 
         if (mapEntry) {
