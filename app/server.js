@@ -1,5 +1,6 @@
 const express = require("express"),
   app = express(),
+  Raven = require("raven"),
   http = require("http").Server(app),
   debug = require("debug")("kager-server"),
   exphbs = require("express-handlebars"),
@@ -11,6 +12,11 @@ const express = require("express"),
   querystring = require("querystring"),
   components = require("./components")(config),
   validator = new components.Validator();
+
+// Set up sentry.io logging
+Raven.config(
+  "https://87770093195c4c6a87c342a87dfe4e59@sentry.io/1274336"
+).install();
 
 const contactFormMap = new components.FormMapper(
   "views/partials/forms/contact.handlebars"
@@ -150,56 +156,91 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
     */
   app.post("/contact", urlencodedParser, function(req, res) {
     // Get the form mapping for the contact form (contains validation rules)
-    contactFormMap
-      .get()
-      .then(map => {
-        // Compare the request body with the validation rules on the inputs
-        let validatedData = validator.validateInputs(map, req.body);
-        // Send the email if all validations were passed
-        if (!validatedData.isValidationError) {
-          mailer
-            .send({
-              mailoptions: {
-                to: config.mailer.contactAdress,
-                from:
-                  validatedData.inputs.name.value +
-                  " <" +
-                  validatedData.inputs.email.value +
-                  ">",
-                subject: "New message from " + validatedData.inputs.name.value
-              },
-              template: {
-                name: "contact",
-                context: { validatedData }
-              }
-            })
-            .then(result => {
-              console.dir(result);
-              renderContactAfterFormSubmission(req, res, validatedData);
-            })
-            .catch(mailerError => {
-              let error = {};
-              error.type = "mailer";
-              error.info = mailerError;
-              // Re-render contact page if an error occurs and pass the error object along
-              renderContactAfterFormSubmission(req, res, validatedData, error);
-            });
-          // Re-render contact page with data if inputs did not pass validations
-        } else renderContactAfterFormSubmission(req, res, validatedData);
-      })
-      .catch(mapError => {
-        let error = {};
-        error.type = "validation_map_init";
-        error.info = mapError;
-        // Re-render contact page if an error occurs and pass the error object along
-        renderContactAfterFormSubmission(req, res, {}, error);
+
+    Raven.context(function() {
+      Raven.captureBreadcrumb({
+        message: "Received data from the contact form",
+        category: "contact",
+        data: {
+          inputs: req.body
+        }
       });
-  });
-  mailer.verify().then(success => {
-    console.info("SMTP SUCCESS: configuration verified");
-    console.log("Starting server for environment: " + config.environment);
-    http.listen(port, function() {
-      console.log("Server listening on port http://localhost:" + port);
+      contactFormMap
+        .get()
+        .then(map => {
+          // Compare the request body with the validation rules on the inputs
+          let validatedData = validator.validateInputs(map, req.body);
+          // Send the email if all validations were passed
+          if (!validatedData.isValidationError) {
+            mailer
+              .send({
+                mailoptions: {
+                  to: config.mailer.contactAdress,
+                  from:
+                    validatedData.inputs.name.value +
+                    " <" +
+                    validatedData.inputs.email.value +
+                    ">",
+                  subject: "New message from " + validatedData.inputs.name.value
+                },
+                template: {
+                  name: "contact",
+                  context: { validatedData }
+                }
+              })
+              .then(result => {
+                console.dir(result);
+                renderContactAfterFormSubmission(req, res, validatedData);
+              })
+              .catch(mailerError => {
+                Raven.captureException(mailerError);
+                let error = {};
+                error.type = "mailer";
+                error.info = mailerError;
+
+                // Re-render contact page if an error occurs and pass the error object along
+                renderContactAfterFormSubmission(
+                  req,
+                  res,
+                  validatedData,
+                  error
+                );
+              });
+            // Re-render contact page with data if inputs did not pass validations
+          } else renderContactAfterFormSubmission(req, res, validatedData);
+        })
+        .catch(mapError => {
+          Raven.captureException(mapError);
+          let error = {};
+          error.type = "validation_map_init";
+          error.info = mapError;
+          // Re-render contact page if an error occurs and pass the error object along
+          renderContactAfterFormSubmission(req, res, {}, error);
+        });
     });
+  });
+
+  Raven.context(function() {
+    let contextData = config.mailer;
+    delete contextData.smtp.auth;
+    Raven.captureBreadcrumb({
+      message: "Verifying SMTP config",
+      category: "SMTP",
+      data: {
+        config: contextData
+      }
+    });
+    mailer
+      .verify()
+      .then(success => {
+        console.info("SMTP SUCCESS: configuration verified");
+        console.log("Starting server for environment: " + config.environment);
+        http.listen(port, function() {
+          console.log("Server listening on port http://localhost:" + port);
+        });
+      })
+      .catch(error => {
+        Raven.captureException(error);
+      });
   });
 });
