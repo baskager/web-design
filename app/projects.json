@@ -57,11 +57,12 @@
         "year": 2018,
         "summary": "Building sites is something I did long before programming. But building my own site was probably the most difficult. I am a perfectionist and I did not feel confident enough with my design skills.<br><br> I've made a few concepts over the last few years, but none made it to production. Now, finally. After finishing the Web Development minor at the Amsterdam University of Applied sciences, Eureka!",
         "missionImage": "/static/img/kager-screencap.png",
-        "mission": "How can we design a website in such a way that it is pleasurable for people who need accessbibility features, without changing the experience.",
+        "mission": "A personal website which shows my skills, what I'm working on and how to contact me. <br><br>A 'digital CV' for HR/recruiters who are interested in hiring me, developers who want to work with me or people who like to keep up with me for other reasons",
         "skills": [
-          "Accessibility",
-          "Front-end design process",
-          "Making styleguides"
+          "Web-design",
+          "CSS animations",
+          "Progressive enhancement",
+          "Sentry.io exception logging"
         ],
         "demoUri": "https://kager.io",
         "repoUri": "https://github.com/baskager/web-design",
