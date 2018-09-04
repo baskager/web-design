@@ -207,7 +207,10 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
                 );
               });
             // Re-render contact page with data if inputs did not pass validations
-          } else renderContactAfterFormSubmission(req, res, validatedData);
+          } else {
+            Raven.captureException(validatedData);
+            renderContactAfterFormSubmission(req, res, validatedData);
+          }
         })
         .catch(mapError => {
           Raven.captureException(mapError);
