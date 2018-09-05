@@ -1,6 +1,23 @@
+/**
+ * Caching library that caches data for various software components
+ *
+ * @author  Bas Kager
+ * @version 1.0
+ */
 const fs = require("fs");
 module.exports = function(config) {
   class Cache {
+    /**
+     * Constructor for the Cache class
+     *
+     * Reads cache from file, if cache is not available,
+     * initialise an empty cache object
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @returns {void}
+     */
     constructor() {
       let cacheFromFile = this.readFromFile();
       if (cacheFromFile) {
@@ -17,7 +34,17 @@ module.exports = function(config) {
         this.components = {};
       }
     }
-
+    /**
+     * Get cache item for a component
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @param {string} componentName - Name of the cached component
+     * @param {string} id - Unique identifier of the cached object
+     *
+     * @returns {Object} - Cached javascript object
+     */
     get(componentName, id) {
       if (
         this.components[componentName] &&
@@ -26,16 +53,25 @@ module.exports = function(config) {
         return this.components[componentName][id];
       } else return null;
     }
-
+    /**
+     * Get the entire cache object
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @returns {Object} - Cache object
+     */
     getAll() {
       return this.components;
     }
-    /*
-     * Date: 12-08-2018
-     * Author: Bas Kager
-     * 
+    /**
      * Reads cache from a file
-    */
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @returns {Object} - Cache object
+     */
     readFromFile(fileName = config.defaultFile) {
       const path = config.location + fileName;
       console.info("Reading cache from: " + path);
@@ -43,12 +79,14 @@ module.exports = function(config) {
         return JSON.parse(fs.readFileSync(path, "utf8"));
       } else return null;
     }
-    /*
-     * Date: 12-08-2018
-     * Author: Bas Kager
-     * 
+    /**
      * Saves cache to a file
-    */
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @returns {void}
+     */
     saveToFile(fileName = config.defaultFile) {
       const path = config.location + fileName;
       console.info("Writing cache to: " + path);
@@ -58,22 +96,20 @@ module.exports = function(config) {
         console.info("Cache written to: " + path);
       });
     }
-    /*
-     * Date: 12-08-2018
-     * Author: Bas Kager
-     * 
+    /**
      * Add an item to the cache object
-    */
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @returns {void}
+     */
     add(componentName, id, data) {
       // Create cache entry if it doesn't exist yet
       if (!this.components[componentName]) this.components[componentName] = {};
 
       this.components[componentName][id] = data;
     }
-
-    // clear(componentName) {}
-
-    // clearAll() {}
   } // END OF CLASS
 
   return Cache;
