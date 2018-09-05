@@ -111,6 +111,13 @@ header {
       .btn.first {
         margin-left: 0;
       }
+      .buttons {
+        display: flex;
+        .btn {
+          width: 50%;
+          text-align: center;
+        }
+      }
       > img {
         box-sizing: border-box;
         overflow: none;

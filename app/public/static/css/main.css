@@ -282,6 +282,11 @@ header {
       margin-top: 2em; }
       header .container .btn.first {
         margin-left: 0; }
+      header .container .buttons {
+        display: flex; }
+        header .container .buttons .btn {
+          width: 50%;
+          text-align: center; }
       header .container > img {
         box-sizing: border-box;
         overflow: none;
@@ -589,8 +594,7 @@ form {
 
 .about section {
   flex: 1;
-  margin: 0 4em;
-  min-width: 24em; }
+  margin: 0 4em; }
 
 .about section h2 {
   margin-top: 0.4em; }
@@ -598,7 +602,9 @@ form {
 .story p {
   padding: 0 0.4em;
   margin-top: 0;
-  line-height: 1.618em; }
+  line-height: 1.618em;
+  display: inline-block;
+  word-break: break-word; }
 
 .skill-chart a {
   border: 0;
@@ -679,9 +685,12 @@ form {
   padding-top: 1em; }
 
 @media (max-width: 50em) {
-  .about section {
-    margin: 0;
-    animation: 0.4s ease-out 0s 1 fadeIn; } }
+  .about {
+    flex-direction: column; }
+    .about section {
+      margin: 0;
+      animation: 0.4s ease-out 0s 1 fadeIn;
+      width: 100%; } }
 
 .filters {
   position: relative;
