@@ -164,6 +164,7 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
    * @param {Object} data - *optional* Validated data from the contact form
    * @param {Error} error - *optional* Error object
    *
+   * @returns {void}
    */
   renderContactAfterFormSubmission = (req, res, data, error) => {
     let xhr = req.headers.xhr === "true";
