@@ -3,12 +3,12 @@
   "name": "Personal website for Bas Kager",
   "icons": [
     {
-      "src": "/static/img/icon-192.png",
+      "src": "/static/img/icons/icon-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/static/img/icon-512.png",
+      "src": "/static/img/icons/icon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
