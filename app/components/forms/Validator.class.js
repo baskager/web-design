@@ -1,54 +1,108 @@
+/**
+ * Validates data using validation rules from a FormMapper object
+ *
+ * @since: 12-08-2018
+ * @author: Bas Kager
+ */
 const validator = require("validator");
 module.exports = function(config, cache) {
   const prefix = config.prefix;
 
-  /*
-     * Date: 12-08-2018
-     * Author: Bas Kager
-     * 
-     * Maps form HTML into objects and validates data according
-     * to the values defined in the form HTML.
-    */
   class Validator {
     constructor() {}
-
-    _isEmpty(value, map, returnData) {
+    /**
+     * Checks if an input value is empty
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @param {string} value - Value of the form input
+     * @param {Object} mapEntry - Entry for the input in the FormMapper object
+     * @param {Object} returnData - Object containing validation info for all inputs
+     *
+     * @returns {boolean} Validation status for given input
+     */
+    _isEmpty(value, mapEntry, returnData) {
       if (validator.isEmpty(value)) {
-        returnData.inputs[map.name].errors.push(
-          "Input for '" + map.name + "' was empty"
+        returnData.inputs[mapEntry.name].errors.push(
+          "Input for '" + mapEntry.name + "' was empty"
         );
         returnData.isValidationError = true;
         return true;
       } else return false;
     }
-
-    _isEmail(value, map, returnData) {
+    /**
+     * Checks if an input value is an email address
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @param {string} value - Value of the form input
+     * @param {Object} mapEntry - Entry for the input in the FormMapper object
+     * @param {Object} returnData - Object containing validation info for all inputs
+     *
+     * @returns {boolean} Validation status for given input
+     */
+    _isEmail(value, mapEntry, returnData) {
       if (!validator.isEmail(value)) {
-        returnData.inputs[map.name].errors.push(
+        returnData.inputs[mapEntry.name].errors.push(
           "'" + value + "' is not an email address"
         );
         returnData.isValidationError = true;
       }
     }
-
-    _isMin(value, map, returnData) {
-      if (value.length < map.min) {
-        returnData.inputs[map.name].errors.push(
-          "Input for the field '" + map.name + "' is too short"
+    /**
+     * Checks if an input value is above the minimum value defined in the map entry
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @param {string} value - Value of the form input
+     * @param {Object} mapEntry - Entry for the input in the FormMapper object
+     * @param {Object} returnData - Object containing validation info for all inputs
+     *
+     * @returns {boolean} Validation status for given input
+     */
+    _isMin(value, mapEntry, returnData) {
+      if (value.length < mapEntry.min) {
+        returnData.inputs[mapEntry.name].errors.push(
+          "Input for the field '" + mapEntry.name + "' is too short"
         );
         returnData.isValidationError = true;
       }
     }
-
-    _isMax(value, map, returnData) {
-      if (value.length > map.max) {
-        returnData.inputs[map.name].errors.push(
-          "Input for the field '" + map.name + "' is too long"
+    /**
+     * Checks if an input value is under the maximum value defined in the map entry
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @param {string} value - Value of the form input
+     * @param {Object} mapEntry - Entry for the input in the FormMapper object
+     * @param {Object} returnData - Object containing validation info for all inputs
+     *
+     * @returns {boolean} Validation status for given input
+     */
+    _isMax(value, mapEntry, returnData) {
+      if (value.length > mapEntry.max) {
+        returnData.inputs[mapEntry.name].errors.push(
+          "Input for the field '" + mapEntry.name + "' is too long"
         );
         returnData.isValidationError = true;
       }
     }
-
+    /**
+     * Performs all checks om a form input
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @param {string} value - Value of the form input
+     * @param {Object} mapEntry - Entry for the input in the FormMapper object
+     * @param {Object} returnData - Object containing validation info for all inputs
+     *
+     * @returns {boolean} Validation status for given input
+     */
     _performChecks(value, mapEntry, returnData) {
       let isEmpty = this._isEmpty(value, mapEntry, returnData);
       // If the field was not empty, check for further errors
@@ -59,7 +113,17 @@ module.exports = function(config, cache) {
         if (mapEntry.max) this._isMax(value, mapEntry, returnData);
       }
     }
-
+    /**
+     * Validate inputs using a FormMapper object (contains the validation rules for each input).
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @param {FormMapper} map - A map object of the form which contains the validation rules for each input
+     * @param {Object} params - The inputs sent through the form
+     *
+     * @returns {object} Object containing validation status' for all inputs
+     */
     validateInputs(map, params) {
       let returnData = {};
       returnData.isValidationError = false;

@@ -1,3 +1,10 @@
+/**
+ * Maps an HTML form (which contains validation attributes) into an object
+ * to enable server-side validation on the form
+ *
+ * @since: 12-08-2018
+ * @author: Bas Kager
+ */
 const fs = require("fs"),
   jsdom = require("jsdom"),
   { JSDOM } = jsdom,
@@ -5,40 +12,39 @@ const fs = require("fs"),
 
 module.exports = function(config, cache) {
   const prefix = config.prefix;
-
-  /*
-     * Date: 12-08-2018
-     * Author: Bas Kager
-     * 
-     * Maps an HTML form with custom validation attributes into an object
-     * to enable server-side validation on the form 
-     * 
-    */
   class FormMapper {
-    /*
-     * Date: 12-08-2018
-     * Author: Bas Kager
-     * 
-     * Checks if the form was mapped and cached before.
-     * - If so, return the cached map
-     * - If not, call the getMap() function
-    */
-    constructor(templateFile) {
-      this.templateFile = templateFile;
+    /**
+     * Constructor, initialises the object with a template file
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @param {string} templateFileName Template file of the form to be mapped
+     *
+     * @returns {void}
+     */
+    constructor(templateFileName) {
+      this.templateFile = templateFileName;
     }
-    /*
-     * Date: 12-08-2018
-     * Author: Bas Kager
-     * 
+    /**
+     * Get the validation map for the form.
+     *
      * - Return map if it's already available.
      * - Build map if it's not already available.
      * - Cache map if isCache is 'true' in the HTML form.
-    */
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @returns {Object} Validation map object
+     */
     get() {
       return new Promise((resolve, reject) => {
         let cachedMap = cache.get("FormMapper", this.templateFile);
+        // If map is cached, resolve with the cached map
         if (cachedMap) resolve(cachedMap);
         else {
+          // Build map and save to cache if cacheing is enabled on the form
           this._buildMap(this.templateFile)
             .then(map => {
               if (map.isCache) {
@@ -53,14 +59,18 @@ module.exports = function(config, cache) {
         }
       });
     }
-    /*
-     * Date: 12-08-2018
-     * Author: Bas Kager
-     * 
+    /**
      * Builds complete object to make form compatible with
      * validation functions. Can also be cached to validate
      * straight out of memory.
-    */
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @param {string} templateFile - Name of the template file to be mapped
+     *
+     * @returns {Object} Validation map object
+     */
     _buildMap(templateFile) {
       return new Promise((resolve, reject) => {
         fs.readFile(templateFile, "utf8", (error, html) => {
@@ -88,13 +98,17 @@ module.exports = function(config, cache) {
       });
     }
 
-    /*
-     * Date: 12-08-2018
-     * Author: Bas Kager
-     * 
+    /**
      * Maps inputs for a form to prepare them for validation
      * on future requests
-    */
+     *
+     * @since: 12-08-2018
+     * @author: Bas Kager
+     *
+     * @param {Object} inputs - HTMLInputElements from a form
+     *
+     * @returns {Object} Object containing validation info of inputs
+     */
     _mapInputs(inputs) {
       let returnData = {};
       for (let input of inputs) {
