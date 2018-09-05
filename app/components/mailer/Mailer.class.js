@@ -1,23 +1,35 @@
+/**
+ * A wrapper class for nodemailer that sends emails using
+ * handlebars templates and promises
+ *
+ * @since: 14-08-2018
+ * @author: Bas Kager
+ */
 nodemailer = require("nodemailer");
 module.exports = function(config, cache, environment) {
-  /*
-     * Date: 14-08-2018
-     * Author: Bas Kager
-     * 
-     * A wrapper class for nodemailer that sends emails using
-     * handlebars templates and promises
-    */
   class Mailer {
+    /**
+     * Constructor, initialises the mailer with a handlebars object
+     *
+     * @since: 14-08-2018
+     * @author: Bas Kager
+     *
+     * @param {Object} handlebars Handlebars template engine object
+     *
+     * @returns {void}
+     */
     constructor(handlebars) {
       this.transporter = nodemailer.createTransport(config.smtp);
       this.handlebars = handlebars;
     }
-    /*
-     * Date: 14-08-2018
-     * Author: Bas Kager
-     * 
+    /**
      * Veryify if the smtp configuration is correct
-    */
+     *
+     * @since: 14-08-2018
+     * @author: Bas Kager
+     *
+     * @returns {Object} Object containing the status of the verification
+     */
     verify() {
       return new Promise((resolve, reject) => {
         if (environment === "development") {
@@ -31,15 +43,18 @@ module.exports = function(config, cache, environment) {
         });
       });
     }
-    /*
-     * Date: 14-08-2018
-     * Author: Bas Kager
-     * 
+    /**
      * Sends an email with a handelbars template and supplied data.
      * Accepts a JSON object as parameter.
      * 
      * Templates are stored in /views/mailer/[template_name].handlebars
-       {
+     *
+     * @since: 14-08-2018
+     * @author: Bas Kager
+     *
+     * @returns {Object} Object containing the status of the email
+     * 
+     * @example Mailer.send({
           mailoptions: {
             to: "johndoe@example.com",
             from: "alicedoe@example.com",
@@ -49,8 +64,8 @@ module.exports = function(config, cache, environment) {
             name: "template_name",
             context: { validatedData }
           }
-        }
-    */
+        });
+     */
     send(mailconfig) {
       return new Promise((resolve, reject) => {
         let mailoptions = mailconfig.mailoptions;
@@ -72,12 +87,17 @@ module.exports = function(config, cache, environment) {
           });
       });
     }
-    /*
-     * Date: 14-08-2018
-     * Author: Bas Kager
-     * 
+    /**
      * Compiles a handlebars template with the specified context data to raw HTML
-    */
+     *
+     * @since: 14-08-2018
+     * @author: Bas Kager
+     *
+     * @param {string} templatename - Path of the template to be compiled
+     * @param {Object} context - Context data to be injected into the template
+     *
+     * @returns {string} The compiled template in raw html
+     */
     _compileTemplate(templateName, context) {
       return new Promise((resolve, reject) => {
         let filePath = "views/mailer/" + templateName + ".handlebars";
