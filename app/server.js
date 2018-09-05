@@ -13,17 +13,27 @@ const express = require("express"),
   components = require("./components")(config),
   validator = new components.Validator();
 
+// Define directory from which static files are served
+app.use(express.static("public"));
+
+// Initialise cross-site metadata
+const meta = {
+  year: new Date().getFullYear()
+};
+
 // Set up sentry.io logging
 Raven.config(
   "https://87770093195c4c6a87c342a87dfe4e59@sentry.io/1274336"
 ).install();
 
+// Initialise the map object for the 'contact form' validations
 const contactFormMap = new components.FormMapper(
   "views/partials/forms/contact.handlebars"
 );
-
+// Initialise handlebars
 const handlebars = exphbs.create({
   helpers: {
+    // Allows comparing two values, like if(a===b)
     equal: function(a, b, options) {
       if (a === b) {
         return options.fn(this);
@@ -33,23 +43,18 @@ const handlebars = exphbs.create({
   },
   defaultLayout: "main"
 });
-
+// Initialise mailer with the handlebars object, which uses handlebars to compile the mail templates
 const mailer = new components.Mailer(handlebars);
-
-const meta = {
-  year: new Date().getFullYear()
-};
 
 app.engine("handlebars", handlebars.engine);
 app.set("view engine", "handlebars");
 
-// Define directory from which static files are served
-app.use(express.static("public"));
-
+// Load the projects from the database and initialise paths
 fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
   if (err) throw err;
   projects = JSON.parse(projectsJSON);
 
+  // Change all server paths here
   let paths = {
     home: "/",
     styleguide: "/styleguide",
@@ -59,6 +64,13 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
     contact: "/contact"
   };
 
+  /**
+   * Path that renders the homepage
+   *
+   * @author: Bas Kager
+   * @param {Request} req - The request object
+   * @param {Response} res - The response object
+   */
   app.get(paths.home, function(req, res) {
     res.render("home", {
       pageName: "home",
@@ -66,13 +78,13 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
     });
   });
 
-  // app.get("/styleguide", function(req, res) {
-  //   res.render("styleguide", {
-  //     pageName: "styleguide",
-  //     meta: meta
-  //   });
-  // });
-
+  /**
+   * Path that renders the portfolio
+   *
+   * @author: Bas Kager
+   * @param {Request} req - The request object
+   * @param {Response} res - The response object
+   */
   app.get(paths.portfolio, function(req, res) {
     res.render("project-overview", {
       pageName: "portfolio",
@@ -81,7 +93,13 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
       title: "Portfolio"
     });
   });
-
+  /**
+   * Path that renders the portfolio for a certain category
+   *
+   * @author: Bas Kager
+   * @param {Request} req - The request object
+   * @param {Response} res - The response object
+   */
   app.get(paths.portfolioCategory, function(req, res) {
     let categorySlug = req.params.categorySlug;
     let categories = [];
@@ -96,7 +114,13 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
       subtitle: categories[0].name + " projects"
     });
   });
-
+  /**
+   * Path that renders 'project-detail' pages
+   *
+   * @author: Bas Kager
+   * @param {Request} req - The request object
+   * @param {Response} res - The response object
+   */
   app.get(paths.projectDetail, function(req, res) {
     let categorySlug = req.params.categorySlug;
     let projectSlug = req.params.projectSlug;
@@ -117,14 +141,30 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
       });
     } else res.redirect(paths.portfolio);
   });
-
+  /**
+   * Path that renders the contact page
+   *
+   * @author: Bas Kager
+   * @param {Request} req - The request object
+   * @param {Response} res - The response object
+   */
   app.get(paths.contact, function(req, res) {
     res.render("contact", {
       pageName: "contact",
       meta: meta
     });
   });
-
+  /**
+   * Renders the contact page or returns JSON on form submission
+   * depending on wether the request was through XHR or not.
+   *
+   * @author: Bas Kager
+   * @param {Request} req - The request object given by express path
+   * @param {Response} res - The response object given by express path
+   * @param {Object} data - *optional* Validated data from the contact form
+   * @param {Error} error - *optional* Error object
+   *
+   */
   renderContactAfterFormSubmission = (req, res, data, error) => {
     let xhr = req.headers.xhr === "true";
     let status = 200;
@@ -132,8 +172,7 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
       res.setHeader("Content-Type", "application/json");
       data.error = error;
 
-      // console.dir(error);
-
+      // Set status codes on errors
       if (error) status = 500;
       if (data.isValidationError) status = 400;
 
@@ -147,13 +186,14 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
       });
     }
   };
-  /*
-     * Date: 13-08-2018
-     * Author: Bas Kager
-     * 
-     * Receiving endpoint for contact form data. Returns JSON on 
-     * AJAX requests and a landing page on non-AJAX requests
-    */
+
+  /**
+   * POST endpoint for the contact form
+   *
+   * @author: Bas Kager
+   * @param {Request} req - The request object
+   * @param {Response} res - The response object
+   */
   app.post("/contact", urlencodedParser, function(req, res) {
     // Get the form mapping for the contact form (contains validation rules)
 
