@@ -1,48 +1,4 @@
 {
-  "programming": {
-    "name": "Programming",
-    "slug": "programming",
-    "projects": [
-      {
-        "name": "ADRmeta",
-        "slug": "adrmeta",
-        "type": "project",
-        "shortDescription": "Facial similarity in portraits",
-        "backgroundImage": "/static/img/projects/adrmeta-screencap.png",
-        "thumbnailImage": "/static/img/projects/adrmeta-screencap.png",
-        "period": "March",
-        "year": 2018,
-        "summary": "A web app that fetches portraits from various archives in Amsterdam and attempts to connect these portraits by using facial recognition. This project was built in one week to show the Public Library of Amsterdam what could be done with the massive amounts of data collected by the Adamlink project.",
-        "missionImage": "/static/img/projects/adrmeta-screencap.png",
-        "mission": "How can combining massive amounts of archive data be made useful?",
-        "skills": [
-          "Microsoft Azure Face API",
-          "SparQL",
-          "Javascript localstorage"
-        ],
-        "repoUri": "https://github.com/baskager/ADRmeta",
-        "tags": ["javascript", "facial recognition", "api", "Ecmascript 6"],
-        "url": "/project/programming/adrmeta"
-      },
-      {
-        "name": "JS-API-CONNECT",
-        "slug": "js-api-connect",
-        "shortDescription": "ES6 library for easy API manipulation",
-        "backgroundColor": "#efda50",
-        "thumbnailImage": "/static/img/projects/javascript-logo.png",
-        "period": "February",
-        "year": 2018,
-        "summary": "An easy-to-use microlibrary for connecting with REST API's in JavaScript using ES6 modules and classes",
-        "missionImage": "/static/img/projects/javascript-logo.png",
-        "mission": "Make connecting with REST api's more easier and more manageable",
-        "skills": ["EcmaScript6 modules", "EcmaScript6 classes"],
-        "longDescription": "no long description added yet",
-        "repoUri": "https://github.com/baskager/js-api-connect",
-        "tags": ["javascript", "library", "api"],
-        "url": "/project/programming/js-api-connect"
-      }
-    ]
-  },
   "design": {
     "name": " Design",
     "categoryUrlSlug": "design",
@@ -110,6 +66,50 @@
         "repoUri": "https://github.com/baskager/redesign-minor-web-dev",
         "tags": ["design", "accessibility", "front-end"],
         "url": "/project/design/exclusive-design"
+      }
+    ]
+  },
+  "programming": {
+    "name": "Programming",
+    "slug": "programming",
+    "projects": [
+      {
+        "name": "ADRmeta",
+        "slug": "adrmeta",
+        "type": "project",
+        "shortDescription": "Facial similarity in portraits",
+        "backgroundImage": "/static/img/projects/adrmeta-screencap.png",
+        "thumbnailImage": "/static/img/projects/adrmeta-screencap.png",
+        "period": "March",
+        "year": 2018,
+        "summary": "A web app that fetches portraits from various archives in Amsterdam and attempts to connect these portraits by using facial recognition. This project was built in one week to show the Public Library of Amsterdam what could be done with the massive amounts of data collected by the Adamlink project.",
+        "missionImage": "/static/img/projects/adrmeta-screencap.png",
+        "mission": "How can combining massive amounts of archive data be made useful?",
+        "skills": [
+          "Microsoft Azure Face API",
+          "SparQL",
+          "Javascript localstorage"
+        ],
+        "repoUri": "https://github.com/baskager/ADRmeta",
+        "tags": ["javascript", "facial recognition", "api", "Ecmascript 6"],
+        "url": "/project/programming/adrmeta"
+      },
+      {
+        "name": "JS-API-CONNECT",
+        "slug": "js-api-connect",
+        "shortDescription": "ES6 library for easy API manipulation",
+        "backgroundColor": "#efda50",
+        "thumbnailImage": "/static/img/projects/javascript-logo.png",
+        "period": "February",
+        "year": 2018,
+        "summary": "An easy-to-use microlibrary for connecting with REST API's in JavaScript using ES6 modules and classes",
+        "missionImage": "/static/img/projects/javascript-logo.png",
+        "mission": "Make connecting with REST api's more easier and more manageable",
+        "skills": ["EcmaScript6 modules", "EcmaScript6 classes"],
+        "longDescription": "no long description added yet",
+        "repoUri": "https://github.com/baskager/js-api-connect",
+        "tags": ["javascript", "library", "api"],
+        "url": "/project/programming/js-api-connect"
       }
     ]
   },
