@@ -1,1 +1,56 @@
-!function(){var r=document.querySelector("#search"),l=(document.querySelector("#main"),document.querySelectorAll(".thumbnail"));document.querySelectorAll(".project-list");r.addEventListener("focus",function(e){for(var t=0;t<=l.length-1;t++)l[t].classList.add("faded"),l[t].classList.add("show")}),r.addEventListener("blur",function(e){for(var t=0;t<=l.length-1;t++)l[t].classList.remove("faded")}),r.addEventListener("input",function(e){for(var t=0;t<=l.length-1;t++)l[t].classList.add("faded"),l[t].classList.add("show");var s=r.value.toLowerCase(),d=0;for(t=0;t<=l.length-1;t++){var a=l[t],n=a.querySelector("#title").innerText.toLowerCase();-1<n.indexOf(s)||-1<n.indexOf(s)?(a.classList.remove("hide"),lastIndex=t,d++):a.classList.add("hide")}1===d?l[lastIndex].classList.remove("faded"):l[lastIndex].classList.add("faded")})}();
+/**
+ * Live search filter
+ *
+ * @author  Bas Kager
+ * @version 1.0
+ * @since   25-04-2018
+ */
+(function() {
+  var input = document.querySelector("#search");
+  var mainContainer = document.querySelector("#main");
+  var thumbnails = document.querySelectorAll(".thumbnail");
+  var list = document.querySelectorAll(".project-list");
+
+  input.addEventListener("focus", function(event) {
+    for (var i = 0; i <= thumbnails.length - 1; i++) {
+      thumbnails[i].classList.add("faded");
+      thumbnails[i].classList.add("show");
+    }
+  });
+
+  input.addEventListener("blur", function(event) {
+    for (var i = 0; i <= thumbnails.length - 1; i++) {
+      thumbnails[i].classList.remove("faded");
+    }
+  });
+
+  input.addEventListener("input", function(event) {
+    for (var i = 0; i <= thumbnails.length - 1; i++) {
+      thumbnails[i].classList.add("faded");
+      thumbnails[i].classList.add("show");
+    }
+
+    var filter = input.value.toLowerCase();
+    var results = 0;
+    var lastTitle = "";
+
+    for (var i = 0; i <= thumbnails.length - 1; i++) {
+      var thumbnail = thumbnails[i];
+      var title = thumbnail.querySelector("#title").innerText.toLowerCase();
+
+      if (title.indexOf(filter) > -1 || title.indexOf(filter) > -1) {
+        thumbnail.classList.remove("hide");
+        lastIndex = i;
+        results++;
+      } else {
+        thumbnail.classList.add("hide");
+      }
+    }
+
+    if (results === 1) {
+      thumbnails[lastIndex].classList.remove("faded");
+    } else {
+      thumbnails[lastIndex].classList.add("faded");
+    }
+  });
+})();
