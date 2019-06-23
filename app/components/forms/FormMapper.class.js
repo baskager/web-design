@@ -117,6 +117,7 @@ module.exports = function(config, cache) {
         let min = input.minLength;
         let max = input.maxLength;
         let placeholder = input.getAttribute("placeholder");
+        let botFilter = input.getAttribute(prefix + "filter") === "true";
 
         // Example: A textarea does not have a type attribute.
         // We need another way to identify what kind of input it is
@@ -129,7 +130,8 @@ module.exports = function(config, cache) {
           type: type,
           min: min,
           max: max,
-          placeholder: placeholder
+          placeholder: placeholder,
+          botFilter: botFilter
         };
       }
       return returnData;

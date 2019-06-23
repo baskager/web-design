@@ -41,8 +41,9 @@
         <input placeholder="What is your name?" name="name" type="text" minlength="2" maxlength="64" v-map="true" value="{{validatedData.inputs.name.value}}"
             required/>
         <textarea placeholder="Message" name="message" minlength="16" maxlength="2048" v-map="true" required>{{validatedData.inputs.message.value}}</textarea>
-        <input placeholder="Email address" name="email" type="email" minlength="6" maxlength="128" v-map="true" value="{{validatedData.inputs.email.value}}"
+        <input placeholder="Email address" name="email" type="text" minlength="6" maxlength="128" v-map="true" value="{{validatedData.inputs.email.value}}"
         />
+        <textarea class="v-filter" placeholder="Keep this field empty"  name="fltr" v-filter="true" v-map="true"></textarea>
     </fieldset>
     <button class="btn cta submit">send message</button>
 </form>

@@ -115,13 +115,15 @@
   }
   // Add a "click" event to the form button which submits the form inputs
   button.addEventListener("click", function(event) {
+    // Check defensive programming
     event.preventDefault();
 
     var name = inputs[0].value;
     var message = inputs[1].value;
     var email = inputs[2].value;
+    var botCheck = inputs[3].value;
 
-    submit(name, message, email, false);
+    submit(name, message, email, botCheck, false);
   });
   /**
    * Recursive function which creates and handles a XMLHTTP request with the form data.
@@ -141,7 +143,7 @@
    * @param {string} email - The input contents of the 'email' field
    * @param {boolean} isSuccess - Wether an earlier request was successful or not
    */
-  submit = function(name, message, email, isSuccess) {
+  submit = function(name, message, email, botCheck, isSuccess) {
     // Disable all inputs
     setDisabledAll();
     form.style.zIndex = 0;
@@ -186,7 +188,7 @@
               }
               if (timeLeft <= 0) {
                 clearInterval(retryTimer);
-                submit(name, message, email, isSuccess);
+                submit(name, message, email, botCheck , isSuccess);
               }
             }, 1000);
           }
@@ -194,7 +196,11 @@
       }
     };
 
-    xhr.send("name=" + name + "&message=" + message + "&email=" + email);
+    xhr.send("name=" + name  + 
+    "&message=" + message + 
+    "&email=" + email +
+    "&fltr=" + botCheck
+    );
   };
   /**
    * Renders the result of the XMLHTTP request to the client.

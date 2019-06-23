@@ -91,6 +91,28 @@ module.exports = function(config, cache) {
         returnData.isValidationError = true;
       }
     }
+
+    /**
+     * Checks if the form was sent by a bot
+     *
+     * @since: 23-06-2019
+     * @author: Bas Kager
+     *
+     * @param {string} value - Value of the form input
+     * @param {Object} mapEntry - Entry for the input in the FormMapper object
+     * @param {Object} returnData - Object containing validation info for all inputs
+     *
+     * @returns {boolean} Validation status for given input
+     */
+    _isBot(value, mapEntry, returnData) {
+      if (!validator.isEmpty(value)) {
+        returnData.inputs[mapEntry.name].errors.push(
+          "Sorry, we cannot process your inquiry at this moment"
+        );
+        returnData.isValidationError = true;
+        return true;
+      } else return false;
+    }
     /**
      * Performs all checks om a form input
      *
@@ -104,13 +126,17 @@ module.exports = function(config, cache) {
      * @returns {boolean} Validation status for given input
      */
     _performChecks(value, mapEntry, returnData) {
-      let isEmpty = this._isEmpty(value, mapEntry, returnData);
-      // If the field was not empty, check for further errors
-      if (!isEmpty) {
-        if (mapEntry.type === "email")
-          this._isEmail(value, mapEntry, returnData);
-        if (mapEntry.min) this._isMin(value, mapEntry, returnData);
-        if (mapEntry.max) this._isMax(value, mapEntry, returnData);
+      if (mapEntry.botFilter) {
+        this._isBot(value, mapEntry, returnData)
+      } else {
+        let isEmpty = this._isEmpty(value, mapEntry, returnData);
+        // If the field was not empty, check for further errors
+        if (!isEmpty) {
+          if (mapEntry.type === "email")
+            this._isEmail(value, mapEntry, returnData);
+          if (mapEntry.min) this._isMin(value, mapEntry, returnData);
+          if (mapEntry.max) this._isMax(value, mapEntry, returnData);
+        }
       }
     }
     /**

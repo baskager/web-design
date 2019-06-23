@@ -547,11 +547,14 @@ footer p:first-child {
 form {
   animation: 0.25s ease-out 0s 1 fadeIn;
   box-sizing: border-box;
-  overflow: auto;
   padding-bottom: 2em;
   transition: opacity 1s;
   transition-delay: 0.2s;
-  padding: 0 0.4em 0.4em; }
+  padding: 0 0.4em 0.6em; }
+  form input[v-filter="true"],
+  form textarea[v-filter="true"],
+  form .v-filter {
+    display: none; }
   form input[type="text"],
   form input[type="email"],
   form textarea {
@@ -882,7 +885,7 @@ form {
   flex-direction: column;
   border: 0;
   margin: 0;
-  padding: 0 1em;
+  padding: 0 1em 0.2em;
   width: 100%; }
 
 .contact .status {

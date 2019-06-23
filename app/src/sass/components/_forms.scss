@@ -1,11 +1,16 @@
 form {
   animation: 0.25s ease-out 0s 1 fadeIn;
   box-sizing: border-box;
-  overflow: auto;
   padding-bottom: 2em;
   transition: opacity 1s;
   transition-delay: 0.2s;
-  padding: 0 0.4em 0.4em;
+  padding: 0 0.4em 0.6em;
+
+  input[v-filter="true"],
+  textarea[v-filter="true"],
+  .v-filter {
+    display: none;
+  };
 
   input[type="text"],
   input[type="email"],
