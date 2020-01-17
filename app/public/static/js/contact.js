@@ -16,7 +16,7 @@
   var closeScreenButtons = form.querySelectorAll(".close");
 
   var app = {
-    linkedInUrl: "http://linkedin.com/in/sebastiaan-kager",
+    linkedInUrl: "http://linkedin.com/in/kgr",
     contactEndpoint: "/contact",
     retryCountdowntime: 10,
     retryAmount: 2,
