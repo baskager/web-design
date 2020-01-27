@@ -1,13 +1,19 @@
-# web-design
-Broncode staat in /app/
+# IKREFACT - Software refactoring
 
-Documentatie staat in /docs/
+## Week 1 - Introduction
+Make codebase available on GIT and make it accessible to teachers
 
-## Week 1 - Verschillende versies van een use case testen en demonstreren
-Ontwerp een interface voor een use case. Werk je ontwerp uit in HTML CSS en Javascript om te kunen testen in een browser
+## Week 2 - Naming
+Give some examples of bad naming in the codebase, substantiate this in your report and make changes in your codebase
+ 
+## Week 3 - Functions and abstraction levels
+See what you can improve in the codebase and write your findings in the report
 
-- In de demo dien je rekening te houden met (minimaal 3?) interface design principles (sowieso #11) van Principles of User Interface Design
-- Je ontwerp is aantoonbaar getest en verbeterd
-- Verslaglegging en resultaat publiceren op Github
+## Week 4 - Comments
+Find places where comments are redundant or missing, make changes to the codebase and write your findings in the report
 
+## Week 5 - Formatting and object data structures
+Find good and bad examples in the codebase, make changes to the codebase, and substantiate this in your report.
 
+## Week 6 - Exceptions and error handling
+Find good and bad examples in the codebase, make changes to the codebase, and substantiate this in your report.
