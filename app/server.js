@@ -32,8 +32,11 @@ const contactFormMap = new components.FormMapper(
 );
 // Initialise handlebars
 const handlebars = exphbs.create({
+  extName: '.handlebars',
+  partialsDir: 'views/partials',
+  layoutsDir: 'views',
   helpers: {
-    // Allows comparing two values, like if(a===b)
+        // Allows comparing two values, like if(a===b)
     equal: function(a, b, options) {
       if (a === b) {
         return options.fn(this);
@@ -238,6 +241,7 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
                 let error = {};
                 error.type = "mailer";
                 error.info = mailerError;
+                debug(mailerError);
 
                 // Re-render contact page if an error occurs and pass the error object along
                 renderContactAfterFormSubmission(
@@ -251,7 +255,7 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
           } else {
             Raven.captureException(validatedData);
             renderContactAfterFormSubmission(req, res, validatedData);
-          }
+          };
         })
         .catch(mapError => {
           Raven.captureException(mapError);
