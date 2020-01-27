@@ -34,7 +34,7 @@ const contactFormMap = new components.FormMapper(
 const handlebars = exphbs.create({
   extName: '.handlebars',
   partialsDir: 'views/partials',
-  layoutsDir: 'views',
+  layoutsDir: 'views/layouts',
   helpers: {
         // Allows comparing two values, like if(a===b)
     equal: function(a, b, options) {
