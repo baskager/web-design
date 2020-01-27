@@ -1,6 +1,8 @@
-var version = "v1.7";
+var version = "v1.8";
 
 self.addEventListener("install", function(event) {
+  self.skipWaiting();
+
   event.waitUntil(
     caches.open(version).then(function(cache) {
       return cache.addAll([
@@ -53,6 +55,8 @@ self.addEventListener("fetch", function(event) {
 
 self.addEventListener("activate", function(event) {
   var cacheWhitelist = [version];
+
+  event.waitUntil(clients.claim());
 
   event.waitUntil(
     caches.keys().then(function(keyList) {
