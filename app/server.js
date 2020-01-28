@@ -17,7 +17,7 @@ const express = require("express"),
 app.use(express.static("public"));
 
 // Initialise cross-site metadata
-const meta = {
+const commonTemplateMetadata = {
   year: new Date().getFullYear()
 };
 
@@ -77,7 +77,7 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
   app.get(paths.home, function(req, res) {
     res.render("home", {
       pageName: "home",
-      meta: meta
+      commonMetadata: commonTemplateMetadata
     });
   });
 
@@ -91,7 +91,7 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
   app.get(paths.portfolio, function(req, res) {
     res.render("project-overview", {
       pageName: "portfolio",
-      meta: meta,
+      commonMetadata: commonTemplateMetadata,
       categories: projects,
       title: "Portfolio"
     });
@@ -110,7 +110,7 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
 
     res.render("project-overview", {
       pageName: "portfolio",
-      meta: meta,
+      commonMetadata: commonTemplateMetadata,
       categorySlug: categorySlug,
       categories: categories,
       title: "Portfolio",
@@ -139,7 +139,7 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
     if (result) {
       res.render("project-detail", {
         pageName: "portfolio",
-        meta: meta,
+        commonMetadata: commonTemplateMetadata,
         project: result
       });
     } else res.redirect(paths.portfolio);
@@ -154,7 +154,7 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
   app.get(paths.contact, function(req, res) {
     res.render("contact", {
       pageName: "contact",
-      meta: meta
+      commonMetadata: commonTemplateMetadata
     });
   });
   /**
@@ -170,9 +170,9 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
    * @returns {void}
    */
   renderContactAfterFormSubmission = (req, res, data, error) => {
-    let xhr = req.headers.xhr === "true";
+    let isXHRRequest = req.headers.xhr === "true";
     let status = 200;
-    if (xhr) {
+    if (isXHRRequest) {
       res.setHeader("Content-Type", "application/json");
       data.error = error;
 
@@ -184,7 +184,7 @@ fs.readFile("projects.json", "utf8", function(err, projectsJSON) {
     } else {
       res.render("contact", {
         pageName: "contact",
-        meta: meta,
+        commonMetadata: commonTemplateMetadata,
         validatedData: data,
         error: error
       });
