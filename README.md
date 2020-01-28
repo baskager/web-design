@@ -4,6 +4,8 @@
 Make codebase available on GIT and make it accessible to teachers
 
 ## Week 2 - Naming
+[Report](docs/week2.md)
+
 Give some examples of bad naming in the codebase, substantiate this in your report and make changes in your codebase
  
 ## Week 3 - Functions and abstraction levels
