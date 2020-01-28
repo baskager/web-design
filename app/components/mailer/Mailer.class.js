@@ -70,7 +70,7 @@ module.exports = function(config, cache, environment) {
       return new Promise((resolve, reject) => {
         let mailoptions = mailconfig.mailoptions;
 
-        this._compileTemplate(
+        this.compileHTMLtemplate(
           mailconfig.template.name,
           mailconfig.template.context
         )
@@ -98,7 +98,7 @@ module.exports = function(config, cache, environment) {
      *
      * @returns {string} The compiled template in raw html
      */
-    _compileTemplate(templateName, context) {
+    compileHTMLtemplate(templateName, context) {
       return new Promise((resolve, reject) => {
         let filePath = "views/mailer/" + templateName + ".handlebars";
 

@@ -22,7 +22,7 @@ module.exports = function(config, cache) {
      *
      * @returns {boolean} Validation status for given input
      */
-    _isEmpty(value, mapEntry, returnData) {
+    isValueEmpty(value, mapEntry, returnData) {
       if (validator.isEmpty(value)) {
         returnData.inputs[mapEntry.name].errors.push(
           "Input for '" + mapEntry.name + "' was empty"
@@ -43,7 +43,7 @@ module.exports = function(config, cache) {
      *
      * @returns {boolean} Validation status for given input
      */
-    _isEmail(value, mapEntry, returnData) {
+    isValueAnEmailAddress(value, mapEntry, returnData) {
       if (!validator.isEmail(value)) {
         returnData.inputs[mapEntry.name].errors.push(
           "'" + value + "' is not an email address"
@@ -63,7 +63,7 @@ module.exports = function(config, cache) {
      *
      * @returns {boolean} Validation status for given input
      */
-    _isMin(value, mapEntry, returnData) {
+    isValueMinimum(value, mapEntry, returnData) {
       if (value.length < mapEntry.min) {
         returnData.inputs[mapEntry.name].errors.push(
           "Input for the field '" + mapEntry.name + "' is too short"
@@ -83,7 +83,7 @@ module.exports = function(config, cache) {
      *
      * @returns {boolean} Validation status for given input
      */
-    _isMax(value, mapEntry, returnData) {
+    isValueMaximum(value, mapEntry, returnData) {
       if (value.length > mapEntry.max) {
         returnData.inputs[mapEntry.name].errors.push(
           "Input for the field '" + mapEntry.name + "' is too long"
@@ -104,7 +104,7 @@ module.exports = function(config, cache) {
      *
      * @returns {boolean} Validation status for given input
      */
-    _isBot(value, mapEntry, returnData) {
+    isBotInputNotEmpty(value, mapEntry, returnData) {
       if (!validator.isEmpty(value)) {
         returnData.inputs[mapEntry.name].errors.push(
           "Sorry, we cannot process your inquiry at this moment"
@@ -125,17 +125,17 @@ module.exports = function(config, cache) {
      *
      * @returns {boolean} Validation status for given input
      */
-    _performChecks(value, mapEntry, returnData) {
+    performChecks(value, mapEntry, returnData) {
       if (mapEntry.botFilter) {
-        this._isBot(value, mapEntry, returnData)
+        this.isBotInputNotEmpty(value, mapEntry, returnData)
       } else {
-        let isEmpty = this._isEmpty(value, mapEntry, returnData);
+        let isEmpty = this.isValueEmpty(value, mapEntry, returnData);
         // If the field was not empty, check for further errors
         if (!isEmpty) {
           if (mapEntry.type === "email")
-            this._isEmail(value, mapEntry, returnData);
-          if (mapEntry.min) this._isMin(value, mapEntry, returnData);
-          if (mapEntry.max) this._isMax(value, mapEntry, returnData);
+            this.isValueAnEmailAddress(value, mapEntry, returnData);
+          if (mapEntry.min) this.isValueMinimum(value, mapEntry, returnData);
+          if (mapEntry.max) this.isValueMaximum(value, mapEntry, returnData);
         }
       }
     }
@@ -163,7 +163,7 @@ module.exports = function(config, cache) {
         if (mapEntry) {
           returnData.inputs[param].validated = true;
           returnData.inputs[param].errors = [];
-          this._performChecks(value, mapEntry, returnData);
+          this.performChecks(value, mapEntry, returnData);
         } else returnData.inputs[param].validated = false;
 
         returnData.inputs[param].value = value;

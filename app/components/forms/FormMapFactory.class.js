@@ -12,7 +12,7 @@ const fs = require("fs"),
 
 module.exports = function(config, cache) {
   const customHTMLAttributePrefix = config.prefix;
-  class FormMapper {
+  class FormMapFactory {
     /**
      * Constructor, initialises the object with a template file
      *
@@ -38,14 +38,14 @@ module.exports = function(config, cache) {
      *
      * @returns {Object} Validation map object
      */
-    get() {
+    create() {
       return new Promise((resolve, reject) => {
         let cachedMap = cache.get("FormMapper", this.templateFileName);
         // If map is cached, resolve with the cached map
         if (cachedMap) resolve(cachedMap);
         else {
           // Build map and save to cache if cacheing is enabled on the form
-          this._buildMap(this.templateFileName)
+          this.readFormHTMLTemplate(this.templateFileName)
             .then(map => {
               if (map.isCache) {
                 cache.add(this.constructor.name, this.templateFileName, map);
@@ -71,7 +71,7 @@ module.exports = function(config, cache) {
      *
      * @returns {Object} Validation map object
      */
-    _buildMap(templateFileName) {
+    readFormHTMLTemplate(templateFileName) {
       return new Promise((resolve, reject) => {
         fs.readFile(templateFileName, "utf8", (error, html) => {
           if (error) reject(error);
@@ -91,7 +91,7 @@ module.exports = function(config, cache) {
             inputs: {}
           };
           // Map the input metadata
-          map.inputs = this._mapInputs(inputs);
+          map.inputs = this.createFormInputObjects(inputs);
 
           resolve(map);
         });
@@ -109,7 +109,7 @@ module.exports = function(config, cache) {
      *
      * @returns {Object} Object containing validation info of inputs
      */
-    _mapInputs(inputHTMLElements) {
+    createFormInputObjects(inputHTMLElements) {
       let returnData = {};
       for (let input of inputHTMLElements) {
         let inputName = input.name;
@@ -138,5 +138,5 @@ module.exports = function(config, cache) {
     }
   } // END OF CLASS
 
-  return FormMapper;
+  return FormMapFactory;
 }; // END OF FUNCTION

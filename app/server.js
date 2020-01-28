@@ -27,7 +27,7 @@ Raven.config(
 ).install();
 
 // Initialise the map object for the 'contact form' validations
-const contactFormMap = new components.FormMapper(
+const contactFormMap = new components.FormMapFactory(
   "views/partials/forms/contact.handlebars"
 );
 // Initialise handlebars
