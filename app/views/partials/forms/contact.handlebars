@@ -21,28 +21,34 @@
             <p id="message"></p>
         </div>
     </div>
-    {{#equal validatedData.isValidationError false}}
-    <div class="status success">
-        <h3>Your message was sent successfully</h3>
-        <p>I will reply as soon as possible. Have a nice day!</p>
-    </div>
-    {{/equal}} {{#if validatedData.isValidationError}}
+    {{#unless validationErrors }}
+        {{#if requestData}}
+            {{#unless exception}}
+                <div class="status success">
+                    <h3>Your message was sent successfully</h3>
+                    <p>I will reply as soon as possible. Have a nice day!</p>
+                </div>
+            {{/unless}}
+        {{/if}}
+    {{else}}
     <div class="status error">
         <h3>The following errors occured</h3>
         <ul>
-            {{#each validatedData.inputs}} {{#each errors}}
-            <li>{{this}}</li> {{/each}} {{/each}}
+            {{#each validationErrors}}
+                <li>{{this.message}}</li> 
+            {{/each}}
         </ul>
     </div>
-    {{/if}} {{#if error}}
-    <h3>Something went wrong with sending the email, please try again.</h3>
+    {{/unless}} 
+    {{#if exception}}
+        <h3>Something went wrong with sending the email, please try again.</h3>
     {{/if}}
     <fieldset class="flex">
-        <input placeholder="What is your name?" name="name" type="text" minlength="2" maxlength="64" v-map="true" value="{{validatedData.inputs.name.value}}"
+        <input placeholder="What is your name?" name="name" type="text" minlength="2" maxlength="64" v-map="true" value="{{requestData.name}}"
             required/>
-        <textarea placeholder="Message" name="message" minlength="16" maxlength="2048" v-map="true" required>{{validatedData.inputs.message.value}}</textarea>
-        <input placeholder="Email address" name="email" type="text" minlength="6" maxlength="128" v-map="true" value="{{validatedData.inputs.email.value}}"
-        />
+        <textarea placeholder="Message" name="message" minlength="16" maxlength="2048" v-map="true" required>{{requestData.message}}</textarea>
+        <input placeholder="Email address" name="email" type="email" minlength="6" maxlength="128" v-map="true" value="{{requestData.email}}"
+            required/>
         <textarea class="v-filter" placeholder="Keep this field empty"  name="fltr" v-filter="true" v-map="true"></textarea>
     </fieldset>
     <button class="btn cta submit">send message</button>

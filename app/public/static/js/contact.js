@@ -6,12 +6,12 @@
  * @since   14-08-2018
  */
 (function() {
-  var prefix = "v-";
+  var formMapHTMLAtributePrefix = "v-";
   var form = document.querySelector("#contactForm");
   var loadingScreen = document.querySelector("#load");
   var successScreen = document.querySelector("#success");
   var errorScreen = document.querySelector("#error");
-  var inputs = form.querySelectorAll("[" + prefix + "map='true']");
+  var inputs = form.querySelectorAll("[" + formMapHTMLAtributePrefix + "map='true']");
   var button = form.querySelector("button");
   var closeScreenButtons = form.querySelectorAll(".close");
 

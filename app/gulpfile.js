@@ -4,7 +4,7 @@ const uglify = require("gulp-uglify");
 const sass = require("gulp-sass");
 const cleanCSS = require("gulp-clean-css");
 
-const source = "./src";
+const source = "./assets";
 const destination = "./public/static";
 
 // Let everyone know gulp is busy

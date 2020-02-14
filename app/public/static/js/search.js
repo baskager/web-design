@@ -9,7 +9,7 @@
   var input = document.querySelector("#search");
   var mainContainer = document.querySelector("#main");
   var thumbnails = document.querySelectorAll(".thumbnail");
-  var list = document.querySelectorAll(".project-list");
+  var projectList = document.querySelectorAll(".project-list");
 
   input.addEventListener("focus", function(event) {
     for (var i = 0; i <= thumbnails.length - 1; i++) {

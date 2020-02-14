@@ -1,0 +1,132 @@
+[
+  {
+    "categoryId": "DESIGN",
+    "name": "kager.io",
+    "slug": "kager-dot-io",
+    "thumbnailImage": "/static/img/projects/kager-thumb.png",
+    "backgroundImage": "/static/img/projects/kager-screencap.png",
+    "shortDescription": "Complete site from scratch",
+    "period": "April - August",
+    "year": 2018,
+    "summary": "Building sites is something I did long before programming. But building my own site was probably the most difficult. I am a perfectionist and I did not feel confident enough with my design skills.<br><br> I've made a few concepts over the last few years, but none made it to production. Now, finally. After finishing the Web Development minor at the Amsterdam University of Applied sciences, Eureka!",
+    "missionImage": "/static/img/projects/kager-screencap.png",
+    "mission": "A personal website which shows my skills, what I'm working on and how to contact me. <br><br>A 'digital CV' for HR/recruiters who are interested in hiring me, developers who want to work with me or people who like to keep up with me for other reasons",
+    "skills": [
+      "Web-design",
+      "CSS animations",
+      "Progressive enhancement",
+      "Sentry.io exception logging"
+    ],
+    "demoUri": "https://kager.io",
+    "repoUri": "https://github.com/baskager/web-design",
+    "tags": ["design", "accessibility", "front-end"],
+    "url": "/project/design/kager-dot-io"
+  },
+  {
+    "categoryId": "DESIGN",
+    "name": "Exclusive Design",
+    "slug": "exclusive-design",
+    "thumbnailImage": "/static/img/projects/minor-site-screencap-big.png",
+    "backgroundImage": "/static/img/projects/minor-site-screencap-big.png",
+    "shortDescription": "Advanced accessibility",
+    "period": "May - June",
+    "year": 2018,
+    "summary": "The final and  qualifying project of the minor Web Development at The University of Applied Sciences Amsterdam. Won the 2018 Golden Dot Award for Responsible Design for its accessibility experiments.",
+    "missionImage": "/static/img/projects/minor-site-screencap-complete.png",
+    "mission": "How can we design a website in such a way that it is pleasurable for people who need accessbibility features, without changing the experience.",
+    "skills": [
+      "Accessibility",
+      "Front-end design process",
+      "Making styleguides"
+    ],
+    "demoUri": "https://redesign-minor.kager.io/",
+    "repoUri": "https://github.com/baskager/redesign-minor-web-dev",
+    "tags": ["design", "accessibility", "front-end"],
+    "url": "/project/design/exclusive-design"
+  },
+  {
+    "categoryId": "DESIGN",
+    "name": "CSS to the rescue",
+    "slug": "css-to-the-rescue",
+    "shortDescription": "Advanced CSS course",
+    "backgroundImage": "/static/img/projects/cssttr-screencap.png",
+    "thumbnailImage": "/static/img/projects/cssttr-screencap.png",
+    "period": "February",
+    "year": 2018,
+    "summary": "The first CSS project in the web-development minor. Challenging students to think outside the box with the latest CSS features but also laying a foundation with best-practices and design principles.",
+    "missionImage": "/static/img/projects/cssttr-screencap.png",
+    "mission": "Illustrate how one can use the latest css selectors, no classes alowed. Design multiple website elements to get an understanding of the latest CSS capabilities.",
+    "skills": [
+      "New CSS selectors",
+      "CSS best practices",
+      "Design principles"
+    ],
+    "demoUri": "https://baskager.github.io/cssttr/",
+    "repoUri": "https://github.com/baskager/web-design",
+    "tags": ["design", "css", "front-end"],
+    "url": "/project/design/css-to-the-rescue"
+  },
+  {
+    "categoryId": "PROGRAMMING",
+    "name": "ADRmeta",
+    "slug": "adrmeta",
+    "type": "project",
+    "shortDescription": "Facial similarity in portraits",
+    "backgroundImage": "/static/img/projects/adrmeta-screencap.png",
+    "thumbnailImage": "/static/img/projects/adrmeta-screencap.png",
+    "period": "March",
+    "year": 2018,
+    "summary": "A web app that fetches portraits from various archives in Amsterdam and attempts to connect these portraits by using facial recognition. This project was built in one week to show the Public Library of Amsterdam what could be done with the massive amounts of data collected by the Adamlink project.",
+    "missionImage": "/static/img/projects/adrmeta-screencap.png",
+    "mission": "How can combining massive amounts of archive data be made useful?",
+    "skills": [
+      "Microsoft Azure Face API",
+      "SparQL",
+      "Javascript localstorage"
+    ],
+    "repoUri": "https://github.com/baskager/ADRmeta",
+    "tags": ["javascript", "facial recognition", "api", "Ecmascript 6"],
+    "url": "/project/programming/adrmeta"
+  },
+  {
+    "categoryId": "PROGRAMMING",
+    "name": "JS-API-CONNECT",
+    "slug": "js-api-connect",
+    "shortDescription": "ES6 library for easy API manipulation",
+    "backgroundColor": "#efda50",
+    "thumbnailImage": "/static/img/projects/javascript-logo.png",
+    "period": "February",
+    "year": 2018,
+    "summary": "An easy-to-use microlibrary for connecting with REST API's in JavaScript using ES6 modules and classes",
+    "missionImage": "/static/img/projects/javascript-logo.png",
+    "mission": "Make connecting with REST api's more easier and more manageable",
+    "skills": ["EcmaScript6 modules", "EcmaScript6 classes"],
+    "longDescription": "no long description added yet",
+    "repoUri": "https://github.com/baskager/js-api-connect",
+    "tags": ["javascript", "library", "api"],
+    "url": "/project/programming/js-api-connect"
+  },
+  {
+    "categoryId": "DATABASES",
+    "name": "Remind",
+    "slug": "remind",
+    "shortDescription": "Reminder app powered by a messenger bot",
+    "longDescription": "No description added yet",
+    "backgroundColor": "#FF4D61",
+    "thumbnailImage": "/static/img/projects/remind-diagram.jpg",
+    "period": "In development - ",
+    "year": 2018,
+    "summary": "A simple web app where friends and family can send me reminders through a messenger bot.",
+    "missionImage": "/static/img/projects/remind-diagram.jpg",
+    "mission": "I am a very forgetfull person and this web app should help me remind things. Whenever I should be reminded of something, my friends and fanily can send a quick message and it will be stored on remind.kager.io",
+    "skills": [
+      "ArangoDB",
+      "Facebook Messenger API",
+      "Javascript web sockets "
+    ],
+    "repoUri": "https://github.com/baskager/real-time-web-project",
+    "demoUri": false,
+    "tags": ["arango", "database", "key-value", "graph"],
+    "url": "/project/database/remind"
+  }
+]

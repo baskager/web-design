@@ -1,19 +1,14 @@
-{{> nav currentPage=pageName}} {{> header-small title=title summary="Nanotechnology immersion along the information highway
-will close the loop on focusing solely on the bottom line." }}
+{{> nav currentPage=pageName}} {{> header-small title=title }}
 <main>
     <div class='projectListContent' id='projectListContent'>
-        {{!--
-        <blockquote class='fancy'></blockquote> --}}
         <section class="filters flex">
             <input type="search" id="search" placeholder="search for projects" aria-placeholder="search for projects" />
             <div class="container">
-                {{!--
-                <h3>Filters</h3> --}}
                 <div class='flex cta-box'>
-                    <a class='btn cta eq' href='/portfolio/programming'>programming</a>
-                    <a class='btn cta eq' href='/portfolio/design'>design</a>
-                    <a class='btn cta eq' href='/portfolio/database'>database</a>
-                    <a class='btn cta eq' href='/portfolio'>all projects</a>
+                    {{#each categories}} 
+                    <a class='btn cta eq' href='/portfolio/{{slug}}'>{{name}}</a>
+                    {{/each}}
+                    <a class='btn cta eq' href='/portfolio'>All projects</a>
                 </div>
             </div>
         </section>
@@ -21,9 +16,10 @@ will close the loop on focusing solely on the bottom line." }}
         <h3 class="subtitle">{{subtitle}}</h3>
         {{/if}}
         <ul class="center container flex project-list">
-            {{#each categories}} {{#each projects}} {{> thumbnail id=slug categorySlug=categoryUrlSlug url=url title=name description=shortDescription
-            img=thumbnailImage }} {{/each}} {{else}}
-            <p class="empty">No content</p>
+            {{#each projects}} 
+                {{> thumbnail id=slug categorySlug=categoryUrlSlug url=url title=name description=shortDescription img=thumbnailImage }} 
+            {{else}}
+                <p class="empty">No content</p>
             {{/each}}
         </ul>
     </div>
