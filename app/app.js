@@ -32,13 +32,13 @@ Raven.context(function() {
   });
   // TODO: Create a Invariant check class
   mailer
-    .verify()
+    .verifyConnection()
     .then(success => {
       console.info("SMTP SUCCESS: configuration verified");
-      console.log("Starting server for environment: " + config.get("environment"));
+      console.info("Starting server for environment: " + config.get("environment"));
       const port = config.get("port") || 3000;
       http.listen(port, function() {
-        console.log("Server listening on port http://localhost:" + port);
+        console.info("\nApp listening on: http://localhost:" + port);
       });
     })
     .catch(error => {

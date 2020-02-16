@@ -20,5 +20,4 @@ class ProjectDAO {
   }
 
 }
-// Singleton instance
 module.exports = new ProjectDAO();

@@ -20,7 +20,5 @@ class TemplateEngine {
     return this.processor;
   }
   
-
 }
-// Singleton instance
 module.exports = new TemplateEngine();

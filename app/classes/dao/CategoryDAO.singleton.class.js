@@ -13,5 +13,4 @@ class CategoryDAO {
   }
 
 }
-// Singleton instance
 module.exports = new CategoryDAO();

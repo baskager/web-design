@@ -4,31 +4,16 @@ jsdom = require("jsdom"),
 FormMap = require("./FormMap.class"),
 FormMapInput = require("./FormMapInput.class"),
 config = require("../config/Config.singleton.class"),
-cache = require("../cache/Cache.class");
-/**
- * Maps an HTML form (which contains validation attributes) into an object
- * to enable server-side validation on the form
- *
- * @since: 12-08-2018
- * @author: Bas Kager
- */
+cache = require("../cache/Cache.singleton.class");
 
+/**
+ * Creates a map of validation rules from a form template file
+ */
 module.exports = class FormMapFactory {
     constructor(templateFileName) {
       this.templateFileName = templateFileName;
     }
-    /**
-     * Get the validation map for the form.
-     *
-     * - Return map if it's already available.
-     * - Build map if it's not already available.
-     * - Cache map if isCache is 'true' in the HTML form.
-     *
-     * @since: 12-08-2018
-     * @author: Bas Kager
-     *
-     * @returns {Object} Validation map object
-     */
+
     async get() {
       if (this.isCached()) {
         return this.getCached();
@@ -61,18 +46,6 @@ module.exports = class FormMapFactory {
       cache.saveToFile();
     }
 
-    /**
-     * Builds complete object to make form compatible with
-     * validation functions. Can also be cached to validate
-     * straight out of memory.
-     *
-     * @since: 12-08-2018
-     * @author: Bas Kager
-     *
-     * @param {string} templateFileName - Name of the template file to be mapped
-     *
-     * @returns {Object} Validation map object
-     */
     readFormTemplateDOM(templateFileName) {
       return new Promise((resolve, reject) => {
         fs.readFile(templateFileName, "utf8", (error, html) => {
@@ -101,17 +74,6 @@ module.exports = class FormMapFactory {
       });
     }
 
-    /**
-     * Maps inputs for a form to prepare them for validation
-     * on future requests
-     *
-     * @since: 12-08-2018
-     * @author: Bas Kager
-     *
-     * @param {Object} DOMInputNodes - HTMLInputElements from a form
-     *
-     * @returns {Object} Object containing validation info of inputs
-     */
     setMapInputs(map, DOMInputNodes) {
       for (let DOMInput of DOMInputNodes) {
         const mapInput = new FormMapInput();
@@ -156,4 +118,4 @@ module.exports = class FormMapFactory {
       return DOMElement.tagName.toLowerCase()
     }
 
-  } // END OF CLASS
+  }

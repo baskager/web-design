@@ -4,43 +4,39 @@ class Config {
 
   constructor() {
     this.config = require("../../config");
-    // this.set("year", new Date().getFullYear());
   }
 
   set(propertyName, value) {
-    const keys = propertyName.split( "." );
-    let property = this.config;
+    const branches = propertyName.split( "." );
+    let root = this.config;
 
-  
-    keys.forEach( (key, index) => {
-      if(property[key] === undefined) {
-        property[key] = {};
+    branches.forEach( (branch, index) => {
+      if(root[branch] === undefined) {
+        root[branch] = {};
       }
 
-      if(index === (keys.length-1)) {
-        property[key] = value;
+      if(index === (branches.length-1)) {
+        root[branch] = value;
       }
 
-      property = property[key];
+      root = root[branch];
     });
-
   }
 
   get(propertyName) {
     if(!propertyName) {
       return this.config;
     }
-    
-    const keys = propertyName.split( "." );
-    let property = this.config;
   
-    keys.forEach(key => {
-      property = property[key];
+    const branches = propertyName.split( "." );
+    let root = this.config;
+  
+    branches.forEach(branch => {
+      root = root[branch];
     });
   
-    return property;
+    return root;
   }
 
 }
-// Singleton instance
 module.exports = new Config();

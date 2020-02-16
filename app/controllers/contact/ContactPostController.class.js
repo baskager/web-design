@@ -51,8 +51,10 @@ module.exports = class ContactPostController {
     mail.setContents(mailContents);
     try {
       const mailStatus = await mailer.send(mail, config.get("mailer.contactAdress"));
+      // TODO: Centralize logging and error handling with a Log class
       debug(mailStatus);
     } catch(exception) {
+      // TODO: Centralize logging and error handling with a Log class
       debug(exception);
       // Raven.captureException(exception);
       this.renderContactException(exception);
