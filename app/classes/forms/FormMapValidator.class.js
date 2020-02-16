@@ -17,6 +17,10 @@ module.exports = class FormMapValidator {
       return this.errors.length === 0;
     }
 
+    getErrors() {
+      return this.errors;
+    }
+
     resetErrors() {
       this.errors = [];
     }

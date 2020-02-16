@@ -1,3 +1,4 @@
+const GenericTemplateController = require("../../controllers/generic/GenericTemplateController.class");
 /**
  * Path that renders the homepage
  *
@@ -6,8 +7,7 @@
  * @param {Response} res - The response object
  */
 
-module.exports = (req, res) => {
-  res.render("home", {
-    pageName: "home"
-  });
+module.exports = (request, response) => {
+  const controller = new GenericTemplateController(request, response);
+  controller.render("home", "home");
 };

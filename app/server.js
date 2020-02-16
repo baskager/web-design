@@ -5,7 +5,6 @@ const config = require("./classes/config/Config.singleton.class"),
   routes = require('./routes'),
   Raven = require("raven"),
   http = require("http").Server(app),
-  debug = require("debug")("kager-server"),
   Mailer = require("./classes/mailer/Mailer.class"),
   mailer = new Mailer(config.get("mailer.smtp"));
 

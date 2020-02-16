@@ -1,11 +1,6 @@
-const categoryDao = require('../../classes/dao/CategoryDAO.singleton.class'),
-  projectDao = require('../../classes/dao/ProjectDAO.singleton.class');
+const PortfolioController = require("../../controllers/portfolio/PortfolioController.class");
 
-module.exports = (req, res) => {
-  res.render("project-overview", {
-    pageName: "portfolio",
-    categories: categoryDao.getAll(),
-    projects: projectDao.getAll(),
-    title: "Portfolio"
-  });
+module.exports = (request, response) => {
+  const controller = new PortfolioController(request, response);
+  controller.renderOverview();
 };
