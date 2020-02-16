@@ -12,7 +12,7 @@
     "start-dev": "DEBUG=kager-server,kager-server:* nodemon app.js",
     "start-prod": "forever start app.js",
     "restart-prod": "forever restart app.js",
-    "stop-prod": "forever stop app.js",
+    "stop-prod": "forever stop app.js"
   },
   "repository": {
     "type": "git",
