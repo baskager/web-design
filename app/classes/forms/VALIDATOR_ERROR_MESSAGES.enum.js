@@ -4,6 +4,6 @@ const ERROR_MESSAGES = {
   EMAIL_INVALID: "'{input_value}' is not a valid e-mail address",
   MIN_LENGTH_INVALID: "input for field '{input_name}' is too short",
   MAX_LENGTH_INVALID: "input for field '{input_name}' is too long'"
-}
+};
 
 module.exports = Object.freeze(ERROR_MESSAGES);

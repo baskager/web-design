@@ -1,7 +1,7 @@
 
-const project = require('express').Router();
-const details = require('./details');
+const project = require("express").Router();
+const details = require("./details");
 
-project.get('/:categorySlug/:projectSlug', details);
+project.get("/:categorySlug/:projectSlug", details);
 
 module.exports = project;

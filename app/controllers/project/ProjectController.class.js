@@ -1,4 +1,4 @@
-const projectDao = require('../../classes/dao/ProjectDAO.singleton.class');
+const projectDao = require("../../classes/dao/ProjectDAO.singleton.class");
 
 module.exports = class PortfolioController {
   constructor(request, response) {
@@ -13,4 +13,4 @@ module.exports = class PortfolioController {
       project: projectDao.getBySlug(projectSlug)
     });
   }
-}
+};

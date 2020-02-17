@@ -1,5 +1,5 @@
-const categoryDao = require('../../classes/dao/CategoryDAO.singleton.class'),
-  projectDao = require('../../classes/dao/ProjectDAO.singleton.class');
+const categoryDao = require("../../classes/dao/CategoryDAO.singleton.class"),
+  projectDao = require("../../classes/dao/ProjectDAO.singleton.class");
 
 module.exports = class PortfolioController {
   constructor(request, response) {
@@ -29,4 +29,4 @@ module.exports = class PortfolioController {
       subtitle: category.name + " projects"
     });
   }
-}
+};

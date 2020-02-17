@@ -10,4 +10,4 @@ module.exports = class FormMap {
     this.inputs.push(input);
   }
 
-}
+};

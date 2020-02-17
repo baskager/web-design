@@ -12,4 +12,4 @@ module.exports = class Mail {
   setContents(contents) {
     this.contents = contents;
   }
-}
+};

@@ -108,4 +108,4 @@ module.exports = class FormMapValidator {
     return !formMapInput.isBotfilter && validator.isEmpty(value);
   }
 
-}
+};

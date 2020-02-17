@@ -2,7 +2,7 @@ const config = require("./classes/config/Config.singleton.class"),
   templateEngine = require("./classes/template/templateEngine.singleton.class"),
   express = require("express"),
   app = express(),
-  routes = require('./routes'),
+  routes = require("./routes"),
   Raven = require("raven"),
   http = require("http").Server(app),
   Mailer = require("./classes/mailer/Mailer.class"),
@@ -33,7 +33,7 @@ Raven.context(function() {
   // TODO: Create a Invariant check class
   mailer
     .verifyConnection()
-    .then(success => {
+    .then( () => {
       console.info("SMTP SUCCESS: configuration verified");
       console.info("Starting server for environment: " + config.get("environment"));
       const port = config.get("port") || 3000;

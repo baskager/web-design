@@ -10,4 +10,4 @@ module.exports = class MailTemplate {
     return await templateEngine.getProcessor().render(this.templateFilePath, context);
   }
 
-}
+};

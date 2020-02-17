@@ -56,7 +56,7 @@ self.addEventListener("fetch", function(event) {
 self.addEventListener("activate", function(event) {
   var cacheWhitelist = [version];
 
-  event.waitUntil(clients.claim());
+  event.waitUntil(self.clients.claim());
 
   event.waitUntil(
     caches.keys().then(function(keyList) {

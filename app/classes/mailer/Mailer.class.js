@@ -1,6 +1,5 @@
 
-const config = require("../config/Config.singleton.class"),
-nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 
 module.exports = class Mailer {
   constructor(config) {
@@ -26,4 +25,4 @@ module.exports = class Mailer {
     return await this.transporter.sendMail(transportParams);
   }
   
-}
+};

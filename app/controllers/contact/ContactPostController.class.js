@@ -1,11 +1,11 @@
 const config = require("../../classes/config/Config.singleton.class"),
-Mail = require("../../classes/mailer/Mail.class"),
-MailTemplate = require("../../classes/mailer/MailTemplate.class"),
-Mailer = require("../../classes/mailer/Mailer.class"),
-mailer = new Mailer(config.get("mailer.smtp")),
-FormMapFactory = require("../../classes/forms/FormMapFactory.class"),
-FormMapValidator = require("../../classes/forms/FormMapValidator.class"),
-debug = require("debug")("kager-server");
+  Mail = require("../../classes/mailer/Mail.class"),
+  MailTemplate = require("../../classes/mailer/MailTemplate.class"),
+  Mailer = require("../../classes/mailer/Mailer.class"),
+  mailer = new Mailer(config.get("mailer.smtp")),
+  FormMapFactory = require("../../classes/forms/FormMapFactory.class"),
+  FormMapValidator = require("../../classes/forms/FormMapValidator.class"),
+  debug = require("debug")("kager-server");
 
 module.exports = class ContactPostController {
   constructor(request, response) {
@@ -104,7 +104,7 @@ module.exports = class ContactPostController {
       });
       this.response.end();
     }
-  };
+  }
 
   getErrorTemplate(type, exception) {
     let template = {};
@@ -112,4 +112,4 @@ module.exports = class ContactPostController {
     template.info = exception;
     return template;
   }
-}
+};

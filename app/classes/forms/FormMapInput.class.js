@@ -32,10 +32,5 @@ module.exports = class FormMapInput {
   setIsBotfilter(isBotfilter) {
     this.isBotfilter = isBotfilter === "true";
   }
-
-  setType(type) {
-    this.type = type;
-  }
-
-}
+};
 module.exports.FormMapInput;

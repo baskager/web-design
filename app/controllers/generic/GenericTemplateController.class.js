@@ -9,4 +9,4 @@ module.exports = class GenericTemplateController {
       pageName: pageName
     });
   }
-}
+};

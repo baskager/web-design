@@ -1,5 +1,3 @@
-fs = require("fs");
-
 class Config {
 
   constructor() {
