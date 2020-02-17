@@ -6,15 +6,6 @@ module.exports = class Mailer {
     this.transporter = nodemailer.createTransport(config);
   }
 
-  verifyConnection() {
-    return new Promise((resolve, reject) => {
-      this.transporter.verify(function(error, success) {
-        if (error) reject(error);
-        else resolve(success);
-      });
-    });
-  }
-
   async send(mail, recipient) {
     const transportParams = {
       to: recipient,
@@ -24,5 +15,13 @@ module.exports = class Mailer {
     };
     return await this.transporter.sendMail(transportParams);
   }
-  
+
+  verifyConnection() {
+    return new Promise((resolve, reject) => {
+      this.transporter.verify(function(error, success) {
+        if (error) reject(error);
+        else resolve(success);
+      });
+    });
+  }
 };

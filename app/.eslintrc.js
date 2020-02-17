@@ -29,6 +29,12 @@ module.exports = {
         "semi": [
             "error",
             "always"
+        ],
+        "default-param-last": [
+            "error"
+        ],
+        "no-constructor-return": [
+            "error"
         ]
     }
 };

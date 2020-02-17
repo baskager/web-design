@@ -16,14 +16,14 @@ module.exports = class FormMapValidator {
     return this.errors;
   }
 
-  resetErrors() {
-    this.errors = [];
-  }
-
   validateRequestBody(requestBody) {
     this.resetErrors();
     this.validateAllEntries(requestBody);
     return this.didValidationPass();
+  }
+
+  resetErrors() {
+    this.errors = [];
   }
 
   validateAllEntries(entries) {
@@ -107,5 +107,4 @@ module.exports = class FormMapValidator {
   isValueEmpty(formMapInput, value) {
     return !formMapInput.isBotfilter && validator.isEmpty(value);
   }
-
 };

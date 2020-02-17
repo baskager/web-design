@@ -28,11 +28,6 @@ module.exports = class ContactPostController {
 
     this.renderValidationErrors(validator.getErrors());
   }
-
-  isSafeToRenderTemplate() {
-    return !this.response._headerSent;
-  }
-
   async getValidator() {
     const contactFormMapFactory = new FormMapFactory(
       "views/partials/forms/contact.handlebars"
@@ -48,7 +43,8 @@ module.exports = class ContactPostController {
 
     const mail = new Mail(senderName, senderEmail, "New message from " + senderName);
     const mailContents = await mailTemplate.compile(this.request.body);
-    mail.setContents(mailContents);
+    mail.contents = mailContents;
+    
     try {
       const mailStatus = await mailer.send(mail, config.get("mailer.contactAdress"));
       // TODO: Centralize logging and error handling with a Log class
@@ -60,6 +56,10 @@ module.exports = class ContactPostController {
       this.renderContactException(exception);
       return;
     }
+  }
+
+  isSafeToRenderTemplate() {
+    return !this.response._headerSent;
   }
 
   requestIsAJAX() {

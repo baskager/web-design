@@ -8,29 +8,5 @@ module.exports = class FormMapInput {
     this.isBotfilter = undefined;
     this.type = undefined;
   }
-
-  setName(name) {
-    this.name = name;
-  }
-
-  setType(type) {
-    this.type = type;
-  }
-
-  setMinLength(minLength) {
-    this.minLength = minLength;
-  }
-
-  setMaxLength(maxLength) {
-    this.maxLength = maxLength;
-  }
-
-  setPlaceholder(placeholder) {
-    this.placeholder = placeholder;
-  }
-
-  setIsBotfilter(isBotfilter) {
-    this.isBotfilter = isBotfilter === "true";
-  }
 };
 module.exports.FormMapInput;

@@ -9,5 +9,4 @@ module.exports = class FormMap {
   addInput(input) {
     this.inputs.push(input);
   }
-
 };

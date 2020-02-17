@@ -8,8 +8,4 @@ module.exports = class Mail {
   buildFromString(fromName, fromEmail) {
     return fromName + " <" + fromEmail + ">";
   }
-
-  setContents(contents) {
-    this.contents = contents;
-  }
 };

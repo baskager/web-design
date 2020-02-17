@@ -2,6 +2,7 @@ class CategoryDAO {
   constructor() {
     this.categories = require("../../storage/categories");
   }
+
   getAll() {
     return this.categories;
   }
@@ -11,6 +12,5 @@ class CategoryDAO {
       return category.slug === slug;
     });
   }
-
 }
 module.exports = new CategoryDAO();

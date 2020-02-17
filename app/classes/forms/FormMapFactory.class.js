@@ -79,12 +79,12 @@ module.exports = class FormMapFactory {
       const mapInput = new FormMapInput();
       const botfilterAttribute = this.getMapAttributeFromDOMNode(DOMInput, "filter");
 
-      mapInput.setName(DOMInput.name);
-      mapInput.setMinLength(DOMInput.minLength);
-      mapInput.setMaxLength(DOMInput.maxLength);
-      mapInput.setPlaceholder(DOMInput.getAttribute("placeholder"));
-      mapInput.setIsBotfilter(botfilterAttribute);
-      mapInput.setType(DOMInput.type);
+      mapInput.name = DOMInput.name;
+      mapInput.minLength = DOMInput.minLength;
+      mapInput.maxLength = DOMInput.maxLength;
+      mapInput.placeholder = DOMInput.getAttribute("placeholder");
+      mapInput.botfilterAttribute = botfilterAttribute;
+      mapInput.type = DOMInput.type;
 
       map.addInput(mapInput);
     }
@@ -92,16 +92,6 @@ module.exports = class FormMapFactory {
 
   getFormElementFromDOM(dom) {
     return dom.window.document.querySelector("form");
-  }
-
-  buildAttributeSelectorString(attributeKey, value = null) {
-    let selector =  config.get("formMapper.prefix") + attributeKey;
-
-    if(value) {
-      selector = "[" + selector + "=" + value + "]";
-    }
-
-    return selector;
   }
 
   getMapAttributeFromDOMNode(DOMNode, key, value = null) {
@@ -114,8 +104,17 @@ module.exports = class FormMapFactory {
     return formElement.querySelectorAll(selector);
   }
 
+  buildAttributeSelectorString(attributeKey, value = null) {
+    let selector =  config.get("formMapper.prefix") + attributeKey;
+
+    if(value) {
+      selector = "[" + selector + "=" + value + "]";
+    }
+
+    return selector;
+  }
+
   getDOMElementTypeByTagname(DOMElement) {
     return DOMElement.tagName.toLowerCase();
   }
-
 };

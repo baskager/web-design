@@ -1,5 +1,4 @@
 class Config {
-
   constructor() {
     this.config = require("../../config");
   }
@@ -35,6 +34,5 @@ class Config {
   
     return root;
   }
-
 }
 module.exports = new Config();
