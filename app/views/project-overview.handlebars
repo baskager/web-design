@@ -17,7 +17,7 @@
         {{/if}}
         <ul class="center container flex project-list">
             {{#each projects}} 
-                {{> thumbnail id=slug categorySlug=categoryUrlSlug url=url title=name description=shortDescription img=thumbnailImage }} 
+                {{> thumbnail id=slug slug=slug categorySlug=relations.category.slug title=name description=shortDescription img=thumbnailImage }} 
             {{else}}
                 <p class="empty">No content</p>
             {{/each}}

@@ -1,8 +1,11 @@
 
-const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer"),
+  Log = require("../log/Log.class"),
+  cloneDeep = require("clone-deep");
 
 module.exports = class Mailer {
   constructor(config) {
+    this.config = config;
     this.transporter = nodemailer.createTransport(config);
   }
 
@@ -13,15 +16,21 @@ module.exports = class Mailer {
       subject: mail.subject,
       html: mail.contents
     };
-    return await this.transporter.sendMail(transportParams);
+    const mailStatus = await this.transporter.sendMail(transportParams);
+    return mailStatus;
+  }
+  
+  // This is important so that we don't log sensitive information :)
+  getLoggableContextData() {
+    let contextData = cloneDeep(this.config);
+    delete contextData.auth;
+    return contextData;
   }
 
-  verifyConnection() {
-    return new Promise((resolve, reject) => {
-      this.transporter.verify(function(error, success) {
-        if (error) reject(error);
-        else resolve(success);
-      });
-    });
+  async verifyConnection() {
+    const contextData = this.getLoggableContextData();
+    Log.breadCrumb("SMTP", "Verifying SMTP config", contextData);
+
+    return this.transporter.verify();
   }
 };

@@ -8,7 +8,7 @@ module.exports = class FormMapValidator {
     this.errors = [];
   }
 
-  didValidationPass() {
+  passed() {
     return this.errors.length === 0;
   }
 
@@ -19,7 +19,7 @@ module.exports = class FormMapValidator {
   validateRequestBody(requestBody) {
     this.resetErrors();
     this.validateAllEntries(requestBody);
-    return this.didValidationPass();
+    return this.passed();
   }
 
   resetErrors() {

@@ -4,9 +4,10 @@ module.exports = class GenericTemplateController {
     this.response = response;
   }
 
-  render(templateName, pageName) {
+  render(templateName, pageName = "", title = "") {
     this.response.render(templateName, {
-      pageName: pageName
+      pageName: pageName,
+      title: title 
     });
   }
 };

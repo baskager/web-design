@@ -5,12 +5,13 @@ const config = require("../../classes/config/Config.singleton.class"),
   mailer = new Mailer(config.get("mailer.smtp")),
   FormMapFactory = require("../../classes/forms/FormMapFactory.class"),
   FormMapValidator = require("../../classes/forms/FormMapValidator.class"),
-  debug = require("debug")("kager-server");
+  Log = require("../../classes/log/Log.class");
 
 module.exports = class ContactPostController {
   constructor(request, response) {
     this.request = request;
     this.response = response;
+    this.validationErrors = [];
   }
 
   async post() {
@@ -18,16 +19,24 @@ module.exports = class ContactPostController {
     const validated = validator.validateRequestBody(this.request.body);
 
     if(validated) {
-      await this.sendMail();
-
-      if(this.isSafeToRenderTemplate()) {
-        this.renderSuccess();
-      }
-      return;
+      return this.sendMail();
     }
 
-    this.renderValidationErrors(validator.getErrors());
+    this.validationErrors = validator.getErrors();
+    this.logValidationFailure();
   }
+
+  logValidationFailure() {
+    Log.breadCrumb("contact", "Validation errors", this.validationErrors);
+    Log.addUserToLoggingScope(this.getIPAddressFromRequest(), this.request.body.email);
+    Log.suspicion("Validation did not pass on the back-end");
+  }
+
+  getIPAddressFromRequest() {
+    return  this.request.headers["x-forwarded-for"] || 
+            this.request.connection.remoteAddress;
+  }
+
   async getValidator() {
     const contactFormMapFactory = new FormMapFactory(
       "views/partials/forms/contact.handlebars"
@@ -44,18 +53,8 @@ module.exports = class ContactPostController {
     const mail = new Mail(senderName, senderEmail, "New message from " + senderName);
     const mailContents = await mailTemplate.compile(this.request.body);
     mail.contents = mailContents;
-    
-    try {
-      const mailStatus = await mailer.send(mail, config.get("mailer.contactAdress"));
-      // TODO: Centralize logging and error handling with a Log class
-      debug(mailStatus);
-    } catch(exception) {
-      // TODO: Centralize logging and error handling with a Log class
-      debug(exception);
-      // Raven.captureException(exception);
-      this.renderContactException(exception);
-      return;
-    }
+
+    return mailer.send(mail, config.get("mailer.contactAdress"));
   }
 
   isSafeToRenderTemplate() {
@@ -64,6 +63,14 @@ module.exports = class ContactPostController {
 
   requestIsAJAX() {
     return this.request.headers.xhr === "true";
+  }
+
+  render() {
+    if(this.validationErrors.length === 0) {
+      this.renderSuccess();
+      return;
+    }
+    this.renderValidationErrors();
   }
 
   renderSuccess() {
@@ -78,7 +85,7 @@ module.exports = class ContactPostController {
     }
   }
 
-  renderValidationErrors(validationErrors) {
+  renderValidationErrors() {
     if (this.requestIsAJAX()) {
       this.response.setHeader("Content-Type", "application/json");
       this.response.status(400).send(JSON.stringify(this.request.body));
@@ -86,12 +93,12 @@ module.exports = class ContactPostController {
       this.response.render("contact", {
         pageName: "contact",
         requestData: this.request.body,
-        validationErrors: validationErrors
+        validationErrors: this.validationErrors
       });
     }
   }
 
-  renderContactException(exception) {
+  renderException(exception) {
     if (this.requestIsAJAX()) {
       this.response.setHeader("Content-Type", "application/json");
       this.request.body.error = this.getErrorTemplate("mailer", exception);

@@ -1,47 +1,34 @@
+const DEFAULT_PORT = 3000;
+
 const config = require("./classes/config/Config.singleton.class"),
   templateEngine = require("./classes/template/templateEngine.singleton.class"),
   express = require("express"),
   app = express(),
   routes = require("./routes"),
-  Raven = require("raven"),
   http = require("http").Server(app),
   Mailer = require("./classes/mailer/Mailer.class"),
-  mailer = new Mailer(config.get("mailer.smtp"));
-
-// Set up sentry.io logging
-Raven.config(
-  config.get("sentry.endpoint")
-).install();
+  mailer = new Mailer(config.get("mailer.smtp")),
+  Log = require("./classes/log/Log.class"),
+  monitoringService = require("./classes/log/MonitoringService.singleton.class"),
+  monitoringMiddleware = monitoringService.get(),
+  port = config.get("port") || DEFAULT_PORT;
 
 app.engine("handlebars", templateEngine.getProcessor().engine);
 app.set("view engine", "handlebars");
-app.use("/", routes);
-// Define directory from which static files are served
-app.use(express.static("public"));
 
-// TODO: Make a Logger class (Singleton)
-Raven.context(function() {
-  let contextData = config.get("mailer");
-  delete contextData.smtp.auth;
-  Raven.captureBreadcrumb({
-    message: "Verifying SMTP config",
-    category: "SMTP",
-    data: {
-      config: contextData
-    }
+app.use(monitoringMiddleware.Handlers.requestHandler());
+app.use(monitoringMiddleware.Handlers.errorHandler());
+
+app.use(express.static("public"));
+app.use("/", routes);
+
+mailer.verifyConnection().then(() => {
+  Log.info("SMTP SUCCESS: configuration verified");
+
+  Log.info("Starting server for environment: " + config.get("environment"));
+  http.listen(port, function() {
+    Log.info("\nApp listening on: http://localhost:" + port);
   });
-  // TODO: Create a Invariant check class
-  mailer
-    .verifyConnection()
-    .then( () => {
-      console.info("SMTP SUCCESS: configuration verified");
-      console.info("Starting server for environment: " + config.get("environment"));
-      const port = config.get("port") || 3000;
-      http.listen(port, function() {
-        console.info("\nApp listening on: http://localhost:" + port);
-      });
-    })
-    .catch(error => {
-      Raven.captureException(error);
-    });
+}).catch(exception => {
+  Log.error(exception, "Could not verify mail config");
 });
