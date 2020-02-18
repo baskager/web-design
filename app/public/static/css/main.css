@@ -839,6 +839,7 @@ form {
   .projectDetail .project-img img {
     display: block;
     max-height: 30em;
+    max-width: 30em;
     width: auto;
     margin: 0 auto; }
 
@@ -928,3 +929,8 @@ form {
     right: 0;
     padding: 1em;
     display: none; }
+
+.errorpage {
+  max-width: 40em;
+  margin: 0 auto;
+  text-align: center; }
