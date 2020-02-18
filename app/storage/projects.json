@@ -19,8 +19,7 @@
     ],
     "demoUri": "https://kager.io",
     "repoUri": "https://github.com/baskager/web-design",
-    "tags": ["design", "accessibility", "front-end"],
-    "url": "/project/design/kager-dot-io"
+    "tags": ["design", "accessibility", "front-end"]
   },
   {
     "categoryId": "DESIGN",
@@ -41,8 +40,7 @@
     ],
     "demoUri": "https://redesign-minor.kager.io/",
     "repoUri": "https://github.com/baskager/redesign-minor-web-dev",
-    "tags": ["design", "accessibility", "front-end"],
-    "url": "/project/design/exclusive-design"
+    "tags": ["design", "accessibility", "front-end"]
   },
   {
     "categoryId": "DESIGN",
@@ -63,8 +61,24 @@
     ],
     "demoUri": "https://baskager.github.io/cssttr/",
     "repoUri": "https://github.com/baskager/web-design",
-    "tags": ["design", "css", "front-end"],
-    "url": "/project/design/css-to-the-rescue"
+    "tags": ["design", "css", "front-end"]  },
+  {
+    "categoryId": "PROGRAMMING",
+    "name": "IKREFACT",
+    "slug": "ikrefact",
+    "shortDescription": "Software refactoring project",
+    "backgroundColor": "#ff4d61",
+    "thumbnailImage": "/static/img/projects/ikrefact.svg",
+    "period": "February",
+    "year": 2020,
+    "summary": "A course at the University of Applied Sciences Leiden for refactoring software",
+    "missionImage": "/static/img/projects/ikrefact.svg",
+    "mission": "Refactoring is improving and restructuring an existing codebase.<br><br> This course teached how to refactor code using the 'clean code' book by Robert Cecil Martin. (ISBN/EAN: 9780132350884).<br><br>For this course I have refactored the codebase of this website, <b>kager.io.</b>.",
+    "skills": ["Improving existing software", "Writing cleaner code"],
+    "longDescription": "no long description added yet",
+    "demoUri": "https://kager.io",
+    "repoUri": "https://github.com/baskager/web-design",
+    "tags": ["refactoring", "course", "back-end"]
   },
   {
     "categoryId": "PROGRAMMING",
@@ -85,8 +99,7 @@
       "Javascript localstorage"
     ],
     "repoUri": "https://github.com/baskager/ADRmeta",
-    "tags": ["javascript", "facial recognition", "api", "Ecmascript 6"],
-    "url": "/project/programming/adrmeta"
+    "tags": ["javascript", "facial recognition", "api", "Ecmascript 6"]
   },
   {
     "categoryId": "PROGRAMMING",
@@ -103,8 +116,7 @@
     "skills": ["EcmaScript6 modules", "EcmaScript6 classes"],
     "longDescription": "no long description added yet",
     "repoUri": "https://github.com/baskager/js-api-connect",
-    "tags": ["javascript", "library", "api"],
-    "url": "/project/programming/js-api-connect"
+    "tags": ["javascript", "library", "api"]
   },
   {
     "categoryId": "DATABASES",
@@ -126,7 +138,6 @@
     ],
     "repoUri": "https://github.com/baskager/real-time-web-project",
     "demoUri": false,
-    "tags": ["arango", "database", "key-value", "graph"],
-    "url": "/project/database/remind"
+    "tags": ["arango", "database", "key-value", "graph"]
   }
 ]
