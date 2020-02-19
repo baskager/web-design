@@ -1,0 +1,17 @@
+[
+  {
+    "id":       "DESIGN", 
+    "name":     "Design",
+    "slug":     "design"
+  },
+  {
+    "id":       "PROGRAMMING", 
+    "name":     "Programming",
+    "slug":     "programming"
+  },
+  {
+    "id":       "DATABASES", 
+    "name":     "Databases",
+    "slug":     "databases"
+  }
+]
