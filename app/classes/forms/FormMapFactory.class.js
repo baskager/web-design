@@ -83,7 +83,7 @@ module.exports = class FormMapFactory {
       mapInput.minLength = DOMInput.minLength;
       mapInput.maxLength = DOMInput.maxLength;
       mapInput.placeholder = DOMInput.getAttribute("placeholder");
-      mapInput.botfilterAttribute = botfilterAttribute;
+      mapInput.isBotfilter = botfilterAttribute;
       mapInput.type = DOMInput.type;
 
       map.addInput(mapInput);
