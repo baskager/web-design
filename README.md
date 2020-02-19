@@ -1,5 +1,6 @@
 # Kager.io - The personal website of Bas Kager
 A NodeJS/Express project
+![Kager.io screenshot](docs/img/site-screenshot.png)
 
 ## Directory structure
 
